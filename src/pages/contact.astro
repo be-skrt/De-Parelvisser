@@ -1,0 +1,132 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../components/Button.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+---
+
+<MainLayout title="Contact">
+  <section class="page-hero section--center section--oyster-teal">
+    <div class="content-width contact-inner">
+      <div class="contact-intro">
+        <p class="eyebrow">Contact</p>
+
+        <SectionTitle
+          title="Neem gerust contact op."
+          heading="h1"
+          variant="large"
+        />
+
+        <p class="lead">
+          Soms begint een traject met één vraag. Heb je vragen over de werking,
+          het aanbod of wil je weten of De Parelvisser iets voor jou kan
+          betekenen?
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-items">
+          <div class="contact-item">
+            <span>Telefoon</span>
+            <a href="tel:+32469737223"> 0469 73 72 23 </a>
+          </div>
+          <div class="contact-item">
+            <span>E-mail</span>
+            <a href="mailto:deparelvisser@telenet.be">
+              deparelvisser@telenet.be
+            </a>
+          </div>
+          <div class="contact-item">
+            <span>Adres</span>
+            <address>
+              Domien Geersstraat 11a<br />
+              9041 Oostakker
+            </address>
+          </div>
+        </div>
+
+        <Button
+          href="https://www.google.com/maps/dir//Domien+Geersstraat+11a,+9041+Gent/@51.0971238,3.7609773,17z/data=!4m17!1m8!3m7!1s0x47c37738b72c8655:0x969149544e1b21e1!2sDomien+Geersstraat+11a,+9041+Gent!3b1!8m2!3d51.0971205!4d3.7635522!16s%2Fg%2F11smk4z227!4m7!1m0!1m5!1m1!1s0x47c37738b72c8655:0x969149544e1b21e1!2m2!1d3.7635522!2d51.0971205?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          content="Route bekijken"
+        />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .contact-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .contact-intro h1 {
+    max-width: 650px;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+  }
+
+  .lead {
+    max-width: 600px;
+    font-size: 1.3rem;
+  }
+
+  .contact-card {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    background: var(--white);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  .contact-item {
+    padding-block: 1.25rem;
+    border-bottom: 1px solid rgba(40, 83, 90, 0.12);
+  }
+
+  .contact-item span {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: var(--gold);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-item a,
+  .contact-item address {
+    color: var(--teal);
+    font-size: 1.2rem;
+    font-style: normal;
+  }
+
+  .contact-card .button {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 750px) {
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-card {
+      padding: 2rem;
+    }
+  }
+</style>

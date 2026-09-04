@@ -1,0 +1,151 @@
+---
+import Logo from "./Logo.astro";
+
+const { currentPath } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/werkwijze", label: "Werkwijze" },
+  { href: "/aanbod", label: "Aanbod" },
+  { href: "/praktisch", label: "Praktisch" },
+  { href: "/over-mij", label: "Over mij"},
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<header class:list={["header", { home: currentPath === "/" }]} id="header">
+  <div class="content-width header-inner">
+    <Logo />
+
+    <nav id="navbar">
+      <ul>
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={currentPath === link.href ? "active" : ""}
+                aria-current={currentPath === link.href ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector(".menu-button");
+  const nav = document.querySelector("#navbar");
+
+  button?.addEventListener("click", () => {
+    const open = button.getAttribute("aria-expanded") === "true";
+
+    button.setAttribute("aria-expanded", String(!open));
+    nav?.classList.toggle("open", !open);
+  });
+</script>
+
+<style>
+  header {
+    position: static;
+    top: 0;
+    z-index: 10;
+
+    width: 100%;
+    height: var(--header-height);
+
+    background: transparent;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  header.home,
+  header.scroll {
+    position: fixed;
+  }
+
+  header .content-width {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* -----------------------------
+    NAV
+  ----------------------------- */
+
+  nav {
+    width: auto;
+    margin-left: auto;
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  nav a {
+    display: block;
+    position: relative;
+    padding: 0.5rem 0.7rem;
+
+    border: 1px solid transparent;
+    border-radius: 1rem;
+
+    color: var(--teal);
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--fsz-sm);
+    letter-spacing: 0.01rem;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  nav a:hover {
+    background-color: var(--teal);
+    color: var(--white);
+  }
+
+  nav a.active,
+  nav a.active:hover {
+    color: var(--gold);
+    background: transparent;
+  }
+
+  /* -----------------------------
+    SCROLLED HEADER
+  ----------------------------- */
+
+  header.scroll {
+    background: var(--teal);
+  }
+
+  header.scroll nav a {
+    color: var(--white);
+  }
+
+  header.scroll nav a:hover {
+    color: var(--teal);
+    background: var(--white);
+  }
+
+  header.scroll nav a.active,
+  header.scroll nav a.active:hover {
+    color: var(--gold);
+    background: transparent;
+  }
+</style>

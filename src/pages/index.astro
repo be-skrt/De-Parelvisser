@@ -1,139 +1,238 @@
 ---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import Card from "../components/Card.astro";
 
+const clientName = "Griet Ackerman";
+const businessName = "De Parelvisser";
+
+const services = [
+  {
+    title: "Ouder-kind gesprekken",
+    text: "Begeleiding rond verbinding, hechting en de relatie tussen ouder en kind.",
+    href: "/aanbod#ouder-kind",
+  },
+  {
+    title: "Diagnostiek",
+    text: "Samen onderzoeken en begrijpen wat er speelt en welke ondersteuning nodig is.",
+    href: "/aanbod#diagnostiek",
+  },
+  {
+    title: "Individuele therapie",
+    text: "Therapie voor kinderen, jongeren en jongvolwassenen, afgestemd op hun noden.",
+    href: "/aanbod#therapie",
+  },
+  {
+    title: "Ouderbegeleiding & gezinstherapie",
+    text: "Ondersteuning rond opvoeding, relaties en gezinsdynamieken.",
+    href: "/aanbod#ouders-gezin",
+  },
+  {
+    title: "Professionals",
+    text: "Supervisie, intervisie en vorming voor professionals.",
+    href: "/aanbod#professionals",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>De Parelvisser</title>
-	</head>
-	<body>
-		<header id="header" class="header">
-      <a class="logo" href="/">
-        <img src="static/img/de-parelvisser-logo-transparent.png" />
-      </a>
-      <nav id="navbar">
-        <ul>
-          <li>
-            <a class="active">Home</a>
-          </li>
-          <li>
-            <a href="/werkwijze.html">Werkwijze</a>
-          </li>
-          <li>
-            <a href="/aanbod.html">Aanbod</a>
-          </li>
-          <li>
-            <a href="/praktisch.html">Praktisch</a>
-          </li>
-          <li>
-            <a href="/contact.html">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="hero">
-        <figure class="hero-img">
-          <img src="static/img/griet-ackerman1.png" alt="Griet Ackerman" />
-        </figure>
-        <section class="hero-text">
-          <h1 id="hero-name" class="m2rem hero-name fadein-left">
-            Griet Ackerman
-          </h1>
-          <h2 id="hero-title" class="m2rem hero-title fadein-left-delay">
-            De Parelvisser
-          </h2>
-        </section>
-      </section>
-      <div class="wrapper">
+<MainLayout title="Home">
+  <Hero businessName={businessName} />
+
+  <!-- INTRODUCTION -->
+
+  <section class="section--full section--center section--teal">
+    <div class="content-width about-grid">
+      <div
+        class="about-image"
+        data-aos="fade-right"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <img src="/images/griet-ackerman.jpg" alt={clientName} />
+      </div>
+
+      <div
+        class="about-content"
+        data-aos="fade-left"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        <p class="eyebrow">Wie ben ik?</p>
         <h2>
-          Ik ben Griet Ackerman, psychotherapeut en oprichter van
-          <em>De Parelvisser</em>.
+          Ik ben {clientName}, psychotherapeut en oprichter van
+          <span> {businessName}</span>.
         </h2>
-        <br />
-        <section class="intro-text fadein-left">
-          <p>
-            Al vele jaren werk ik met kinderen, jongeren, jongvolwassenen en hun
-            context binnen de geestelijke gezondheidszorg. In mijn werk staat
-            het creëren van een veilige en respectvolle ruimte centraal, waarin
-            mensen op verhaal kunnen komen en zich gezien en gehoord voelen.
-          </p>
-          <p>
-            Ik studeerde in 1987 af als klinisch en ontwikkelingspsycholoog aan
-            de Universiteit Gent. Vanuit mijn interesse in relaties en contexten
-            volgde ik een opleiding Gezinstherapie aan de UCL die ik beëindigde
-            in 1998.
-          </p>
-          <p>
-            Doorheen de jaren bleef ik mij verdiepen via diverse vormingen,
-            waaronder EMDR (een therapievorm die helpt bij het verwerken van
-            ingrijpende ervaringen), transculturele geestelijke gezondheidszorg
-            en infant mental health (Londen). Deze brede achtergrond helpt mij
-            om met een open blik te kijken naar uiteenlopende vragen en
-            moeilijkheden.
-          </p>
-          <p>
-            In mijn werk combineer ik ervaring met een blijvende
-            nieuwsgierigheid. Ik stem mij af op het tempo van elke persoon en ga
-            samen op zoek naar wat kan helpen — met aandacht voor zowel
-            kwetsbaarheid als kracht.
-          </p>
-          <p>
-            Ik werk graag met mensen met verschillende achtergronden en
-            verhalen. Wanneer iemand vastloopt, kijk ik niet alleen naar de
-            klacht op zich, maar ook naar wat die betekent binnen het gezin, de
-            relaties en de bredere context waarin iemand leeft.
-          </p>
-          <p>
-            Ook culturele achtergrond en waarden kunnen daarin een belangrijke
-            rol spelen. Ik neem de tijd om dit samen te verkennen, met respect
-            voor ieders verhaal.
-          </p>
-        </section>
-        <br />
         <p>
-          De naam De Parelvisser verwijst zowel naar de betekenis van mijn eigen
-          naam als naar mijn therapeutische visie.
+          In mijn praktijk kijken we samen naar wat er speelt, met aandacht voor
+          wie je bent, je verhaal en de context waarin je leeft.
         </p>
         <p>
-          Ik werk vanuit de overtuiging dat ieder mens beschikt over innerlijke
-          kwaliteiten en veerkracht. Soms zijn die niet meteen zichtbaar, omdat
-          ze verscholen liggen onder wat moeilijk loopt of zwaar aanvoelt. Op
-          zulke momenten kan het helpend zijn om hier samen naar op zoek te
-          gaan.
+          Vanuit een veilige en respectvolle ruimte gaan we op zoek naar wat kan
+          helpen om opnieuw verbinding te vinden met jezelf en met anderen.
         </p>
+        <Button href="/over-mij" variant="light" content="Meer over mij" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+
+  <section class="section">
+    <div class="content-width">
+      <div class="heading section--center section--col">
+        <SectionTitle title="Waarmee kan ik je helpen?" heading="h2" />
         <p>
-          In therapie begeleid ik dit proces met aandacht en zorg. We nemen de
-          tijd om te vertragen, te verhelderen en te ontdekken wat voor jou — of
-          voor je kind — waardevol is. Zoals een parelvisser die met geduld en
-          zachtheid naar de diepte gaat.
-        </p>
-        <p>
-          In elk kind en elke jongere zit kracht en waarde. Tegelijk staat een
-          kind nooit op zichzelf. Het groeit en leeft in verbinding met anderen.
-          Wanneer het moeilijk gaat, raakt ook die verbinding soms onder druk.
-        </p>
-        <p>
-          Ik geloof dat net daar een belangrijke ingang ligt. Door opnieuw
-          verbinding te maken — met zichzelf en met de omgeving — ontstaat er
-          ruimte om te begrijpen, te verzachten en te groeien.
+          Elke begeleiding wordt afgestemd op de persoon, de vraag en de
+          context.
         </p>
       </div>
-    </main>
-    <footer>
-      <section class="credits">
-        <span> Website by </span>
-        <hr />
-        <a class="credits-name" href="https://github.com/be-skrt">
-          Behlül Savaşkurt
-        </a>
-      </section>
-    </footer>
-    <script type="module" src="js/main.js"></script>
-	</body>
-</html>
+
+      <div class="service-grid">
+        {
+          services.map((service, index) => (
+            <Card
+              index={index}
+              href={service.href}
+              title={service.title}
+              text={service.text}
+              variant="cream"
+            />
+          ))
+        }
+      </div>
+
+      <Button href="/aanbod" content="Bekijk het volledige aanbod" />
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="section home-cta">
+    <div class="content-width">
+      <div class="cta-inner">
+        <div>
+          <h2>Heb je een vraag?</h2>
+          <p>Neem gerust contact op. We bekijken samen wat mogelijk is.</p>
+        </div>
+
+        <Button href="/contact" content="Contact opnemen" />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.8fr) 1fr;
+    align-items: center;
+    gap: var(--space-xxxl);
+  }
+
+  .about-image {
+    width: clamp(220px, 30vw, 360px);
+  }
+
+  .about-image img {
+    border-radius: 50%;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .about-content .eyebrow {
+    color: var(--gold-light);
+  }
+
+  .about-content span {
+    display: inline;
+    align-self: flex-end;
+
+    color: var(--gold);
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--fsz-xl);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .services-button {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  .home-cta {
+    padding-block: var(--space-md);
+    background: rgba(170, 201, 195, 0.5);
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    border-radius: 20px;
+    background: linear-gradient(
+      to right,
+      rgba(246, 242, 235, 1) 0%,
+      rgba(246, 242, 235, 0.5) 60%,
+      rgba(246, 242, 235, 0) 100%
+    );
+  }
+
+  .cta-inner h2 {
+    margin: 1rem 0;
+    color: var(--gold);
+  }
+
+  .cta-inner p {
+    margin: 0;
+    color: var(--teal);
+  }
+
+  @media (max-width: 1000px) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image {
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem;
+    }
+  }
+</style>

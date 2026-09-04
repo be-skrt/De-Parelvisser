@@ -1,0 +1,194 @@
+---
+import Logo from "./Logo.astro";
+import Button from "./Button.astro";
+---
+
+<footer class="footer">
+  <div class="content-width">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Logo />
+        <div class="footer-credentials">
+          <span>Ondernemingsnummer: 1032.698.028</span>
+          <span>RIZIV: 7-06454-94-00</span>
+          <span>Visum: 283225</span>
+          <span>Psychologencommissie: 642101150</span>
+        </div>
+      </div>
+
+      <div>
+        <h2>Navigatie</h2>
+
+        <nav>
+          <a href="/">Home</a>
+          <a href="/werkwijze">Werkwijze</a>
+          <a href="/aanbod">Aanbod</a>
+          <a href="/praktisch">Praktisch</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+
+      <div>
+        <h2>Contact</h2>
+
+        <address>
+          <a href="tel:+32469737223"> 0469 73 72 23 </a>
+
+          <a href="mailto:deparelvisser@telenet.be">
+            deparelvisser@telenet.be
+          </a>
+
+          <span>
+            Domien Geersstraat 11a<br />
+            9041 Oostakker
+          </span>
+        </address>
+      </div>
+
+      <div>
+        <h2>Bereikbaarheid</h2>
+
+        <p>
+          De praktijk is vlot bereikbaar met de auto en het openbaar vervoer.
+        </p>
+        <Button
+          href="https://www.google.com/maps/dir//Domien+Geersstraat+11a,+9041+Gent/@51.0971238,3.7609773,17z/data=!4m17!1m8!3m7!1s0x47c37738b72c8655:0x969149544e1b21e1!2sDomien+Geersstraat+11a,+9041+Gent!3b1!8m2!3d51.0971205!4d3.7635522!16s%2Fg%2F11smk4z227!4m7!1m0!1m5!1m1!1s0x47c37738b72c8655:0x969149544e1b21e1!2m2!1d3.7635522!2d51.0971205?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          variant="light"
+          content="Route bekijken"
+        />
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>
+        © {new Date().getFullYear()} De Parelvisser
+      </span>
+
+      <span>
+        Website by <a
+          href="https://be-skrt.github.io/portfolio/"
+          target="_blank"
+        >
+          Behlül Savaskurt
+        </a></span
+      >
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-top: var(--space-xl);
+    background: var(--teal);
+    color: var(--white);
+    z-index: 10;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4rem;
+
+    padding-bottom: 4rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .footer-credentials {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    color: rgba(255, 255, 255, 0.55);
+    font-size: var(--fsz-xs);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .footer p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+  }
+
+  .footer h2 {
+    margin-bottom: 1.25rem;
+
+    color: var(--gold-light);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer nav,
+  .footer address {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    font-style: normal;
+  }
+
+  .footer a {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+  }
+
+  .footer a:hover {
+    color: var(--gold-light);
+  }
+
+  .footer address span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+  }
+
+  .footer .button {
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  .footer .button:hover {
+    background: var(--white);
+    color: var(--teal);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding-block: 1.5rem;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 800px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+</style>

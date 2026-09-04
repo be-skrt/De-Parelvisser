@@ -1,0 +1,268 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+// const services = [
+//   {
+//     service: "Individueel gesprek",
+//     duration: "± 50 minuten",
+//     cost: "€75"
+//   },
+//   {
+//     service: "Gezinsgesprek",
+//     duration: "± 1u 15min",
+//     cost: "€90"
+//   },
+//   {
+//     service: "Diagnostiek",
+//     duration: "n.v.t.",
+//     cost: "€250 voor een intelligentietest incl. verslag en testafname"
+//   },
+//   {
+//     service: "Bespreking van de resultaten",
+//     duration: "n.v.t.",
+//     cost: "€75 per sessie"
+//   },
+// ];
+
+const prices = [
+  {
+    service: "Individueel gesprek",
+    duration: "± 50 minuten",
+    price: "€75",
+  },
+  {
+    service: "Gezinsgesprek",
+    duration: "± 1u 15min",
+    price: "€90",
+  },
+  {
+    service: "Diagnostiek",
+    duration: "Inclusief testafname en verslag",
+    price: "€250",
+  },
+  {
+    service: "Bespreking resultaten",
+    duration: "Per sessie",
+    price: "€75",
+  },
+];
+---
+
+<MainLayout title="Praktisch">
+  <section class="page-hero">
+    <div class="content-width">
+      <p class="eyebrow">Praktisch</p>
+      <h1>Praktische informatie</h1>
+
+      <div class="pearl-line">
+        <span></span>
+      </div>
+
+      <p class="lead">
+        Alles wat je moet weten over afspraken, tarieven en terugbetaling.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="content-width practical-grid">
+      <div>
+        <p class="eyebrow">Afspraak maken</p>
+        <h2>Een eerste gesprek</h2>
+      </div>
+
+      <div>
+        <p>
+          Je kan een afspraak maken via het
+          <a href="/contact">contactformulier</a> of telefonisch op
+          <a href="tel:+32469737223">0469 73 72 23</a>.
+        </p>
+
+        <p>
+          Wanneer je contact opneemt, mag je kort je vraag of reden van
+          aanmelding meegeven. Zo kan ik inschatten wat de beste volgende stap
+          is.
+        </p>
+
+        <p>We plannen vervolgens samen een eerste afspraak in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="convention section">
+    <div class="content-width convention-inner">
+      <div>
+        <p class="eyebrow">Conventie</p>
+        <h2>Tarieven en terugbetaling</h2>
+      </div>
+
+      <div>
+        <p>
+          Ik ben geconventioneerd psycholoog. Binnen het conventiesysteem gelden
+          de tarieven en voorwaarden die door de overheid en de conventie
+          bepaald worden.
+        </p>
+
+        <p>
+          Daarnaast werk ik ook deels als zelfstandige buiten de conventie. Voor
+          deze afspraken gelden onderstaande tarieven.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="content-width">
+      <div class="section section--center">
+        <p class="eyebrow">Tarieven</p>
+        <h2>Buiten de conventie</h2>
+      </div>
+
+      <div class="price-grid">
+        {
+          prices.map((item) => (
+            <article class="price-card">
+              <h3>{item.service}</h3>
+
+              <p>{item.duration}</p>
+
+              <strong>{item.price}</strong>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="practical-note section--small">
+    <div class="content-width">
+      <div>
+        <h2>Heb je vragen over een tarief of terugbetaling?</h2>
+        <p>
+          Neem gerust contact op. We bekijken samen wat van toepassing is op
+          jouw situatie.
+        </p>
+      </div>
+
+      <a class="button" href="/contact"> Contact opnemen </a>
+    </div>
+  </section>
+</MainLayout>
+
+<!-- <style>
+  .service {
+    list-style: none;
+  }
+
+  .service h3 {
+    margin: 0;
+  }
+</style> -->
+
+<style>
+  .page-hero {
+    padding-top: calc(var(--header-height) + 6rem);
+    padding-bottom: 5rem;
+    background: var(--white);
+  }
+
+  .lead {
+    max-width: 700px;
+    font-size: 1.3rem;
+  }
+
+  .practical-grid,
+  .convention-inner {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    gap: 6rem;
+  }
+
+  .practical-grid h2,
+  .convention-inner h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .convention {
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  .convention .eyebrow {
+    color: var(--gold-light);
+  }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .price-card {
+    min-height: 230px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+
+    background: var(--white);
+
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+
+  .price-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .price-card p {
+    color: var(--muted);
+  }
+
+  .price-card strong {
+    margin-top: auto;
+
+    color: var(--gold);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  .practical-note {
+    background: var(--sage);
+  }
+
+  .practical-note > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .practical-note h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .practical-note p {
+    margin: 0;
+  }
+
+  @media (max-width: 750px) {
+    .practical-grid,
+    .convention-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .price-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .practical-note > div {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

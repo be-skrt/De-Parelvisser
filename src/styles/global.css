@@ -1,0 +1,477 @@
+/*  -----------------------------
+  ROOT
+-----------------------------  */
+
+:root {
+  /* -----------------------------
+    COLORS 
+  ----------------------------- */
+
+  --teal: #28535a;
+  --teal-dark: #1d4248;
+  --teal-light: #5f9399;
+
+  --sage: #a9b39a;
+  --blue-soft: #aac9c3;
+
+  --gold: #c88656;
+  --gold-light: #dfb084;
+
+  --cream: #f6f2eb;
+  --white: #fbfaf7;
+  --black: #243033;
+
+  /* -----------------------------
+    GRADIENT COLORS 
+  ----------------------------- */
+
+  --gradient-gold: linear-gradient(
+    to right,
+    var(--gold) 0%,
+    var(--gold-light) 100%
+  );
+
+  --gradient-teal: linear-gradient(
+    to right,
+    var(--teal) 0%,
+    var(--teal-light) 100%
+  );
+
+  /* -----------------------------
+    LAYOUT 
+  ----------------------------- */
+
+  --content-max-width: 1200px;
+  --text-max-width: 720px;
+  --header-height: 88px;
+
+  /* --------------------------------
+    SPACING
+  -------------------------------- */
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-xxl: 6rem;
+  --space-xxxl: 8rem;
+
+  /* --------------------------------
+    TYPOGRAPHY
+  -------------------------------- */
+
+  --fsz-xxs: 0.7rem;
+  --fsz-xs: 0.8rem;
+  --fsz-sm: 0.95rem;
+  --fsz-md: 1.05rem;
+  --fsz-lg: 1.2rem;
+  --fsz-xl: clamp(1.5rem, 2vw, 2rem);
+  --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
+  --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
+
+  /* --------------------------------
+    EFFECTS
+  -------------------------------- */
+
+  --shadow-soft: 0 10px 40px rgba(40, 83, 90, 0.08);
+
+  --shadow-card: 0 8px 30px rgba(40, 83, 90, 0.1);
+
+  --transition: 180ms ease;
+}
+
+/* --------------------------------
+    FONTS
+  -------------------------------- */
+
+/* --------------------------------
+    FIRA SANS
+  -------------------------------- */
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-Regular"),
+    url("/fonts/Fira_Sans/FiraSans-Regular.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-Italic"),
+    url("/fonts/Fira_Sans/FiraSans-Italic.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-Bold"),
+    url("/fonts/Fira_Sans/FiraSans-Bold.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-BoldItalic"),
+    url("/fonts/Fira_Sans/FiraSans-BoldItalic.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-Light"),
+    url("/fonts/Fira_Sans/FiraSans-Light.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src:
+    local("FiraSans-LightItalic"),
+    url("/fonts/Fira_Sans/FiraSans-LightItalic.woff") format("woff"),
+    url("/fonts/Fira_Sans/FiraSans-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --------------------------------
+    MONTSERRAT
+  -------------------------------- */
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* --------------------------------
+  GENERAL
+-------------------------------- */
+
+/* --------------------------------
+  TYPOGRAPHY
+-------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1.15;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: var(--fsz-xxl);
+}
+
+h2 {
+  font-size: var(--fsz-xl);
+}
+
+h3 {
+  font-size: var(--fsz-lg);
+}
+
+p,
+li {
+  font-size: var(--fsz-md);
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 70ch;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/*  -------------------------
+  LAYOUT
+-------------------------  */
+
+section {
+  width: 100%;
+}
+
+.content-width {
+  width: min(calc(100% - 2rem), var(--content-max-width));
+  margin-inline: auto;
+  padding-block: var(--space-lg);
+  z-index: 9;
+}
+
+.text-width {
+  max-width: var(--text-max-width);
+  margin-inline: auto;
+}
+
+.heading {
+  padding-bottom: var(--space-xl);
+}
+
+.page-hero {
+  min-height: calc(100vh - var(--header-height));
+}
+
+.section {
+  padding-block: var(--space-xxxl);
+}
+
+.section--small {
+  padding-block: var(--space-xl);
+}
+
+.section--full {
+  min-height: 100vh;
+}
+
+.section--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section--col {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section--teal {
+  background: var(--teal);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--sage {
+  background: var(--sage);
+  color: var(--teal-dark);
+}
+
+.section--white {
+  background: var(--white);
+  color: var(--teal);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--oyster-teal::after {
+  content: "";
+  position: absolute;
+  width: 32rem;
+  aspect-ratio: 1;
+  right: -8rem;
+  bottom: -8rem;
+  background-color: var(--teal);
+  opacity: 0.3;
+  mask: url("/images/oyster.svg") no-repeat center;
+  mask-size: contain;
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--pearls-teal::before {
+  content: "";
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  left: 0rem;
+  top: 0rem;
+  background-color: var(--teal);
+  opacity: 0.2;
+  mask: url("/images/pearls.png") no-repeat center;
+  mask-size: contain;
+  transform: rotate(30deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section--pearls-teal::after {
+  content: "";
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  right: 0rem;
+  bottom: 0rem;
+  background-color: var(--teal);
+  opacity: 0.2;
+  mask: url("/images/pearls.png") no-repeat center;
+  mask-size: contain;
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section--pearls-white::before {
+  content: "";
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  left: 0rem;
+  top: 0rem;
+  background-color: var(--white);
+  opacity: 0.2;
+  mask: url("/images/pearls.png") no-repeat center;
+  mask-size: contain;
+  transform: rotate(30deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section--pearls-white::after {
+  content: "";
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  right: 0rem;
+  bottom: 0rem;
+  background-color: var(--white);
+  opacity: 0.2;
+  mask: url("/images/pearls.png") no-repeat center;
+  mask-size: contain;
+  transform: rotate(-30deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section--oyster-teal,
+.section--pearls-teal,
+.section--pearls-white {
+  position: relative;
+  overflow: hidden;
+}
+
+.section--teal-gradient {
+  background: var(--gradient-teal);
+  color: var(--white);
+}
+
+/*  -------------------------
+  TYPOGRAPHY
+-------------------------  */
+
+.eyebrow,
+.section--center .eyebrow {
+  margin: 0.5rem 0;
+
+  color: var(--gold);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.text--gold {
+  font-weight: 700;
+  background: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+.text--center {
+  text-align: center;
+}
+
+/*  -------------------------
+  MOBILE
+-------------------------  */
+
+@media (max-width: 768px) {
+  :root {
+    --space-xxxl: 5rem;
+    --space-xxl: 4rem;
+    --space-xl: 2.5rem;
+  }
+
+  p,
+  li {
+    font-size: 1rem;
+  }
+
+  .content-width {
+    width: min(calc(100% - 2rem), var(--content-max-width));
+  }
+}

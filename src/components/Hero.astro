@@ -1,0 +1,215 @@
+---
+import OysterIcon from "./OysterIcon.astro";
+import Button from "./Button.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const { businessName } = Astro.props;
+---
+
+<section class="hero">
+  <div class="content-width hero-inner">
+    <div class="hero-content">
+      <p class="eyebrow">Psychologenpraktijk</p>
+      <SectionTitle title={businessName} heading="h1" variant="hero" />
+      <p class="hero-tagline">Een pakkende slogan die hier komt te staan.</p>
+      <Button href="/werkwijze" content="Ontdek mijn werkwijze" />
+    </div>
+
+    <figure class="hero-oyster">
+      <OysterIcon />
+    </figure>
+  </div>
+
+  <div class="waves" aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 24 150 28"
+      preserveAspectRatio="none"
+      shape-rendering="auto"
+    >
+      <defs>
+        <path
+          id="gentle-wave"
+          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+        ></path>
+      </defs>
+      <g class="parallax">
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="0"
+          opacity="0.3"
+          fill="var(--gold-light)"></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="3"
+          opacity="0.5"
+          fill="var(--blue-soft)"></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="5"
+          opacity="0.7"
+          fill="var(--sage)"></use>
+        <use
+          xlink:href="#gentle-wave"
+          x="48"
+          y="7"
+          opacity="1"
+          fill="var(--teal)"></use>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-inner {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+
+    padding-top: var(--header-height);
+    padding-bottom: 12rem;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .title--hero h1 {
+    color: var(--teal);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .title--hero .pearl-line {
+    justify-content: flex-start;
+    margin: 1.5rem 0;
+  }
+
+  .hero-tagline {
+    display: flex;
+    justify-self: end;
+    max-width: 500px;
+
+    margin-bottom: 2rem;
+
+    color: var(--teal-light);
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .hero-oyster {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-oyster svg {
+    width: min(90%, 520px);
+
+    filter: drop-shadow(0 20px 20px rgba(40, 83, 90, 0.12));
+  }
+
+  .waves {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 32vh;
+
+    min-height: 180px;
+    max-height: 420px;
+  }
+
+  .waves svg {
+    width: 100%;
+    height: 32vh;
+  }
+
+  .parallax > use {
+    animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 9s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 11s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 15s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 850px;
+    }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+
+      min-height: 850px;
+
+      padding-top: 8rem;
+      padding-bottom: 10rem;
+
+      text-align: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .hero-oyster {
+      position: absolute;
+      right: -20%;
+      bottom: 5rem;
+
+      width: 70%;
+
+      opacity: 0.25;
+    }
+  }
+</style>

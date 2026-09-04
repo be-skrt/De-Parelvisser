@@ -1,0 +1,714 @@
+---
+import MeetIcon from "../components/MeetIcon.astro";
+import LightBulbIcon from "../components/LightBulbIcon.astro";
+import PlanIcon from "../components/PlanIcon.astro";
+import FeedbackIcon from "../components/FeedbackIcon.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+
+const audience = [
+  {
+    id: "kinderen",
+    target: "Kinderen",
+    title: "Spelen, ontdekken en begrijpen",
+    paragraphs: [
+      "Elk kind ontwikkelt zich op zijn eigen tempo en manier. Soms loopt dat vanzelf, soms zijn er vragen of zorgen. Ik bied een veilige plek waar kinderen en hun ouders terechtkunnen voor ondersteuning en begeleiding.",
+      "Bij jonge kinderen maak ik gebruik van speltherapie, zoals spelen, tekenen en verhalen. Spel is hun natuurlijke taal en biedt een ingang om gevoelens, ervaringen en vragen zichtbaar te maken.",
+    ],
+    image: "/images/aquarium2.jpg",
+    imageAlt: "Kind bij aquarium",
+    options: [
+      "Diagnostiek op maat",
+      "Individuele therapie",
+      "Spel en creatieve werkvormen",
+      "Ouderbegeleiding",
+      "Gezinstherapie",
+      "Contextbegeleiding",
+    ],
+  },
+  {
+    id: "jongeren",
+    target: "Jongeren",
+    title: "Ruimte om stil te staan",
+    paragraphs: [
+      "De adolescentie is een periode vol veranderingen en uitdagingen. Soms kan het helpend zijn om even stil te staan bij wat er leeft en ondersteuning te krijgen.",
+      "Wij bieden jongeren een plek waar ze zichzelf kunnen zijn en waar er samen gezocht wordt naar wat hen kan helpen groeien.",
+    ],
+    image: "/images/youth.jpg",
+    imageAlt: "Jongere op het strand",
+    options: [
+      "Diagnostiek",
+      "Individuele therapie",
+      "Gezinstherapie",
+      "Ouderbegeleiding",
+      "Contextbegeleiding",
+      "EMDR",
+    ],
+  },
+  {
+    id: "jongvolwassenen",
+    target: "Jongvolwassenen",
+    title: "Zoeken naar richting en evenwicht",
+    paragraphs: [
+      "In de overgang naar volwassenheid komen vaak belangrijke vragen naar boven rond identiteit, relaties en richting in het leven.",
+      "We zoeken samen naar meer inzicht, houvast en verbinding. Er is ruimte om stil te staan bij persoonlijke vragen, keuzes en wat je nodig hebt om verder te kunnen.",
+    ],
+    image: "/images/adolescents.jpg",
+    imageAlt: "Jongvolwassenen aan de zee",
+    options: [
+      "Individuele therapie",
+      "Reflectie rond identiteit en relaties",
+      "Cognitieve en inzichtgevende technieken",
+      "Stressregulatie",
+      "EMDR",
+      "Contextbegeleiding",
+    ],
+  },
+  // {
+  //   id: "professionelen",
+  //   target: "Professionelen",
+  //   title: "Ruimte voor verdieping",
+  //   paragraphs: [
+  //     "Ook collega's en andere professionals zijn welkom voor uitwisseling, verdieping en professionele groei.",
+  //   ],
+  //   image: "/images/room.jpg",
+  //   imageAlt: "Praktijkruimte",
+  //   options: ["Supervisie", "Intervisie", "Vorming"],
+  // },
+];
+
+const audienceCards = [
+  {
+    href: "#kinderen",
+    title: "Kinderen",
+    text: "Een veilige plek waar kinderen en hun ouders terechtkunnen voor ondersteuning en begeleiding.",
+  },
+  {
+    href: "#jongeren",
+    title: "Jongeren",
+    text: "Ruimte om stil te staan bij wat leeft en samen te zoeken naar wat kan helpen groeien.",
+  },
+  {
+    href: "#jongvolwassenen",
+    title: "Jongvolwassenen",
+    text: "Ondersteuning rond identiteit, relaties, evenwicht en persoonlijke groei.",
+  },
+  {
+    href: "#professionelen",
+    title: "Professionelen",
+    text: "Supervisie, intervisie en vorming voor wie zich professioneel wil verdiepen.",
+  },
+];
+---
+
+<MainLayout title="Werkwijze">
+  <section class="page-hero section--white section--center">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle title="Werkwijze" heading="h1" />
+      <p>
+        Ieder mens beschikt over innerlijke kwaliteiten en veerkracht. Soms zijn
+        die niet meteen zichtbaar, omdat ze verscholen liggen onder wat moeilijk
+        loopt of zwaar aanvoelt.
+      </p>
+
+      <p>
+        In therapie nemen we de tijd om te vertragen, te verhelderen en te
+        ontdekken wat voor jou — of voor je kind — waardevol is.
+      </p>
+
+      <p class="eyebrow">
+        Zoals een parelvisser die met geduld en zachtheid naar de diepte gaat.
+      </p>
+    </div>
+  </section>
+
+  <!-- DIVER SECTION -->
+
+  <section class="section section--center section--full section--diver">
+    <div class="content-width story-grid diver">
+      <div
+        class="story-content"
+        data-aos="zoom"
+        data-aos-duration="800"
+        data-aos-delay="400"
+      >
+        <p class="eyebrow">Aanpak op maat</p>
+        <h2>Begrijpen wat er speelt</h2>
+
+        <p>
+          Ik werk met kinderen, jongeren, jongvolwassenen en hun context. Samen
+          gaan we op zoek naar wat er speelt en wat helpend kan zijn, telkens
+          afgestemd op jouw situatie.
+        </p>
+        <p>
+          Mijn manier van werken is rustig en betrokken. Ik vertrek niet vanuit
+          één vaste methode, maar kijk samen wat nodig is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE CARD SECTION -->
+
+  <section class="section section--white">
+    <div class="content-width section--col section--center">
+      <div
+        class="heading section--center section--col text--center"
+        data-aos="fade-down"
+        data-aos-duration="800"
+      >
+        <SectionTitle title="Hoe ga ik te werk?" heading="h2" />
+        <p>
+          Geen twee trajecten zijn hetzelfde. Afhankelijk van je vraag, leeftijd
+          en context bekijken we samen welke vorm van begeleiding aansluit.
+        </p>
+      </div>
+      <div class="audience-grid">
+        {
+          audienceCards.map((card, index) => (
+            <Card
+              index={index}
+              href={card.href}
+              title={card.title}
+              text={card.text}
+              variant="white"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE SECTION -->
+
+  <section>
+    {
+      audience.map((item, index) => {
+        const isEven = index % 2 === 0;
+        const leftAnimation = "fade-right";
+        const rightAnimation = "fade-left";
+
+        const imageAnimation = isEven ? leftAnimation : rightAnimation;
+        const contentAnimation = isEven ? rightAnimation : leftAnimation;
+
+        return (
+          <section
+            id={item.id}
+            class:list={[
+              "section",
+              "section--center",
+              "section--col",
+              isEven
+                ? ["section--teal", "section--pearls-white"]
+                : ["section--white", "section--pearls-teal"],
+            ]}
+          >
+            <div class="heading section--center section--col text--center">
+              <p class="eyebrow">{item.target}</p>
+              <SectionTitle title={item.title} heading="h2" />
+            </div>
+
+            <div class="content-width">
+              <div
+                class:list={["story-grid", { "story-grid--reverse": !isEven }]}
+              >
+                <div
+                  class="grid-items"
+                  data-aos={imageAnimation}
+                  data-aos-duration="1000"
+                  data-aos-delay="200"
+                >
+                  <figure class="story-image">
+                    <img src={item.image} alt={item.imageAlt} />
+                  </figure>
+                </div>
+
+                <div
+                  class="grid-items"
+                  data-aos={contentAnimation}
+                  data-aos-duration="1000"
+                  data-aos-delay="200"
+                >
+                  <div class="story-content">
+                    {item.paragraphs.map((paragraph) => (
+                      <p>{paragraph}</p>
+                    ))}
+                  </div>
+
+                  <div class="options-container">
+                    <h3 class="text--gold">Wat kan aan bod komen?</h3>
+
+                    <ul>
+                      {item.options.map((option) => (
+                        <li>{option}</li>
+                      ))}
+                    </ul>
+
+                    <a
+                      class:list={
+                        isEven ? ["button", "button--light"] : "button"
+                      }
+                      href="/aanbod#aanbod"
+                    >
+                      Bekijk aanbod
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })
+    }
+  </section>
+
+  <!-- PROFESSIONALS SECTION -->
+
+  <section id="professionelen" class="section--small section--white">
+    <div class="content-width">
+      <div class="heading section--center section--col text--center">
+        <p class="eyebrow">Professionelen</p>
+
+        <SectionTitle title="Ruimte voor verdieping" heading="h2" />
+
+        <p>
+          Ook collega's en andere professionals zijn welkom voor uitwisseling,
+          verdieping en professionele groei.
+        </p>
+      </div>
+
+      <div class="professional-grid section--center section--col">
+        <Card
+          title="Supervisie"
+          text="Ruimte om stil te staan bij je werk, casussen te verdiepen en je
+            professionele handelen te onderzoeken."
+          type="article"
+          variant="white"
+        />
+        <Card
+          title="Intervisie"
+          text="Samen reflecteren, ervaringen uitwisselen en leren van elkaars
+            perspectieven."
+          type="article"
+          variant="teal-light"
+          shell="white"
+        />
+        <Card
+          title="Vorming"
+          text="Vorming en trainingen op maat van jouw werkcontext en specifieke
+            vragen."
+          type="article"
+          variant="cream"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+
+  <section class="section section--full section--white section--center">
+    <div class="content-width">
+      <div
+        class="heading section--center section--col text--center"
+        data-aos="fade-down"
+        data-aos-duration="600"
+      >
+        <p class="eyebrow">Het traject</p>
+        <SectionTitle title="Samen zoeken, samen bijsturen" heading="h2" />
+        <p>
+          Een traject staat nooit volledig op voorhand vast en kan steeds
+          bijgestemd worden, afhankelijk van de noden.
+        </p>
+      </div>
+
+      <div
+        class="process"
+        data-aos="zoom-out"
+        data-aos-duration="800"
+        data-aos-delay="200"
+      >
+        <div class="process-line" aria-hidden="true"></div>
+
+        <article class="process-step">
+          <div class="process-icon">
+            <MeetIcon />
+          </div>
+          <h3>Kennismaken</h3>
+          <p>
+            Tijdens een intake en enkele verkennende gesprekken maken we ruimte
+            om elkaar te leren kennen en te ontdekken wat er speelt.
+          </p>
+        </article>
+
+        <article class="process-step">
+          <div class="process-icon">
+            <LightBulbIcon />
+          </div>
+          <h3>Verhelderen</h3>
+          <p>
+            We brengen samen in kaart wat moeilijk loopt, wat belangrijk is en
+            wat eventueel verder onderzocht moet worden.
+          </p>
+        </article>
+
+        <article class="process-step">
+          <div class="process-icon">
+            <PlanIcon />
+          </div>
+          <h3>Plan maken</h3>
+          <p>
+            Vanuit wat we ontdekken, bepalen we samen welke veranderingen je
+            wenst en wat daarbij kan helpen.
+          </p>
+        </article>
+
+        <article class="process-step">
+          <div class="process-icon">
+            <FeedbackIcon />
+          </div>
+          <h3>Bijsturen</h3>
+          <p>
+            Doorheen het traject blijven we samen kijken wat helpend is. Waar
+            nodig sturen we bij.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-hero .eyebrow {
+    margin-top: 2.5rem;
+  }
+
+  .section--diver {
+    position: relative;
+    height: calc(40vh + var(--header-height));
+    background-image: url("/images/diver.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center 35%;
+    color: var(--white);
+    overflow: hidden;
+  }
+
+  .section--diver::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    height: 80%;
+    background: linear-gradient(
+      to bottom,
+      #fbfaf7 0%,
+      rgba(251, 250, 247, 0.95) 5%,
+      rgba(251, 250, 247, 0.75) 12%,
+      rgba(40, 83, 90, 0.45) 24%,
+      rgba(40, 83, 90, 0.15) 50%,
+      rgba(40, 83, 90, 0) 65%,
+      transparent 100%
+    );
+
+    pointer-events: none;
+  }
+
+  .section--diver::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: auto 0 0 0;
+    height: 20%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(40, 83, 90, 0) 8%,
+      rgba(40, 83, 90, 0.15) 18%,
+      rgba(40, 83, 90, 0.45) 44%,
+      rgba(251, 250, 247, 0.45) 60%,
+      rgba(251, 250, 247, 0.75) 85%,
+      rgba(251, 250, 247, 0.95) 95%,
+      #fbfaf7 100%
+    );
+
+    pointer-events: none;
+  }
+
+  /* STORIES */
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .story-grid--reverse .grid-items:first-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .story-grid--reverse .grid-items:last-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .story-grid.diver {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .story-grid.diver .story-content {
+    margin-top: var(--space-xl);
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .story-image img {
+    width: 100%;
+    max-height: 550px;
+    object-fit: cover;
+
+    border-radius: 2rem;
+    box-shadow:
+      0 18px 35px rgba(0, 0, 0, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .grid-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    width: 100%;
+    padding: var(--space-md);
+    border: none;
+    border-radius: 1rem;
+    box-shadow:
+      0 10px 22px rgba(0, 0, 0, 0.14),
+      0 3px 7px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .section--teal .options-container {
+    background: var(--white);
+    color: var(--teal);
+  }
+
+  .section--white .options-container {
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  .section--white .options-container::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.4;
+    mask: url("/images/oyster.svg") no-repeat;
+    mask-size: contain;
+    transform: rotate(8deg);
+    background-color: var(--white);
+  }
+
+  .section--teal .options-container::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.8;
+    mask: url("/images/oyster.svg") no-repeat;
+    mask-size: contain;
+    transform: rotate(8deg);
+    background-color: var(--gold);
+  }
+
+  .section--teal .options-container li::marker {
+    color: var(--gold);
+  }
+
+  .options-container .button {
+    align-self: flex-start;
+    margin-top: var(--space-sm);
+    padding: 1rem;
+    background: var(--white);
+    color: var(--teal);
+    border: 1px solid var(--white);
+    border-radius: 2rem;
+    transition: all 0.2s;
+  }
+
+  .options-container .button::after {
+    content: "→";
+    display: inline-block;
+    margin-left: 0.4rem;
+    font-size: 1rem;
+    transition: transform 0.1s linear;
+  }
+
+  .options-container .button:hover {
+    background: var(--gold);
+    color: var(--white);
+    border: 1px solid transparent;
+    transform: translateY(-2px);
+  }
+
+  .options-container .button:hover::after {
+    color: var(--white);
+    transform: translateX(5px);
+  }
+
+  .options-container .button--light {
+    color: var(--white);
+    background: var(--teal);
+    border: 1px solid var(--teal);
+  }
+
+  .professional-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .audience-grid article {
+    padding: 2rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+  }
+
+  .audience-grid h3 {
+    margin-bottom: 1rem;
+  }
+
+  .audience-card {
+    background: var(--white);
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    padding: var(--space-md);
+    box-shadow: 0 8px 15px var(--black);
+    transition: var(--transition);
+  }
+
+  .audience-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* PROCESS */
+
+  .process {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 2rem;
+  }
+
+  .process-line {
+    position: absolute;
+
+    top: 3.5rem;
+    left: 12.5%;
+    right: 12.5%;
+
+    height: 2px;
+
+    background: var(--gold);
+
+    opacity: 0.65;
+
+    z-index: 0;
+  }
+
+  .process-step {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 1;
+  }
+
+  .process-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 7rem;
+    height: 7rem;
+
+    margin-bottom: var(--space-md);
+    padding: 1rem;
+
+    background: var(--white);
+
+    border: 2px solid var(--gold);
+
+    border-radius: 50%;
+  }
+
+  .process-step h3 {
+    margin-bottom: 0.75rem;
+
+    color: var(--teal);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--fsz-lg);
+    font-weight: 600;
+  }
+
+  .process-step p {
+    max-width: 270px;
+    margin: 0 auto;
+
+    color: var(--teal-dark);
+
+    font-size: var(--fsz-md);
+  }
+
+  @media (max-width: 800px) {
+    .story-grid,
+    .story-grid.reverse {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .audience-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .audience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

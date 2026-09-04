@@ -1,0 +1,30 @@
+---
+// imports 
+import 'aos/dist/aos.css';
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ScrollButton from "../components/ScrollButton.astro";
+
+const { title, description } = Astro.props;
+const metaDescription =
+  description ?? `Psychologenpraktijk De Parelvisser - ${title}`;
+---
+
+<html lang="nl">
+  <Head title={title} description={metaDescription} />
+  <body>
+    <Header currentPath={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <ScrollButton />
+    <Footer />
+  </body>
+  <script>
+    import AOS from "aos";
+    AOS.init();
+  </script>
+  <script src="../scripts/scroll.js"></script>
+  <script src="../scripts/scrollButton.js"></script>
+</html>

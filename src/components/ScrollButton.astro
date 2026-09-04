@@ -1,0 +1,67 @@
+---
+
+---
+
+<a href="#" id="scrollButton" class="scrollButton">
+  <svg
+    width="1200pt"
+    height="1200pt"
+    viewBox="0 0 1200 1200"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="currentColor"
+      d="m935 490-335-335-335 335 70 70 215-215v705h100v-705l215 215z"></path>
+  </svg>
+</a>
+
+<style>
+  .scrollButton {
+    background: var(--gold);
+    color: var(--white);
+    transition:
+      0.25s transform ease-in,
+      0.2s background-color ease-out;
+    transform: scale(0);
+    width: 0.2rem;
+    height: 0.2rem;
+    position: fixed;
+    z-index: 2;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1.3rem;
+    border: 2px solid transparent;
+    border-radius: 50%;
+  }
+
+  .scrollButton.active {
+    transform: scale(1);
+  }
+
+  .scrollButton.active:hover {
+    background: var(--white);
+    color: var(--gold);
+  }
+
+  .scrollButton svg {
+    transform: translate(-50%, -50%);
+    max-width: fit-content;
+    width: 2rem;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    .scrollButton svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .scrollButton path {
+    fill: var(--white);
+  }
+
+  .scrollButton.active:hover path {
+    fill: var(--gold);
+  }
+</style>

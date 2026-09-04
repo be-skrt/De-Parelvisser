@@ -1,0 +1,83 @@
+---
+const {
+  href = "",
+  target = "_self",
+  variant = "default",
+  content = "",
+} = Astro.props;
+---
+
+{
+  target !== "_self" ? (
+    <a
+      href={href}
+      target={target}
+      rel="noopener noreferrer"
+      class:list={["button", "button--" + variant]}
+    >
+      {content}
+    </a>
+  ) : (
+    <a href={href} class:list={["button", "button--" + variant]}>
+      {content}
+    </a>
+  )
+}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    padding: 0.8rem 1.4rem;
+
+    border: 1px solid transparent;
+    border-radius: 2rem;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--fsz-sm);
+
+    transition:
+      background-color var(--transition),
+      color var(--transition),
+      transform var(--transition);
+  }
+
+  .button::after {
+    content: "→";
+    font-size: 1rem;
+    transition: transform 0.1s linear;
+  }
+
+  .button:hover {
+    background: var(--gold);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .button:hover::after {
+    color: var(--white);
+    transform: translateX(5px);
+  }
+
+  .button--default {
+    background: var(--teal);
+    color: var(--white);
+  }
+
+  .button--light {
+    background: transparent;
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  .button--light:hover {
+    background: var(--white);
+    color: var(--teal);
+  }
+
+  .button--light:hover::after {
+    color: var(--teal);
+  }
+</style>
