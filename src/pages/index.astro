@@ -4,6 +4,8 @@ import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Card from "../components/Card.astro";
+import grietPic from "src/assets/griet-ackerman.jpg";
+import { Image } from "astro:assets";
 
 const clientName = "Griet Ackerman";
 const businessName = "De Parelvisser";
@@ -50,7 +52,7 @@ const services = [
         data-aos-duration="800"
         data-aos-delay="100"
       >
-        <img src="/images/griet-ackerman.jpg" alt={clientName} />
+        <Image src={grietPic} alt={clientName} />
       </div>
 
       <div
