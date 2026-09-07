@@ -20,11 +20,11 @@ import Button from "./Button.astro";
         <h2>Navigatie</h2>
 
         <nav>
-          <a href="/">Home</a>
-          <a href="/werkwijze">Werkwijze</a>
-          <a href="/aanbod">Aanbod</a>
-          <a href="/praktisch">Praktisch</a>
-          <a href="/contact">Contact</a>
+          <a href=`${import.meta.env.BASE_URL}`>Home</a>
+          <a href=`${import.meta.env.BASE_URL}werkwijze`>Werkwijze</a>
+          <a href=`${import.meta.env.BASE_URL}aanbod`>Aanbod</a>
+          <a href=`${import.meta.env.BASE_URL}praktisch`>Praktisch</a>
+          <a href=`${import.meta.env.BASE_URL}contact`>Contact</a>
         </nav>
       </div>
 
