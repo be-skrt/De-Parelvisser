@@ -13,6 +13,7 @@
 
   --sage: #a9b39a;
   --blue-soft: #aac9c3;
+  --marine: #0d5e6e;
 
   --gold: #c88656;
   --gold-light: #dfb084;
@@ -22,7 +23,7 @@
   --black: #243033;
 
   /* -----------------------------
-    GRADIENT COLORS 
+    GRADIENTS 
   ----------------------------- */
 
   --gradient-gold: linear-gradient(
@@ -34,6 +35,13 @@
   --gradient-teal: linear-gradient(
     to right,
     var(--teal) 0%,
+    var(--teal-light) 100%
+  );
+
+  --gradient-teal-light: linear-gradient(
+    to bottom,
+    rgb(14, 72, 84) 0%,
+    rgba(10, 49, 57, 0.9) 90%,
     var(--teal-light) 100%
   );
 
@@ -58,6 +66,15 @@
   --space-xxxl: 8rem;
 
   /* --------------------------------
+    RADIUS
+  -------------------------------- */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-pill: 999px;
+
+  /* --------------------------------
     TYPOGRAPHY
   -------------------------------- */
 
@@ -71,12 +88,18 @@
   --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
 
   /* --------------------------------
-    EFFECTS
+    SHADOWS
   -------------------------------- */
 
   --shadow-soft: 0 10px 40px rgba(40, 83, 90, 0.08);
-
   --shadow-card: 0 8px 30px rgba(40, 83, 90, 0.1);
+  --shadow-elevated:
+    0 18px 35px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.12);
+
+  /* --------------------------------
+    EFFECTS
+  -------------------------------- */
 
   --transition: 180ms ease;
 }
@@ -281,7 +304,7 @@ section {
 }
 
 .text-width {
-  max-width: var(--text-max-width);
+  width: min(100%, var(--text-max-width));
   margin-inline: auto;
 }
 
@@ -290,11 +313,15 @@ section {
 }
 
 .page-hero {
-  min-height: calc(100vh - var(--header-height));
+  min-height: 100vh;
 }
 
 .section {
   padding-block: var(--space-xxxl);
+}
+
+.section--xs {
+  padding-block: var(--space-md);
 }
 
 .section--small {
@@ -313,14 +340,22 @@ section {
 
 .section--col {
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-xs);
 }
 
 .section--teal {
   background: var(--teal);
   color: var(--white);
-  position: relative;
-  overflow: hidden;
+}
+
+.section--teal-dark {
+  background: var(--teal-dark);
+  color: var(--white);
+}
+
+.section--marine {
+  background: var(--marine);
+  color: var(--white);
 }
 
 .section--sage {
@@ -331,8 +366,6 @@ section {
 .section--white {
   background: var(--white);
   color: var(--teal);
-  position: relative;
-  overflow: hidden;
 }
 
 .section--oyster-teal::after {
@@ -365,6 +398,8 @@ section {
   transform: rotate(30deg);
   pointer-events: none;
   z-index: 1;
+
+  animation: float 8s ease-in-out infinite;
 }
 
 .section--pearls-teal::after {
@@ -381,6 +416,8 @@ section {
   transform: rotate(-30deg);
   pointer-events: none;
   z-index: 1;
+
+  animation: float 8s ease-in-out infinite;
 }
 
 .section--pearls-white::before {
@@ -397,6 +434,8 @@ section {
   transform: rotate(30deg);
   pointer-events: none;
   z-index: 1;
+
+  animation: float var(--float-before-duration, 8s) ease-in-out infinite;
 }
 
 .section--pearls-white::after {
@@ -413,6 +452,8 @@ section {
   transform: rotate(-30deg);
   pointer-events: none;
   z-index: 1;
+
+  animation: float var(--float-after-duration, 8s) ease-in-out infinite;
 }
 
 .section--oyster-teal,
@@ -425,6 +466,31 @@ section {
 .section--teal-gradient {
   background: var(--gradient-teal);
   color: var(--white);
+}
+
+.section--teal-light-gradient {
+  background: var(--gradient-teal-light);
+  color: var(--white);
+}
+
+.section--white-gradient {
+  background: radial-gradient(
+    circle at center,
+    var(--teal-light) 0%,
+    var(--teal) 100%
+  );
+  color: var(--teal);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: var(--space-xxl);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-sm);
 }
 
 /*  -------------------------
@@ -453,6 +519,24 @@ section {
 
 .text--center {
   text-align: center;
+}
+
+/*  -------------------------
+  ANIMATION
+-------------------------  */
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*  -------------------------

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 32 32" xml:space="preserve">
+  <path id="square-1" fill="currentColor" fill-rule="evenodd" d="M4,10h6V4H4V10z M6,6h2v2H6V6z"/>
+  <path id="stripe-1" fill="currentColor" d="M28,6v2H14V6H28z"/>
+
+  <path id="square-2" fill="currentColor" fill-rule="evenodd" d="M4,19h6v-6H4V19z M6,15h2v2H6V15z"/>
+  <path id="stripe-2" fill="currentColor" d="M14,15h14v2H14V15z"/>
+
+  <path id="square-3" fill="currentColor" fill-rule="evenodd" d="M4,28h6v-6H4V28z M6,24h2v2H6V24z"/>
+  <path id="stripe-3" fill="currentColor" d="M14,24h14v2H14V24z"/>
+</svg>

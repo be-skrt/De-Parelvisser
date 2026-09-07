@@ -1,28 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-
-// const services = [
-//   {
-//     service: "Individueel gesprek",
-//     duration: "± 50 minuten",
-//     cost: "€75"
-//   },
-//   {
-//     service: "Gezinsgesprek",
-//     duration: "± 1u 15min",
-//     cost: "€90"
-//   },
-//   {
-//     service: "Diagnostiek",
-//     duration: "n.v.t.",
-//     cost: "€250 voor een intelligentietest incl. verslag en testafname"
-//   },
-//   {
-//     service: "Bespreking van de resultaten",
-//     duration: "n.v.t.",
-//     cost: "€75 per sessie"
-//   },
-// ];
+import Button from "../components/Button.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 
 const prices = [
   {
@@ -114,8 +93,7 @@ const prices = [
   <section class="section">
     <div class="content-width">
       <div class="section section--center">
-        <p class="eyebrow">Tarieven</p>
-        <h2>Buiten de conventie</h2>
+        <SectionTitle title="Tarieven buiten de conventie" heading="h2" />
       </div>
 
       <div class="price-grid">
@@ -144,7 +122,7 @@ const prices = [
         </p>
       </div>
 
-      <a class="button" href="/contact"> Contact opnemen </a>
+      <Button href="/contact" content="Contact opnemen" />
     </div>
   </section>
 </MainLayout>

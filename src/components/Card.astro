@@ -7,16 +7,22 @@ const {
   text,
   index,
   variant = "default",
-  shell = "default"
+  shell = "default",
+  pearl = "default",
 } = Astro.props;
 ---
 
 {
-
   href ? (
     <a
-      id={`card-${index}`}
-      class:list={["card", "text--center", `card--${variant}`, `card--shell-${shell}`]}
+      id={`card-${index + 1}`}
+      class:list={[
+        "card",
+        "text--center",
+        `card--${variant}`,
+        `card--shell-${shell}`,
+        `card--pearl-${pearl}`,
+      ]}
       href={href}
     >
       <div class="card-icon">
@@ -30,8 +36,14 @@ const {
     </a>
   ) : (
     <article
-      id={`card-${index}`}
-      class:list={["card", "text--center", `card--${variant}`, `card--shell-${shell}`]}
+      id={`card-${index + 1}`}
+      class:list={[
+        "card",
+        "text--center",
+        `card--${variant}`,
+        `card--shell-${shell}`,
+        `card--pearl-${pearl}`,
+      ]}
     >
       <div class="card-icon">
         <OysterIcon />
@@ -46,102 +58,22 @@ const {
 }
 
 <style>
-  /* .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    padding: var(--space-lg);
-    gap: var(--space-lg);
-    background: linear-gradient(
-      to bottom,
-      rgba(246, 242, 235, 1) 10%,
-      rgba(246, 242, 235, 0.65) 100%
-    );
-    border: 1px solid var(--cream);
-    border-radius: 1rem;
-    box-shadow: var(--shadow-card);
-    transition:
-      transform var(--transition),
-      box-shadow var(--transition);
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-soft);
-  }
-
-  .card-icon {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: clamp(50px, 2.5rem, 75px);
-    opacity: 0.4;
-    height: auto;
-  }
-
-  .card-icon span {
-    width: 16px;
-    height: 16px;
-
-    border: 2px solid var(--teal);
-    border-radius: 50%;
-  }
-
-  .card-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .card-title {
-    color: var(--gold);
-    text-transform: uppercase;
-    font-size: var(--fsz-md);
-  }
-
-  .card-description {
-    font-size: 0.95rem;
-  }
-
-  .card-link {
-    margin-top: auto;
-
-    color: var(--gold);
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.85rem;
-  } */
-
   .card {
-    /* -------------------------
-     Basis
-  ------------------------- */
-
     position: relative;
     display: flex;
     flex-direction: column;
-
     min-height: 300px;
     padding: var(--space-lg);
     gap: var(--space-lg);
-
     border: 1px solid var(--card-border);
     border-radius: 1rem;
-
     background: var(--card-background);
     color: var(--card-text);
-
     box-shadow: var(--shadow-card);
-
     transition:
       transform var(--transition),
       box-shadow var(--transition);
   }
-
-  /* -------------------------
-   Link-kaarten
-------------------------- */
 
   a.card {
     text-decoration: none;
@@ -152,11 +84,6 @@ const {
     box-shadow: var(--shadow-soft);
   }
 
-  /* -------------------------
-   Kleurvarianten
-------------------------- */
-
-  /* Standaard */
   .card--default {
     --card-background: linear-gradient(
       to bottom,
@@ -170,7 +97,6 @@ const {
     --card-link: var(--gold);
   }
 
-  /* Teal */
   .card--teal {
     --card-background: var(--teal);
     --card-border: var(--teal);
@@ -187,7 +113,6 @@ const {
     --card-link: var(--white);
   }
 
-  /* Wit */
   .card--white {
     --card-background: var(--white);
     --card-border: var(--cream);
@@ -196,7 +121,14 @@ const {
     --card-link: var(--gold);
   }
 
-  /* Cream */
+  .card--sage {
+    --card-background: var(--sage);
+    --card-border: var(--sage);
+    --card-text: var(--white);
+    --card-title: var(--gold);
+    --card-link: var(--gold);
+  }
+
   .card--cream {
     --card-background: var(--cream);
     --card-border: var(--cream);
@@ -205,23 +137,13 @@ const {
     --card-link: var(--gold);
   }
 
-  /* -------------------------
-   Icon
-------------------------- */
-
   .card-icon {
     display: flex;
     justify-content: center;
     align-self: center;
-
     width: clamp(50px, 2.5rem, 75px);
-
     opacity: 0.4;
   }
-
-  /* -------------------------
-   Tekst
-------------------------- */
 
   .card-text {
     display: flex;
@@ -231,7 +153,6 @@ const {
 
   .card-title {
     color: var(--card-title);
-
     text-transform: uppercase;
     font-size: var(--fsz-md);
   }
@@ -240,36 +161,42 @@ const {
     font-size: 0.95rem;
   }
 
-  /* -------------------------
-   Link
-------------------------- */
-
   .card-link {
     margin-top: auto;
-
     color: var(--card-link);
-
     font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
   }
 
-  /* -------------------------
-   Schelpvarianten
-------------------------- */
-
-  .card--shell-default .card-icon {
-    color: var(--teal);
+  .card--shell-default {
+    --oyster-shell-color: var(--teal);
   }
 
-  .card--shell-gold .card-icon {
-    color: var(--gold);
+  .card--shell-gold {
+    --oyster-shell-color: var(--gold);
   }
 
-  .card--shell-white .card-icon {
-    color: var(--white);
+  .card--shell-white {
+    --oyster-shell-color: var(--white);
   }
 
-  .card--shell-teal-light .card-icon {
-    color: var(--teal-light);
+  .card--shell-teal-light {
+    --oyster-shell-color: var(--teal-light);
+  }
+
+  .card--pearl-default {
+    --oyster-pearl-color: var(--gold-light);
+  }
+
+  .card--pearl-gold {
+    --oyster-pearl-color: var(--gold);
+  }
+
+  .card--pearl-teal {
+    --oyster-pearl-color: var(--teal);
+  }
+
+  .card--pearl-white {
+    --oyster-pearl-color: var(--white);
   }
 </style>

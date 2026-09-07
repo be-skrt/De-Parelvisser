@@ -4,7 +4,7 @@ import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Card from "../components/Card.astro";
-import grietPic from "src/assets/griet-ackerman.jpg";
+import grietPic from "/src/assets/griet-ackerman.jpg";
 import { Image } from "astro:assets";
 
 const clientName = "Griet Ackerman";
@@ -44,7 +44,7 @@ const services = [
 
   <!-- INTRODUCTION -->
 
-  <section class="section--full section--center section--teal">
+  <section class="section--full section--center section--teal section--pearls-white">
     <div class="content-width about-grid">
       <div
         class="about-image"
@@ -52,7 +52,11 @@ const services = [
         data-aos-duration="800"
         data-aos-delay="100"
       >
-        <Image src={grietPic} alt={clientName} />
+        <Image 
+        src={grietPic} 
+        alt={clientName}
+        width={360}
+        height={360} />
       </div>
 
       <div
@@ -63,7 +67,7 @@ const services = [
       >
         <p class="eyebrow">Wie ben ik?</p>
         <h2>
-          Ik ben {clientName}, psychotherapeut en oprichter van
+          Ik ben {clientName}, psycholoog en oprichter van
           <span> {businessName}</span>.
         </h2>
         <p>
@@ -111,7 +115,7 @@ const services = [
 
   <!-- CTA -->
 
-  <section class="section home-cta">
+  <section class="section--xs home-cta">
     <div class="content-width">
       <div class="cta-inner">
         <div>
@@ -179,7 +183,6 @@ const services = [
   }
 
   .home-cta {
-    padding-block: var(--space-md);
     background: rgba(170, 201, 195, 0.5);
   }
 
@@ -188,7 +191,7 @@ const services = [
     align-items: center;
     justify-content: space-between;
     padding: var(--space-lg) var(--space-xl);
-    border-radius: 20px;
+    border-radius: var(--space-lg);
     background: linear-gradient(
       to right,
       rgba(246, 242, 235, 1) 0%,
@@ -200,11 +203,6 @@ const services = [
   .cta-inner h2 {
     margin: 1rem 0;
     color: var(--gold);
-  }
-
-  .cta-inner p {
-    margin: 0;
-    color: var(--teal);
   }
 
   @media (max-width: 1000px) {

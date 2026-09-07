@@ -101,6 +101,21 @@ const audienceCards = [
     text: "Supervisie, intervisie en vorming voor wie zich professioneel wil verdiepen.",
   },
 ];
+
+const professionalCards = [
+  {
+    title: "Supervisie",
+    text: "Ruimte om stil te staan bij je werk, casussen te verdiepen en je professionele handelen te onderzoeken.",
+  },
+  {
+    title: "Intervisie",
+    text: "Samen reflecteren, ervaringen uitwisselen en leren van elkaars perspectieven.",
+  },
+  {
+    title: "Vorming",
+    text: "Vorming en trainingen op maat van jouw werkcontext en specifieke vragen.",
+  },
+];
 ---
 
 <MainLayout title="Werkwijze">
@@ -118,7 +133,7 @@ const audienceCards = [
         ontdekken wat voor jou — of voor je kind — waardevol is.
       </p>
 
-      <p class="eyebrow">
+      <p class="eyebrow" data-aos="fadein" data-aos-delay="1000" data-aos-duration="2000">
         Zoals een parelvisser die met geduld en zachtheid naar de diepte gaat.
       </p>
     </div>
@@ -126,7 +141,7 @@ const audienceCards = [
 
   <!-- DIVER SECTION -->
 
-  <section class="section section--center section--full section--diver">
+  <section class="section section--center section--diver">
     <div class="content-width story-grid diver">
       <div
         class="story-content"
@@ -152,7 +167,7 @@ const audienceCards = [
 
   <!-- AUDIENCE CARD SECTION -->
 
-  <section class="section section--white">
+  <section class="section section--teal-dark">
     <div class="content-width section--col section--center">
       <div
         class="heading section--center section--col text--center"
@@ -173,7 +188,9 @@ const audienceCards = [
               href={card.href}
               title={card.title}
               text={card.text}
-              variant="white"
+              variant="teal"
+              shell="white"
+              pearl="gold-light"
             />
           ))
         }
@@ -201,7 +218,7 @@ const audienceCards = [
               "section--center",
               "section--col",
               isEven
-                ? ["section--teal", "section--pearls-white"]
+                ? ["section--teal"]
                 : ["section--white", "section--pearls-teal"],
             ]}
           >
@@ -246,14 +263,15 @@ const audienceCards = [
                       ))}
                     </ul>
 
-                    <a
-                      class:list={
-                        isEven ? ["button", "button--light"] : "button"
-                      }
-                      href="/aanbod#aanbod"
-                    >
-                      Bekijk aanbod
-                    </a>
+                    {isEven ? (
+                      <Button href="/aanbod#aanbod" content="Bekijk aanbod" />
+                    ) : (
+                      <Button
+                        href="/aanbod#aanbod"
+                        variant="light"
+                        content="Bekijk aanbod"
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -266,7 +284,7 @@ const audienceCards = [
 
   <!-- PROFESSIONALS SECTION -->
 
-  <section id="professionelen" class="section--small section--white">
+  <section id="professionelen" class="section--small">
     <div class="content-width">
       <div class="heading section--center section--col text--center">
         <p class="eyebrow">Professionelen</p>
@@ -280,28 +298,19 @@ const audienceCards = [
       </div>
 
       <div class="professional-grid section--center section--col">
-        <Card
-          title="Supervisie"
-          text="Ruimte om stil te staan bij je werk, casussen te verdiepen en je
-            professionele handelen te onderzoeken."
-          type="article"
-          variant="white"
-        />
-        <Card
-          title="Intervisie"
-          text="Samen reflecteren, ervaringen uitwisselen en leren van elkaars
-            perspectieven."
-          type="article"
-          variant="teal-light"
-          shell="white"
-        />
-        <Card
-          title="Vorming"
-          text="Vorming en trainingen op maat van jouw werkcontext en specifieke
-            vragen."
-          type="article"
-          variant="cream"
-        />
+        {
+          professionalCards.map((card, index) => (
+            <Card
+              index={index}
+              title={card.title}
+              text={card.text}
+              type="article"
+              variant="cream"
+              shell="teal"
+              pearl="gold-light"
+            />
+          ))
+        }
       </div>
     </div>
   </section>
@@ -378,6 +387,22 @@ const audienceCards = [
     </div>
   </section>
 </MainLayout>
+<script>
+  document
+    .querySelectorAll<HTMLElement>(
+      ".section--pearls-white, .section--pearls-teal",
+    )
+    .forEach((section) => {
+      const beforeDuration = 6 + Math.random() * 6;
+      const afterDuration = 6 + Math.random() * 6;
+
+      section.style.setProperty(
+        "--float-before-duration",
+        `${beforeDuration}s`,
+      );
+      section.style.setProperty("--float-after-duration", `${afterDuration}s`);
+    });
+</script>
 
 <style>
   .page-hero .eyebrow {
@@ -386,7 +411,7 @@ const audienceCards = [
 
   .section--diver {
     position: relative;
-    height: calc(40vh + var(--header-height));
+    height: calc(50vh + var(--header-height));
     background-image: url("/images/diver.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -395,7 +420,7 @@ const audienceCards = [
     overflow: hidden;
   }
 
-  .section--diver::before {
+  /* .section--diver::before {
     content: "";
     position: absolute;
     z-index: 2;
@@ -413,9 +438,9 @@ const audienceCards = [
     );
 
     pointer-events: none;
-  }
+  } */
 
-  .section--diver::after {
+  /* .section--diver::after {
     content: "";
     position: absolute;
     z-index: 2;
@@ -434,6 +459,10 @@ const audienceCards = [
     );
 
     pointer-events: none;
+  } */
+
+  .section--diver h2 {
+    margin-bottom: 1rem;
   }
 
   /* STORIES */
@@ -549,9 +578,9 @@ const audienceCards = [
     align-self: flex-start;
     margin-top: var(--space-sm);
     padding: 1rem;
-    background: var(--white);
-    color: var(--teal);
-    border: 1px solid var(--white);
+    background: var(--teal);
+    color: var(--white);
+    border: 1px solid var(--teal);
     border-radius: 2rem;
     transition: all 0.2s;
   }
@@ -577,9 +606,14 @@ const audienceCards = [
   }
 
   .options-container .button--light {
+    color: var(--teal);
+    background: var(--white);
+    border: 1px solid var(--white);
+  }
+
+  .options-container .button--light:hover {
     color: var(--white);
-    background: var(--teal);
-    border: 1px solid var(--teal);
+    background: transparent;
   }
 
   .professional-grid {
