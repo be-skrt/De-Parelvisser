@@ -23,9 +23,9 @@ const links = [
           links.map((link) => (
             <li>
               <a
-                href={`${import.meta.env.BASE_URL}/${link.href}`}
-                class={currentPath === `${import.meta.env.BASE_URL}/${link.href}` ? "active" : ""}
-                aria-current={currentPath === `${import.meta.env.BASE_URL}/${link.href}` ? "page" : undefined}
+                href={link.href}
+                class={currentPath === link.href ? "active" : ""}
+                aria-current={currentPath === link.href ? "page" : undefined}
               >
                 {link.label}
               </a>
