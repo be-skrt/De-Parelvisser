@@ -269,10 +269,10 @@ const professionalCards = [
                     </ul>
 
                     {isEven ? (
-                      <Button href="aanbod#aanbod" content="Bekijk aanbod" />
+                      <Button href={`${import.meta.env.BASE_URL}/aanbod#aanbod`} content="Bekijk aanbod" />
                     ) : (
                       <Button
-                        href="aanbod#aanbod"
+                        href={`${import.meta.env.BASE_URL}/aanbod#aanbod`}
                         variant="light"
                         content="Bekijk aanbod"
                       />
