@@ -126,12 +126,7 @@ const professionalCards = [
         ontdekken wat voor jou — of voor je kind — waardevol is.
       </p>
 
-      <p
-        class="eyebrow"
-        data-aos="fadein"
-        data-aos-delay="1000"
-        data-aos-duration="2000"
-      >
+      <p class="eyebrow">
         Zoals een parelvisser die met geduld en zachtheid naar de diepte gaat.
       </p>
     </div>
@@ -165,7 +160,7 @@ const professionalCards = [
 
   <!-- AUDIENCE CARD SECTION -->
 
-  <section class="section section--teal-dark">
+  <section class="section--small section--teal-dark">
     <div class="content-width section--col section--center">
       <div
         class="heading section--center section--col text--center"
@@ -216,7 +211,7 @@ const professionalCards = [
               "section--center",
               "section--col",
               isEven
-                ? ["section--teal"]
+                ? ["section--teal", index === 0 ? "section--pearl-white" : "section--pearl-white-2"]
                 : ["section--white", "section--pearls-teal"],
             ]}
           >
@@ -236,7 +231,11 @@ const professionalCards = [
                   data-aos-delay="200"
                 >
                   <figure class="story-image">
-                    <Image src={item.image} alt={item.imageAlt} />
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      class="story-img"
+                    />
                   </figure>
                 </div>
 
@@ -262,7 +261,10 @@ const professionalCards = [
                     </ul>
 
                     {isEven ? (
-                      <Button href={`${import.meta.env.BASE_URL}/aanbod#aanbod`} content="Bekijk aanbod" />
+                      <Button
+                        href={`${import.meta.env.BASE_URL}/aanbod#aanbod`}
+                        content="Bekijk aanbod"
+                      />
                     ) : (
                       <Button
                         href={`${import.meta.env.BASE_URL}/aanbod#aanbod`}
@@ -497,7 +499,7 @@ const professionalCards = [
     text-align: right;
   }
 
-  .story-image img {
+  .story-img {
     width: 100%;
     max-height: 550px;
     object-fit: cover;
@@ -512,6 +514,7 @@ const professionalCards = [
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
     gap: var(--space-md);
   }
 

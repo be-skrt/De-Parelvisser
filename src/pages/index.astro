@@ -44,7 +44,9 @@ const services = [
 
   <!-- INTRODUCTION -->
 
-  <section class="section--full section--center section--teal section--pearls-white">
+  <section
+    class="section--full section--center section--teal section--pearls-white"
+  >
     <div class="content-width about-grid">
       <div
         class="about-image"
@@ -52,11 +54,13 @@ const services = [
         data-aos-duration="800"
         data-aos-delay="100"
       >
-        <Image 
-        src={grietPic} 
-        alt={clientName}
-        width={360}
-        height={360} />
+        <Image
+          src={grietPic}
+          alt={clientName}
+          width={360}
+          height={360}
+          class="about-img"
+        />
       </div>
 
       <div
@@ -78,7 +82,11 @@ const services = [
           Vanuit een veilige en respectvolle ruimte gaan we op zoek naar wat kan
           helpen om opnieuw verbinding te vinden met jezelf en met anderen.
         </p>
-        <Button href=`${import.meta.env.BASE_URL}/over-mij` variant="light" content="Meer over mij" />
+        <Button
+          href=`${import.meta.env.BASE_URL}/over-mij`
+          variant="light"
+          content="Meer over mij"
+        />
       </div>
     </div>
   </section>
@@ -109,7 +117,10 @@ const services = [
         }
       </div>
 
-      <Button href=`${import.meta.env.BASE_URL}/aanbod` content="Bekijk het volledige aanbod" />
+      <Button
+        href=`${import.meta.env.BASE_URL}/aanbod`
+        content="Bekijk het volledige aanbod"
+      />
     </div>
   </section>
 
@@ -123,7 +134,10 @@ const services = [
           <p>Neem gerust contact op. We bekijken samen wat mogelijk is.</p>
         </div>
 
-        <Button href=`${import.meta.env.BASE_URL}/contact` content="Contact opnemen" />
+        <Button
+          href=`${import.meta.env.BASE_URL}/contact`
+          content="Contact opnemen"
+        />
       </div>
     </div>
   </section>
@@ -141,8 +155,8 @@ const services = [
     width: clamp(220px, 30vw, 360px);
   }
 
-  .about-image img {
-    border-radius: 50%;
+  .about-img {
+    border-radius: var(--radius-pill);
   }
 
   .about-content {
