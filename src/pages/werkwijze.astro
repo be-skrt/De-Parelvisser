@@ -7,6 +7,10 @@ import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Card from "../components/Card.astro";
 import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import imgKinderen from "../assets/aquarium.jpg";
+import imgJongeren from "../assets/youth.jpg";
+import imgJongvolwassenen from "../assets/adolescents.jpg";
 
 const audience = [
   {
@@ -17,7 +21,7 @@ const audience = [
       "Elk kind ontwikkelt zich op zijn eigen tempo en manier. Soms loopt dat vanzelf, soms zijn er vragen of zorgen. Ik bied een veilige plek waar kinderen en hun ouders terechtkunnen voor ondersteuning en begeleiding.",
       "Bij jonge kinderen maak ik gebruik van speltherapie, zoals spelen, tekenen en verhalen. Spel is hun natuurlijke taal en biedt een ingang om gevoelens, ervaringen en vragen zichtbaar te maken.",
     ],
-    image: "/images/aquarium2.jpg",
+    image: imgKinderen,
     imageAlt: "Kind bij aquarium",
     options: [
       "Diagnostiek op maat",
@@ -36,7 +40,7 @@ const audience = [
       "De adolescentie is een periode vol veranderingen en uitdagingen. Soms kan het helpend zijn om even stil te staan bij wat er leeft en ondersteuning te krijgen.",
       "Wij bieden jongeren een plek waar ze zichzelf kunnen zijn en waar er samen gezocht wordt naar wat hen kan helpen groeien.",
     ],
-    image: "/images/youth.jpg",
+    image: imgJongeren,
     imageAlt: "Jongere op het strand",
     options: [
       "Diagnostiek",
@@ -55,7 +59,7 @@ const audience = [
       "In de overgang naar volwassenheid komen vaak belangrijke vragen naar boven rond identiteit, relaties en richting in het leven.",
       "We zoeken samen naar meer inzicht, houvast en verbinding. Er is ruimte om stil te staan bij persoonlijke vragen, keuzes en wat je nodig hebt om verder te kunnen.",
     ],
-    image: "/images/adolescents.jpg",
+    image: imgJongvolwassenen,
     imageAlt: "Jongvolwassenen aan de zee",
     options: [
       "Individuele therapie",
@@ -66,17 +70,6 @@ const audience = [
       "Contextbegeleiding",
     ],
   },
-  // {
-  //   id: "professionelen",
-  //   target: "Professionelen",
-  //   title: "Ruimte voor verdieping",
-  //   paragraphs: [
-  //     "Ook collega's en andere professionals zijn welkom voor uitwisseling, verdieping en professionele groei.",
-  //   ],
-  //   image: "/images/room.jpg",
-  //   imageAlt: "Praktijkruimte",
-  //   options: ["Supervisie", "Intervisie", "Vorming"],
-  // },
 ];
 
 const audienceCards = [
@@ -243,7 +236,7 @@ const professionalCards = [
                   data-aos-delay="200"
                 >
                   <figure class="story-image">
-                    <img src={item.image} alt={item.imageAlt} />
+                    <Image src={item.image} alt={item.imageAlt} />
                   </figure>
                 </div>
 

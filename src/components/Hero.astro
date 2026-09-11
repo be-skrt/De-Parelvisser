@@ -11,11 +11,14 @@ const { businessName } = Astro.props;
     <div class="hero-content">
       <p class="eyebrow">Psychologenpraktijk</p>
       <SectionTitle title={businessName} heading="h1" variant="hero" />
-      <p class="hero-tagline">Een pakkende slogan die hier komt te staan.</p>
-      <Button href=`${import.meta.env.BASE_URL}/werkwijze` content="Ontdek mijn werkwijze" />
+      <p class="hero-tagline">Ruimte om te groeien</p>
+      <Button
+        href=`${import.meta.env.BASE_URL}/werkwijze`
+        content="Ontdek mijn werkwijze"
+      />
     </div>
 
-    <figure class="hero-oyster">
+    <figure class="hero-oyster slide-fwd-center">
       <OysterIcon />
     </figure>
   </div>
@@ -93,7 +96,8 @@ const { businessName } = Astro.props;
   .title--hero h1 {
     color: var(--teal);
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(3rem, 7vw, 6rem);
+    /* font-size: clamp(3rem, 7vw, 5rem); */
+    font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.08em;
     line-height: 0.95;
@@ -108,11 +112,12 @@ const { businessName } = Astro.props;
   .hero-tagline {
     display: flex;
     justify-self: end;
-    max-width: 500px;
 
     margin-bottom: 2rem;
 
     color: var(--teal-light);
+    font-family: "Montserrat";
+    font-style: italic;
     font-size: clamp(1.15rem, 2vw, 1.5rem);
     line-height: 1.2;
   }
@@ -125,7 +130,7 @@ const { businessName } = Astro.props;
   }
 
   .hero-oyster svg {
-    width: min(90%, 520px);
+    width: min(90%, 320px);
 
     filter: drop-shadow(0 20px 20px rgba(40, 83, 90, 0.12));
   }
@@ -165,6 +170,33 @@ const { businessName } = Astro.props;
   .parallax > use:nth-child(4) {
     animation-delay: -5s;
     animation-duration: 20s;
+  }
+
+  .slide-fwd-center {
+    -webkit-animation: slide-fwd-center 5s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-fwd-center 5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @-webkit-keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+      transform: translateZ(160px);
+    }
+  }
+  @keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+      transform: translateZ(160px);
+    }
   }
 
   @keyframes move-forever {

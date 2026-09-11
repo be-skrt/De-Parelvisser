@@ -116,8 +116,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-Regular"),
-    url("/fonts/Fira_Sans/FiraSans-Regular.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-Regular.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-Regular.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -127,8 +127,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-Italic"),
-    url("/fonts/Fira_Sans/FiraSans-Italic.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-Italic.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-Italic.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -138,8 +138,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-Bold"),
-    url("/fonts/Fira_Sans/FiraSans-Bold.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-Bold.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-Bold.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -149,8 +149,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-BoldItalic"),
-    url("/fonts/Fira_Sans/FiraSans-BoldItalic.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-BoldItalic.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-BoldItalic.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-BoldItalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -160,8 +160,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-Light"),
-    url("/fonts/Fira_Sans/FiraSans-Light.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-Light.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-Light.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -171,8 +171,8 @@
   font-family: "Fira Sans";
   src:
     local("FiraSans-LightItalic"),
-    url("/fonts/Fira_Sans/FiraSans-LightItalic.woff") format("woff"),
-    url("/fonts/Fira_Sans/FiraSans-LightItalic.woff2") format("woff2");
+    url("../fonts/Fira_Sans/FiraSans-LightItalic.woff") format("woff"),
+    url("../fonts/Fira_Sans/FiraSans-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -186,7 +186,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -196,7 +196,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-Italic.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -206,7 +206,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -216,7 +216,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-LightItalic.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -226,7 +226,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -236,7 +236,7 @@
   font-family: "Montserrat";
   src:
     local("Montserrat"),
-    url("/fonts/Montserrat/Montserrat-BoldItalic.ttf") format("truetype");
+    url("../fonts/Montserrat/Montserrat-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -377,7 +377,7 @@ section {
   bottom: -8rem;
   background-color: var(--teal);
   opacity: 0.3;
-  mask: url("/images/oyster.svg") no-repeat center;
+  mask: url("../assets/oyster.svg") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
   pointer-events: none;
@@ -393,7 +393,7 @@ section {
   top: 0rem;
   background-color: var(--teal);
   opacity: 0.2;
-  mask: url("/images/pearls.png") no-repeat center;
+  mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(30deg);
   pointer-events: none;
@@ -411,7 +411,7 @@ section {
   bottom: 0rem;
   background-color: var(--teal);
   opacity: 0.2;
-  mask: url("/images/pearls.png") no-repeat center;
+  mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
   pointer-events: none;
@@ -429,7 +429,7 @@ section {
   top: 0rem;
   background-color: var(--white);
   opacity: 0.2;
-  mask: url("/images/pearls.png") no-repeat center;
+  mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(30deg);
   pointer-events: none;
@@ -447,7 +447,7 @@ section {
   bottom: 0rem;
   background-color: var(--white);
   opacity: 0.2;
-  mask: url("/images/pearls.png") no-repeat center;
+  mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
   pointer-events: none;

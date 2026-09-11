@@ -1,9 +1,14 @@
 ---
-
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
 ---
 
 <a class="logo" href=`${import.meta.env.BASE_URL}/` aria-label=`De Parelvisser - Home`>
-  <img src="/images/logo2.png" alt="De Parelvisser" />
+  <Image
+    src={logo}
+    alt="De Parelvisser logo"
+    loading="eager"
+    class="logo-image" />
 </a>
 
 <style>
@@ -13,7 +18,7 @@
     flex-shrink: 0;
   }
 
-  .logo img {
+  .logo-image {
     display: block;
     width: auto;
     height: 4rem;
