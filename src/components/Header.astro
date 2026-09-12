@@ -12,10 +12,25 @@ const links = [
   { href: `${baseUrl}/over-mij`, label: "Over mij" },
   { href: `${baseUrl}/contact`, label: "Contact" },
 ];
+
+const isPathActive = (linkHref: string) => {
+  const currentUrl = new URL(currentPath, "https://x.com");
+  const linkUrl = new URL(linkHref, "https://x.com");
+  const cleanCurrent = currentUrl.pathname.replace(/\/$/, "");
+  const cleanLink = linkUrl.pathname.replace(/\/$/, "");
+  const cleanBase = baseUrl.replace(/\/$/, "");
+
+  if (cleanLink === cleanBase || cleanLink === "") {
+    return cleanCurrent === cleanBase || cleanCurrent === "";
+  }
+  return cleanCurrent === cleanLink;
+};
+
+const isHomeActive = isPathActive(`${baseUrl}/`);
 ---
 
 <header
-  class:list={["header", { home: currentPath === `${baseUrl}/` }]}
+  class:list={["header", { home: isHomeActive }]}
   id="header"
 >
   <div class="content-width header-inner">
@@ -25,18 +40,14 @@ const links = [
       <ul>
         {
           links.map((link) => {
-            const isHomeLink =
-              link.href === baseUrl || link.href === `${baseUrl}/`;
-            const isActive = isHomeLink
-              ? currentPath === baseUrl || currentPath === `${baseUrl}/`
-              : currentPath === link.href;
+            const isActive = isPathActive(link.href);
 
             return (
               <li>
                 <a
                   href={link.href}
                   class={isActive ? "active" : ""}
-                  aria-current={currentPath === link.href ? "page" : undefined}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   {link.label}
                 </a>
