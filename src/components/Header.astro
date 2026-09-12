@@ -29,7 +29,7 @@ const links = [
               link.href === baseUrl || link.href === `${baseUrl}/`;
             const isActive = isHomeLink
               ? currentPath === baseUrl || currentPath === `${baseUrl}/`
-              : currentPath === `${link.href}/`;
+              : currentPath === link.href;
 
             return (
               <li>
