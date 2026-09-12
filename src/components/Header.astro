@@ -2,35 +2,47 @@
 import Logo from "./Logo.astro";
 
 const { currentPath } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
 
 const links = [
-  { href: `${import.meta.env.BASE_URL}/`, label: "Home" },
-  { href: `${import.meta.env.BASE_URL}/werkwijze`, label: "Werkwijze" },
-  { href: `${import.meta.env.BASE_URL}/aanbod`, label: "Aanbod" },
-  { href: `${import.meta.env.BASE_URL}/praktisch`, label: "Praktisch" },
-  { href: `${import.meta.env.BASE_URL}/over-mij`, label: "Over mij"},
-  { href: `${import.meta.env.BASE_URL}/contact`, label: "Contact" },
+  { href: `${baseUrl}/`, label: "Home" },
+  { href: `${baseUrl}/werkwijze`, label: "Werkwijze" },
+  { href: `${baseUrl}/aanbod`, label: "Aanbod" },
+  { href: `${baseUrl}/praktisch`, label: "Praktisch" },
+  { href: `${baseUrl}/over-mij`, label: "Over mij" },
+  { href: `${baseUrl}/contact`, label: "Contact" },
 ];
 ---
 
-<header class:list={["header", { home: currentPath === `${import.meta.env.BASE_URL}/` }]} id="header">
+<header
+  class:list={["header", { home: currentPath === `${baseUrl}/` }]}
+  id="header"
+>
   <div class="content-width header-inner">
     <Logo />
 
     <nav id="navbar">
       <ul>
         {
-          links.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class={currentPath === link.href ? "active" : ""}
-                aria-current={currentPath === link.href ? "page" : undefined}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))
+          links.map((link) => {
+            const isHomeLink =
+              link.href === baseUrl || link.href === `${baseUrl}/`;
+            const isActive = isHomeLink
+              ? currentPath === baseUrl || currentPath === `${baseUrl}/`
+              : currentPath === link.href;
+
+            return (
+              <li>
+                <a
+                  href={link.href}
+                  class={isActive ? "active" : ""}
+                  aria-current={currentPath === link.href ? "page" : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </nav>

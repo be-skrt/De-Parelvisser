@@ -5,5 +5,4 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://be-skrt.github.io',
   base: '/De-Parelvisser',
-  trailingSlash: 'never',
 });
