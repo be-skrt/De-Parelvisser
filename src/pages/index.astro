@@ -1,40 +1,45 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+// Components
 import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Card from "../components/Card.astro";
+import CTA from "../components/CTA.astro";
+// Images
 import grietPic from "/src/assets/griet-ackerman.jpg";
 import { Image } from "astro:assets";
+import { undefined } from "astro:schema";
 
 const clientName = "Griet Ackerman";
 const businessName = "De Parelvisser";
 
+// Data
 const services = [
   {
     title: "Ouder-kind gesprekken",
     text: "Begeleiding rond verbinding, hechting en de relatie tussen ouder en kind.",
-    href: "/aanbod#ouder-kind",
+    href: "aanbod#ouder-kind",
   },
   {
     title: "Diagnostiek",
     text: "Samen onderzoeken en begrijpen wat er speelt en welke ondersteuning nodig is.",
-    href: "/aanbod#diagnostiek",
+    href: "aanbod#diagnostiek",
   },
   {
     title: "Individuele therapie",
     text: "Therapie voor kinderen, jongeren en jongvolwassenen, afgestemd op hun noden.",
-    href: "/aanbod#therapie",
+    href: "aanbod#therapie",
   },
   {
     title: "Ouderbegeleiding & gezinstherapie",
     text: "Ondersteuning rond opvoeding, relaties en gezinsdynamieken.",
-    href: "/aanbod#ouders-gezin",
+    href: "aanbod#ouders-gezin",
   },
   {
     title: "Professionals",
     text: "Supervisie, intervisie en vorming voor professionals.",
-    href: "/aanbod#professionals",
+    href: "aanbod#professionals",
   },
 ];
 ---
@@ -50,9 +55,9 @@ const services = [
     <div class="content-width about-grid">
       <div
         class="about-image"
-        data-aos="fade-right"
-        data-aos-duration="800"
-        data-aos-delay="100"
+        data-aos="fade-in"
+        data-aos-duration="1000"
+        data-aos-delay="400"
       >
         <Image
           src={grietPic}
@@ -97,7 +102,7 @@ const services = [
     <div class="content-width">
       <div class="heading section--center section--col">
         <SectionTitle title="Waarmee kan ik je helpen?" heading="h2" />
-        <p>
+        <p class="lead">
           Elke begeleiding wordt afgestemd op de persoon, de vraag en de
           context.
         </p>
@@ -112,6 +117,12 @@ const services = [
               title={service.title}
               text={service.text}
               variant="cream"
+              icon="oyster"
+              iconColors={{
+                main: "var(--teal)",
+                secondary: "var(--gold)"
+              }}
+              opacity="0.5"
             />
           ))
         }
@@ -126,21 +137,10 @@ const services = [
 
   <!-- CTA -->
 
-  <section class="section--xs home-cta">
-    <div class="content-width">
-      <div class="cta-inner">
-        <div>
-          <h2>Heb je een vraag?</h2>
-          <p>Neem gerust contact op. We bekijken samen wat mogelijk is.</p>
-        </div>
-
-        <Button
-          href=`${import.meta.env.BASE_URL}/contact`
-          content="Contact opnemen"
-        />
-      </div>
-    </div>
-  </section>
+  <CTA 
+    title="Heb je een vraag?" 
+    sub="Neem gerust contact op. We bekijken samen wat mogelijk is." 
+    variant="home" />
 </MainLayout>
 
 <style>
@@ -153,6 +153,8 @@ const services = [
 
   .about-image {
     width: clamp(220px, 30vw, 360px);
+    box-shadow: 0 0 300px rgba(95, 147, 153, 0.8);
+    border-radius: var(--radius-pill);
   }
 
   .about-img {
@@ -187,7 +189,7 @@ const services = [
   .service-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    gap: var(--space-md);
     margin-bottom: var(--space-lg);
   }
 
@@ -196,28 +198,7 @@ const services = [
     text-align: center;
   }
 
-  .home-cta {
-    background: rgba(170, 201, 195, 0.5);
-  }
-
-  .cta-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-lg) var(--space-xl);
-    border-radius: var(--space-lg);
-    background: linear-gradient(
-      to right,
-      rgba(246, 242, 235, 1) 0%,
-      rgba(246, 242, 235, 0.5) 60%,
-      rgba(246, 242, 235, 0) 100%
-    );
-  }
-
-  .cta-inner h2 {
-    margin: 1rem 0;
-    color: var(--gold);
-  }
+  
 
   @media (max-width: 1000px) {
     .service-grid {

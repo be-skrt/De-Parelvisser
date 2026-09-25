@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
+import CTA from "../components/CTA.astro";
 
 const prices = [
   {
@@ -17,7 +17,7 @@ const prices = [
   {
     service: "Diagnostiek",
     duration: "Inclusief testafname en verslag",
-    price: "€250",
+    price: "vanaf €250",
   },
   {
     service: "Bespreking resultaten",
@@ -28,14 +28,9 @@ const prices = [
 ---
 
 <MainLayout title="Praktisch">
-  <section class="page-hero">
-    <div class="content-width">
-      <p class="eyebrow">Praktisch</p>
-      <h1>Praktische informatie</h1>
-
-      <div class="pearl-line">
-        <span></span>
-      </div>
+  <section class="section section--white section--center">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle title="Praktisch" heading="h1" />
 
       <p class="lead">
         Alles wat je moet weten over afspraken, tarieven en terugbetaling.
@@ -43,121 +38,140 @@ const prices = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="content-width practical-grid">
+  <section class="section--small section--teal">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle heading="h2" title="Afspraak maken" />
       <div>
-        <p class="eyebrow">Afspraak maken</p>
-        <h2>Een eerste gesprek</h2>
-      </div>
-
-      <div>
-        <p>
-          Je kan een afspraak maken via het
-          <a href="/contact">contactformulier</a> of telefonisch op
-          <a href="tel:+32469737223">0469 73 72 23</a>.
+        <p class="lead">
+          Contactgegevens vind je terug onder <a
+            class="contact-link"
+            href=`${import.meta.env.BASE_URL}/contact`>Contact</a
+          >.
         </p>
-
         <p>
           Wanneer je contact opneemt, mag je kort je vraag of reden van
           aanmelding meegeven. Zo kan ik inschatten wat de beste volgende stap
           is.
         </p>
-
         <p>We plannen vervolgens samen een eerste afspraak in.</p>
       </div>
     </div>
   </section>
 
-  <section class="convention section">
-    <div class="content-width convention-inner">
-      <div>
-        <p class="eyebrow">Conventie</p>
-        <h2>Tarieven en terugbetaling</h2>
-      </div>
+  <section class="section--small section--white section--oyster-teal">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle heading="h2" title="Geconventioneerde zorg" />
+      <p>
+        Ik ben <strong>geconventioneerd psycholoog</strong>. Binnen het
+        conventiesysteem gelden de tarieven en voorwaarden die door de overheid
+        en de conventie bepaald worden.
+      </p>
+      <p>
+        Sessies kunnen binnen dit systeem gedeeltelijk of volledig worden
+        terugbetaald volgens de geldende regels.
+      </p>
+      <p>
+        Bij een geconventioneerd traject is het aangewezen om de noodzaak van
+        psychologische begeleiding vooraf te bespreken met bijvoorbeeld de
+        huisarts, het CLB of Kind en Gezin.
+      </p>
+    </div>
+  </section>
 
-      <div>
-        <p>
-          Ik ben geconventioneerd psycholoog. Binnen het conventiesysteem gelden
-          de tarieven en voorwaarden die door de overheid en de conventie
-          bepaald worden.
-        </p>
-
-        <p>
+  <section class="section--small">
+    <section class="content-width section--center section--col">
+      <div class="section--center section--col text--center heading">
+        <SectionTitle heading="h2" title="Buiten de conventie" />
+        <p class="lead">
           Daarnaast werk ik ook deels als zelfstandige buiten de conventie. Voor
           deze afspraken gelden onderstaande tarieven.
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="content-width">
-      <div class="section section--center">
-        <SectionTitle title="Tarieven buiten de conventie" heading="h2" />
-      </div>
-
-      <div class="price-grid">
+      <div class="content-width section--center price-grid">
         {
           prices.map((item) => (
             <article class="price-card">
-              <h3>{item.service}</h3>
+              <h3 class="card-title">{item.service}</h3>
 
-              <p>{item.duration}</p>
+              <p class="lead">{item.duration}</p>
 
-              <strong>{item.price}</strong>
+              <strong class="card-price">{item.price}</strong>
             </article>
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <section class="practical-note section--small">
-    <div class="content-width">
-      <div>
-        <h2>Heb je vragen over een tarief of terugbetaling?</h2>
+      <div class="additional-info">
+        <h3>Bijkomende diagnostiek</h3>
         <p>
-          Neem gerust contact op. We bekijken samen wat van toepassing is op
-          jouw situatie.
+          Naast de intelligentietest kunnen bijkomende tests worden afgenomen.
+          Welke tests aangewezen zijn, wordt samen besproken.
         </p>
       </div>
+    </section>
+  </section>
 
-      <Button href=`${import.meta.env.BASE_URL}/contact` content="Contact opnemen" />
+  <section class="section--small section--teal section--oyster-white">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle heading="h2" title="Praktische mogelijkheden" />
+
+      <div class="practical-grid">
+        <article class="practical-card">
+          <h3>Gesprekken aan huis</h3>
+          <p>
+            Gesprekken aan huis zijn mogelijk. Hiervoor wordt een extra
+            verplaatsingskost aangerekend, afhankelijk van de afstand.
+          </p>
+        </article>
+
+        <article class="practical-card">
+          <h3>Online gesprekken</h3>
+          <p>
+            Online gesprekken zijn mogelijk wanneer dit aangewezen is en in
+            overleg.
+          </p>
+        </article>
+      </div>
     </div>
   </section>
+
+  <section class="section--small section--white">
+    <div class="content-width section--center section--col text--center">
+      <SectionTitle heading="h2" title="Voor professionelen" />
+
+      <div class="professional-grid">
+        <article class="professional-card">
+          <h3>Supervisie en intervisie</h3>
+          <p>
+            Voor supervisie en intervisie geldt hetzelfde tarief als voor een
+            individueel gesprek.
+          </p>
+          <strong>€75 per uur</strong>
+        </article>
+
+        <article class="professional-card">
+          <h3>Vorming</h3>
+          <p>Voor vorming wordt een offerte op maat opgesteld.</p>
+          <strong>Prijs op aanvraag</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="Heb je vragen over een tarief of terugbetaling?"
+    sub="Neem gerust contact op. We bekijken samen wat van toepassing is op jouw situatie."
+    variant="praktisch"
+    buttonVariant="light"
+  />
 </MainLayout>
 
 <style>
-  .page-hero {
-    padding-top: calc(var(--header-height) + 6rem);
-    padding-bottom: 5rem;
-    background: var(--white);
+  .contact-link {
+    color: var(--gold);
   }
 
-  .lead {
-    max-width: 700px;
-    font-size: 1.3rem;
-  }
-
-  .practical-grid,
-  .convention-inner {
-    display: grid;
-    grid-template-columns: 0.7fr 1fr;
-    gap: 6rem;
-  }
-
-  .practical-grid h2,
-  .convention-inner h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-
-  .convention {
-    background: var(--teal);
+  .contact-link:hover {
     color: var(--white);
-  }
-
-  .convention .eyebrow {
-    color: var(--gold-light);
   }
 
   .price-grid {
@@ -167,20 +181,23 @@ const prices = [
   }
 
   .price-card {
-    min-height: 230px;
-
     display: flex;
     flex-direction: column;
-
-    padding: 2rem;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
 
     background: var(--white);
+    color: var(--teal);
 
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--card-shadow);
+
+    --card-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
   }
 
-  .price-card h3 {
+  .card-title {
+    font-size: var(--fsz-lg);
+    color: var(--gold);
     margin-bottom: 1rem;
   }
 
@@ -189,12 +206,109 @@ const prices = [
   }
 
   .price-card strong {
-    margin-top: auto;
+    color: var(--gold);
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+  }
 
+  .additional-info {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding: var(--space-lg);
+    border: 1px solid var(--white);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+  }
+
+  .additional-info h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--gold);
+  }
+
+  .additional-info p {
+    margin: 0;
+  }
+
+  .additional-info::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1;
+    right: 0;
+    bottom: 0;
+    background-color: var(--teal);
+    opacity: 0.2;
+    mask: url("../assets/falling-oysters.svg") no-repeat center;
+    mask-size: contain;
+    transform: translate(20%, 25%) rotate(30deg);
+    pointer-events: none;
+  }
+
+  .practical-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .practical-card {
+    padding: var(--space-lg);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .practical-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--gold);
+  }
+
+  .practical-card p {
+    margin: 0;
+  }
+
+  .professional-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .professional-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+
+    border: 1px solid var(--cream);
+    border-radius: var(--radius-md);
+
+    background: var(--white);
+    color: var(--teal);
+    box-shadow: var(--card-shadow);
+    --card-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
+  }
+
+  .professional-card h3 {
+    margin: 0;
+    color: var(--gold);
+  }
+
+  .professional-card p {
+    margin: 0;
+  }
+
+  .professional-card strong {
+    margin-top: auto;
     color: var(--gold);
 
     font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
     font-weight: 400;
   }
 
@@ -218,6 +332,12 @@ const prices = [
   }
 
   @media (max-width: 750px) {
+    .price-grid,
+    .practical-grid,
+    .professional-grid {
+      grid-template-columns: 1fr;
+    }
+
     .practical-grid,
     .convention-inner {
       grid-template-columns: 1fr;

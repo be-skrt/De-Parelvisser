@@ -98,7 +98,7 @@ const audienceCards = [
 const professionalCards = [
   {
     title: "Supervisie",
-    text: "Ruimte om stil te staan bij je werk, casussen te verdiepen en je professionele handelen te onderzoeken.",
+    text: "Ruimte om stil te staan bij je werk en je professionele handelen te onderzoeken.",
   },
   {
     title: "Intervisie",
@@ -112,16 +112,16 @@ const professionalCards = [
 ---
 
 <MainLayout title="Werkwijze">
-  <section class="page-hero section--white section--center">
+  <section class="section--full section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Werkwijze" heading="h1" />
-      <p>
+      <p class="lead">
         Ieder mens beschikt over innerlijke kwaliteiten en veerkracht. Soms zijn
         die niet meteen zichtbaar, omdat ze verscholen liggen onder wat moeilijk
         loopt of zwaar aanvoelt.
       </p>
 
-      <p>
+      <p class="lead">
         In therapie nemen we de tijd om te vertragen, te verhelderen en te
         ontdekken wat voor jou — of voor je kind — waardevol is.
       </p>
@@ -168,12 +168,17 @@ const professionalCards = [
         data-aos-duration="800"
       >
         <SectionTitle title="Hoe ga ik te werk?" heading="h2" />
-        <p>
+        <p class="lead">
           Geen twee trajecten zijn hetzelfde. Afhankelijk van je vraag, leeftijd
           en context bekijken we samen welke vorm van begeleiding aansluit.
         </p>
       </div>
-      <div class="audience-grid">
+      <div
+        class="audience-grid"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        data-aos-duration="600"
+      >
         {
           audienceCards.map((card, index) => (
             <Card
@@ -182,8 +187,12 @@ const professionalCards = [
               title={card.title}
               text={card.text}
               variant="teal"
-              shell="white"
-              pearl="gold-light"
+              icon="oyster"
+              iconColors={{
+                main: "var(--teal-light)",
+                secondary: "var(--gold)",
+              }}
+              opacity="0.5"
             />
           ))
         }
@@ -211,7 +220,12 @@ const professionalCards = [
               "section--center",
               "section--col",
               isEven
-                ? ["section--teal", index === 0 ? "section--pearl-white" : "section--pearl-white-2"]
+                ? [
+                    "section--teal",
+                    index === 0
+                      ? "section--pearl-white"
+                      : "section--pearl-white-2",
+                  ]
                 : ["section--white", "section--pearls-teal"],
             ]}
           >
@@ -234,7 +248,10 @@ const professionalCards = [
                     <Image
                       src={item.image}
                       alt={item.imageAlt}
+                      format="webp"
                       class="story-img"
+                      loading="eager"
+                      fetchpriority="high"
                     />
                   </figure>
                 </div>
@@ -291,7 +308,7 @@ const professionalCards = [
 
         <SectionTitle title="Ruimte voor verdieping" heading="h2" />
 
-        <p>
+        <p class="lead">
           Ook collega's en andere professionals zijn welkom voor uitwisseling,
           verdieping en professionele groei.
         </p>
@@ -306,8 +323,11 @@ const professionalCards = [
               text={card.text}
               type="article"
               variant="cream"
-              shell="teal"
-              pearl="gold-light"
+              iconColors={{
+                main: "var(--teal)",
+                secondary: "var(--gold)",
+              }}
+              opacity="0.5"
             />
           ))
         }
@@ -326,7 +346,7 @@ const professionalCards = [
       >
         <p class="eyebrow">Het traject</p>
         <SectionTitle title="Samen zoeken, samen bijsturen" heading="h2" />
-        <p>
+        <p class="lead">
           Een traject staat nooit volledig op voorhand vast en kan steeds
           bijgestemd worden, afhankelijk van de noden.
         </p>
@@ -405,7 +425,7 @@ const professionalCards = [
 </script>
 
 <style>
-  .page-hero .eyebrow {
+  .section--full .eyebrow {
     margin-top: 2.5rem;
   }
 
@@ -420,52 +440,15 @@ const professionalCards = [
     overflow: hidden;
   }
 
-  /* .section--diver::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    inset: 0;
-    height: 80%;
-    background: linear-gradient(
-      to bottom,
-      #fbfaf7 0%,
-      rgba(251, 250, 247, 0.95) 5%,
-      rgba(251, 250, 247, 0.75) 12%,
-      rgba(40, 83, 90, 0.45) 24%,
-      rgba(40, 83, 90, 0.15) 50%,
-      rgba(40, 83, 90, 0) 65%,
-      transparent 100%
-    );
-
-    pointer-events: none;
-  } */
-
-  /* .section--diver::after {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    inset: auto 0 0 0;
-    height: 20%;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(40, 83, 90, 0) 8%,
-      rgba(40, 83, 90, 0.15) 18%,
-      rgba(40, 83, 90, 0.45) 44%,
-      rgba(251, 250, 247, 0.45) 60%,
-      rgba(251, 250, 247, 0.75) 85%,
-      rgba(251, 250, 247, 0.95) 95%,
-      #fbfaf7 100%
-    );
-
-    pointer-events: none;
-  } */
-
   .section--diver h2 {
     margin-bottom: 1rem;
   }
 
-  /* STORIES */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+  }
 
   .story-grid {
     display: grid;
@@ -621,36 +604,6 @@ const professionalCards = [
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
-  }
-
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-
-  .audience-grid article {
-    padding: 2rem;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-md);
-  }
-
-  .audience-grid h3 {
-    margin-bottom: 1rem;
-  }
-
-  .audience-card {
-    background: var(--white);
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    padding: var(--space-md);
-    box-shadow: 0 8px 15px var(--black);
-    transition: var(--transition);
-  }
-
-  .audience-card:hover {
-    transform: translateY(-2px);
   }
 
   /* PROCESS */

@@ -14,8 +14,8 @@ const links = [
 ];
 
 const isPathActive = (linkHref: string) => {
-  const currentUrl = new URL(currentPath, "https://x.com");
-  const linkUrl = new URL(linkHref, "https://x.com");
+  const currentUrl = new URL(currentPath, "https://be-skrt.github.io");
+  const linkUrl = new URL(linkHref, "https://be-skrt.github.io");
   const cleanCurrent = currentUrl.pathname.replace(/\/$/, "");
   const cleanLink = linkUrl.pathname.replace(/\/$/, "");
   const cleanBase = baseUrl.replace(/\/$/, "");

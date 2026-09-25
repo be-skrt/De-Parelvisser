@@ -1,9 +1,10 @@
 ---
-import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import Button from "../components/Button.astro";
-
-const titlePlaceholder = "Hier komt nog een passende titel";
+import Card from "../components/Card.astro";
+import Icon from "../components/Icon.astro";
+import CTA from "../components/CTA.astro";
 
 const services = [
   {
@@ -16,6 +17,7 @@ const services = [
       "We vertrekken vanuit hechting en co-regulatie: hoe kunnen ouder en kind elkaar beter aanvoelen, tot rust komen en op elkaar afgestemd raken?",
       "We kijken samen naar signalen van het kind, naar de interactie tussen ouder en kind en naar wat helpend kan zijn in het versterken van veiligheid en verbinding.",
     ],
+    icon: "parent",
   },
 
   {
@@ -34,6 +36,7 @@ const services = [
       "Vragenlijsten",
       "Klasobservatie",
     ],
+    icon: "diagnosis",
   },
 
   {
@@ -45,6 +48,7 @@ const services = [
       "De manier van werken wordt steeds afgestemd op leeftijd, ontwikkeling en persoonlijke noden.",
       "Therapie is geen vaststaand programma, maar een traject op maat.",
     ],
+    icon: "therapy",
   },
 
   {
@@ -55,6 +59,7 @@ const services = [
       "Ouderbegeleiding biedt een plek om stil te staan bij vragen en onzekerheden in de opvoeding.",
       "In gezinstherapie staat de interactie binnen het gezin centraal. Moeilijkheden worden bekeken in de context van relaties en onderlinge dynamieken.",
     ],
+    icon: "family",
   },
 
   {
@@ -62,9 +67,10 @@ const services = [
     title: "Contextbegeleiding",
     intro: "Soms spelen moeilijkheden zich niet alleen binnen het gezin af.",
     paragraphs: [
-      "Waar nodig en steeds in overleg kunnen ook school, vriendenkring of andere belangrijke omgevingen betrokken worden.",
-      "Dit helpt om een vollediger beeld te krijgen en meer afgestemde ondersteuning te bieden.",
+      "Omdat moeilijkheden vaak verbonden zijn met de relaties waarin iemand leeft, betrek ik waar nodig de context. Dit kan het gezin zijn, maar ook school of andere belangrijke omgevingen. Dit helpt om een vollediger beeld te krijgen en meer afgestemde ondersteuning te bieden.",
+      "Ik werk in verschillende vormen: soms individueel, soms met ouders, soms samen met het kind of de jongere en zijn of haar omgeving. Dit gebeurt steeds in overleg en afstemming.",
     ],
+    icon: "school",
   },
 
   {
@@ -75,61 +81,90 @@ const services = [
     paragraphs: [
       "Ik bied supervisie, intervisie en vorming aan, afgestemd op de werkcontext en de noden van de professional.",
     ],
+    icon: "professional",
   },
 ];
+
+const emdr = {
+  title: "EMDR",
+  paragraphs: [
+    "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
+    "EMDR (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten.",
+  ],
+};
 ---
 
 <MainLayout title="Aanbod">
-  <section class="page-hero section--white section--center">
+  <section class="section--full section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Aanbod" heading="h1" />
       <div class="text-width">
-        <p>
+        <p class="lead">
           Mijn aanbod is breed en gericht op kinderen, jongeren,
           jongvolwassenen, hun omgeving en professionals.
         </p>
-        <p>
+        <p class="lead">
           Afhankelijk van de vraag en de context zoeken we samen naar een
           passende vorm van begeleiding. We bekijken samen wat helpend is en
           stemmen dit voortdurend af, zodat therapie een plek wordt waar groei,
           veiligheid en verandering mogelijk worden.
         </p>
       </div>
+      <Button href="#aanbod" variant="down" content="Ontdek het aanbod" />
     </div>
   </section>
 
-  <section id="aanbod" class="section section--white">
+  <section id="aanbod" class="section section--center">
     <div class="content-width">
-      <div class="service-overview">
+      <div
+        class="service-cards"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        data-aos-duration="600"
+      >
         {
-          services.map((service) => (
-            <a href={`#${service.id}`} class="overview-card">
-              <h2>{service.title}</h2>
-
-              <p>{service.intro}</p>
-
-              <span>Lees meer →</span>
-            </a>
+          services.map((card, index) => (
+            <Card
+              index={index}
+              href={`#${card.id}`}
+              title={card.title}
+              text={card.intro}
+              variant="white"
+              icon={card.icon}
+              iconColors={{
+                main: "var(--teal)",
+              }}
+              opacity="0.8"
+            />
           ))
         }
       </div>
     </div>
   </section>
 
-  <section class="section services-detail">
+  <section class="section--small services-detail">
     <div class="content-width">
       {
         services.map((service, index) => (
           <article
+            data-aos="fade-in"
+            data-aos-delay="300"
+            data-aos-duration="600"
+            class="section--xs"
             id={service.id}
-            class:list={["service-detail", { dark: index % 2 === 1 }]}
+            class:list={["service-detail", { teal: index % 2 === 1 }]}
           >
-            <div>
-              <h2>{service.title}</h2>
+            <div class="service-title">
+              <Icon name={service.icon} />
+              <SectionTitle
+                heading="h2"
+                title={service.title}
+                variant="no-margin"
+              />
             </div>
 
-            <div>
-              <p class="service-intro">{service.intro}</p>
+            <div class="service-description">
+              <p class="eyebrow">{service.intro}</p>
 
               {service.paragraphs.map((paragraph) => (
                 <p>{paragraph}</p>
@@ -149,116 +184,37 @@ const services = [
     </div>
   </section>
 
-  <!-- CONTEXT SECTION -->
-
-  <section class="section section--full section--sage">
-    <div class="content-width">
-      <p class="eyebrow">Context</p>
-      <h2>Samen zoeken</h2>
-      <p>
-        Omdat moeilijkheden vaak verbonden zijn met de relaties waarin iemand
-        leeft, betrek ik waar nodig de context. Dit kan het gezin zijn, maar ook
-        school of andere belangrijke omgevingen.
-      </p>
-      <p>
-        Ik werk in verschillende vormen: soms individueel, soms met ouders, soms
-        samen met het kind of de jongere en zijn of haar omgeving. Dit gebeurt
-        steeds in overleg en afstemming.
-      </p>
-    </div>
-  </section>
-
   <!-- EMDR SECTION -->
 
-  <section class="section section--full">
-    <div class="content-width story-grid">
-      <div class="story-content">
-        <p class="eyebrow">EMDR</p>
-        <h2>{titlePlaceholder}</h2>
-        <p>
-          In sommige situaties kan <strong>EMDR</strong> helpend zijn, bijvoorbeeld
-          wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.
-        </p>
-
-        <p>
-          EMDR (Eye Movement Desensitization and Reprocessing) is een
-          psychotherapeutische behandelmethode die onder meer wordt gebruikt bij
-          traumatische ervaringen en angstklachten.
-        </p>
-      </div>
-      <figure class="story-image">
-        <img src="/images/eye.png" alt="Oog" />
-      </figure>
+  <section
+    data-aos="fade-in"
+    data-aos-delay="300"
+    data-aos-duration="600"
+    class="section--small section--emdr"
+  >
+    <div class="content-width section--center section--col">
+      <SectionTitle heading="h2" title={emdr.title} variant="no-margin" />
     </div>
+
+    <section class="section--small section--center section--col emdr-container">
+      {
+        emdr.paragraphs.map((paragraph) => (
+          <p class="lead">
+            {paragraph}
+          </p>
+        ))
+      }
+    </section>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact-strip">
-    <div class="content-width">
-      <div>
-        <p class="eyebrow">Nog vragen?</p>
-        <h2>We bekijken samen wat mogelijk is.</h2>
-      </div>
-
-      <Button href=`${import.meta.env.BASE_URL}/contact` content="Contact opnemen" />
-    </div>
-  </section>
+   <CTA title="Nog vragen?" sub="Stel ze gerust." variant="aanbod" />
 </MainLayout>
 
 <style>
-  .service-overview {
+  .service-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .overview-card {
-    min-height: 280px;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 2rem;
-
-    border-radius: var(--radius-md);
-
-    background: var(--white);
-    box-shadow: var(--shadow-card);
-
-    transition:
-      transform var(--transition),
-      box-shadow var(--transition);
-  }
-
-  .overview-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-soft);
-  }
-
-  .card-number {
-    color: var(--gold);
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-  }
-
-  .overview-card h2 {
-    margin-top: auto;
-    margin-bottom: 1rem;
-  }
-
-  .overview-card p {
-    color: var(--muted);
-  }
-
-  .overview-card > span:last-child {
-    margin-top: auto;
-
-    color: var(--gold);
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.85rem;
+    gap: var(--space-sm);
   }
 
   .services-detail {
@@ -268,48 +224,48 @@ const services = [
   .service-detail {
     display: grid;
     grid-template-columns: 0.7fr 1fr;
-    gap: 6rem;
-    padding-block: 6rem;
+    gap: var(--space-xxl);
+    padding: var(--space-xl);
   }
 
-  .service-detail.dark {
-    margin-inline: calc((var(--content-max-width) - 100vw) / 2);
-    padding-inline: max(calc((100vw - var(--content-max-width)) / 2), 1rem);
+  .service-detail.teal {
+    background: var(--white);
+    color: var(--teal);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-md);
+  }
 
-    background: var(--teal);
+  .service-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .service-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .section--emdr {
+    background-image: url("../assets/eye.png");
+    background-color: var(--teal-dark);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center 48%;
+    overflow: hidden;
     color: var(--white);
   }
 
-  .service-detail h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-
-  .service-intro {
-    font-size: 1.3rem;
-  }
-
-  .service-detail ul {
-    margin-top: 2rem;
-  }
-
-  .service-detail li {
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-strip {
-    padding-block: 3rem;
-    background: var(--sage);
-  }
-
-  .contact-strip > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .contact-strip h2 {
-    color: var(--teal);
+  .emdr-container {
+    justify-self: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: fit-content;
+    color: var(--white);
+    padding: var(--space-xs);
   }
 
   @media (max-width: 800px) {
@@ -320,11 +276,6 @@ const services = [
     .service-detail {
       grid-template-columns: 1fr;
       gap: 2rem;
-    }
-
-    .contact-strip > div {
-      flex-direction: column;
-      align-items: flex-start;
     }
   }
 

@@ -10,10 +10,8 @@
   --teal: #28535a;
   --teal-dark: #1d4248;
   --teal-light: #5f9399;
-
   --sage: #a9b39a;
   --blue-soft: #aac9c3;
-  --marine: #0d5e6e;
 
   --gold: #c88656;
   --gold-light: #dfb084;
@@ -86,16 +84,6 @@
   --fsz-xl: clamp(1.5rem, 2vw, 2rem);
   --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
   --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
-
-  /* --------------------------------
-    SHADOWS
-  -------------------------------- */
-
-  --shadow-soft: 0 10px 40px rgba(40, 83, 90, 0.08);
-  --shadow-card: 0 8px 30px rgba(40, 83, 90, 0.1);
-  --shadow-elevated:
-    0 18px 35px rgba(0, 0, 0, 0.2),
-    0 5px 10px rgba(0, 0, 0, 0.12);
 
   /* --------------------------------
     EFFECTS
@@ -184,9 +172,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -194,9 +180,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-Italic.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -204,9 +188,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -214,9 +196,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-LightItalic.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -224,9 +204,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -234,9 +212,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src:
-    local("Montserrat"),
-    url("../fonts/Montserrat/Montserrat-BoldItalic.ttf") format("truetype");
+  src: url("../fonts/Montserrat/Montserrat-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -245,6 +221,10 @@
 /* --------------------------------
   GENERAL
 -------------------------------- */
+
+main {
+  --section-boundary: 843px;
+}
 
 /* --------------------------------
   TYPOGRAPHY
@@ -312,10 +292,6 @@ section {
   padding-bottom: var(--space-xl);
 }
 
-.page-hero {
-  min-height: 100vh;
-}
-
 .section {
   padding-block: var(--space-xxxl);
 }
@@ -346,6 +322,7 @@ section {
 .section--teal {
   background: var(--teal);
   color: var(--white);
+  --oyster-color: var(--white);
 }
 
 .section--teal-dark {
@@ -353,20 +330,15 @@ section {
   color: var(--white);
 }
 
-.section--marine {
-  background: var(--marine);
-  color: var(--white);
-}
-
-.section--sage {
-  background: var(--sage);
-  color: var(--teal-dark);
-}
-
 .section--white {
   background: var(--white);
   color: var(--teal);
+  --oyster-color: var(--teal);
 }
+
+/*--------------------
+  PEARLS
+--------------------*/
 
 .section--pearl-white::before {
   content: "";
@@ -377,14 +349,14 @@ section {
   top: 2rem;
   background-color: var(--white);
   opacity: 0.3;
-  mask: url("../assets/pearl.png") no-repeat center;
+  mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   transform: rotate(-18deg);
   pointer-events: none;
   z-index: 0;
-  animation: 
-  pulse var(--float-after-duration, 16s) ease-in-out infinite,
-  float var(--float-before-duration, 7s) ease-in-out infinite;
+  animation:
+    pulse var(--float-after-duration, 16s) ease-in-out infinite,
+    float var(--float-before-duration, 7s) ease-in-out infinite;
 }
 
 .section--pearl-white::after {
@@ -396,7 +368,7 @@ section {
   bottom: -15%;
   background-color: var(--white);
   opacity: 0.5;
-  mask: url("../assets/pearl.png") no-repeat center;
+  mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
   z-index: 0;
@@ -412,12 +384,11 @@ section {
   top: -10%;
   background-color: var(--white);
   opacity: 0.5;
-  mask: url("../assets/pearl.png") no-repeat center;
+  mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
   z-index: 0;
-  animation: 
-  pulse var(--float-after-duration, 8s) ease-in-out infinite;
+  animation: pulse var(--float-after-duration, 8s) ease-in-out infinite;
 }
 
 .section--pearl-white-2::after {
@@ -429,13 +400,13 @@ section {
   right: -2rem;
   background-color: var(--white);
   opacity: 0.3;
-  mask: url("../assets/pearl.png") no-repeat center;
+  mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
   z-index: 0;
-  animation: 
-  pulse var(--float-after-duration, 8s) ease-in-out infinite,
-  float var(--float-before-duration, 8s) ease-in-out infinite;
+  animation:
+    pulse var(--float-after-duration, 8s) ease-in-out infinite,
+    float var(--float-before-duration, 8s) ease-in-out infinite;
 }
 
 .section--pearls-teal::before {
@@ -497,10 +468,11 @@ section {
   position: absolute;
   width: 32rem;
   height: 32rem;
-  right: 0rem;
-  bottom: 0rem;
+  right: 0;
+  bottom: 0;
   background-color: var(--white);
   opacity: 0.2;
+  box-shadow: 0 0 200px var(--white);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
@@ -509,6 +481,10 @@ section {
 
   animation: float var(--float-after-duration, 8s) ease-in-out infinite;
 }
+
+/*--------------------
+  OYSTERS
+--------------------*/
 
 .section--oyster-teal::after {
   content: "";
@@ -526,8 +502,70 @@ section {
   z-index: 0;
 }
 
+.section--oyster-white::before {
+  content: "";
+  position: absolute;
+  width: max(32rem, 30%);
+  aspect-ratio: 1;
+  left: -8rem;
+  top: -8rem;
+  background-color: var(--white);
+  opacity: 0.3;
+  mask: url("../assets/oyster.svg") no-repeat center;
+  mask-size: contain;
+  transform: rotate(150deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section--oysters {
+  --oyster-width: clamp(12rem, 30vw, 24rem);
+  --oyster-boundary: 50%;
+}
+
+.section--oysters::before,
+.section--oysters::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--teal) 0%,
+    var(--teal) var(--oyster-boundary),
+    var(--white) var(--oyster-boundary),
+    var(--white) 100%
+  );
+  mask-image: url("../assets/falling-oysters.svg");
+  mask-repeat: no-repeat;
+  mask-size: var(--oyster-width) auto;
+  -webkit-mask-image: url("../assets/falling-oysters.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: var(--oyster-width) auto;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section--oysters::before {
+  left: 5%;
+  mask-position: left 40%;
+  -webkit-mask-position: left 40%;
+}
+
+.section--oysters::after {
+  right: 5%;
+  mask-position: right 80%;
+  -webkit-mask-position: right 80%;
+}
+
+.section--oysters > section > * {
+  position: relative;
+  z-index: 2;
+}
+
 .section--oyster-teal,
-.section--pearl-white,
+.section--oyster-white,
+.section--oysters .section--pearl-white,
 .section--pearl-white-2,
 .section--pearls-teal,
 .section--pearls-white {
@@ -554,27 +592,13 @@ section {
   color: var(--teal);
 }
 
-.split-grid {
-  display: grid;
-  grid-template-columns: 0.7fr 1fr;
-  gap: var(--space-xxl);
-}
-
-.card-grid {
-  display: grid;
-  gap: var(--space-sm);
-}
-
 /*  -------------------------
   TYPOGRAPHY
 -------------------------  */
 
-.eyebrow,
-.section--center .eyebrow {
+.eyebrow {
   margin: 0.5rem 0;
-
   color: var(--gold);
-
   font-family: "Montserrat", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
@@ -591,6 +615,10 @@ section {
 
 .text--center {
   text-align: center;
+}
+
+.lead {
+  font-size: var(--fsz-lg);
 }
 
 /*  -------------------------

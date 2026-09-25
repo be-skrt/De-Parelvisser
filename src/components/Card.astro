@@ -1,14 +1,15 @@
 ---
-import OysterIcon from "./OysterIcon.astro";
+import Icon from "./Icon.astro";
 
 const {
   href,
   title,
   text,
   index,
-  variant = "default",
-  shell = "default",
-  pearl = "default",
+  variant = "white",
+  icon = "oyster",
+  iconColors = {},
+  opacity = 1,
 } = Astro.props;
 ---
 
@@ -20,13 +21,19 @@ const {
         "card",
         "text--center",
         `card--${variant}`,
-        `card--shell-${shell}`,
-        `card--pearl-${pearl}`,
       ]}
       href={href}
     >
-      <div class="card-icon">
-        <OysterIcon />
+      <div
+        class="card-icon"
+        style={`
+          --icon-color: ${iconColors.main ?? "var(--teal)"};
+          --icon-color-2: ${iconColors.secondary ?? iconColors.main ?? "var(--teal)"};
+          --icon-color-3: ${iconColors.accent ?? iconColors.main ?? "var(--teal)"};
+          --opacity: ${opacity ?? opacity};
+        `}
+      >
+        <Icon name={icon} />
       </div>
       <div class="card-text">
         <h3 class="card-title">{title}</h3>
@@ -41,12 +48,18 @@ const {
         "card",
         "text--center",
         `card--${variant}`,
-        `card--shell-${shell}`,
-        `card--pearl-${pearl}`,
       ]}
     >
-      <div class="card-icon">
-        <OysterIcon />
+      <div
+        class="card-icon"
+        style={`
+          --icon-color: ${iconColors.main ?? "var(--teal)"};
+          --icon-color-2: ${iconColors.secondary ?? iconColors.main ?? "var(--teal)"};
+          --icon-color-3: ${iconColors.accent ?? iconColors.main ?? "var(--teal)"};
+          --opacity: ${opacity ?? opacity};
+        `}
+      >
+        <Icon name={icon} />
       </div>
 
       <div class="card-text">
@@ -69,7 +82,7 @@ const {
     border-radius: 1rem;
     background: var(--card-background);
     color: var(--card-text);
-    box-shadow: var(--shadow-card);
+    box-shadow: 1px 2px 15px var(--card-shadow);
     transition:
       transform var(--transition),
       box-shadow var(--transition);
@@ -81,20 +94,27 @@ const {
 
   a.card:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 1px 2px 15px var(--card-shadow-soft);
   }
 
-  .card--default {
-    --card-background: linear-gradient(
-      to bottom,
-      rgba(246, 242, 235, 1) 10%,
-      rgba(246, 242, 235, 0.65) 100%
-    );
-
+  .card--white {
+    --card-background: var(--white);
     --card-border: var(--cream);
     --card-text: var(--teal);
     --card-title: var(--gold);
     --card-link: var(--gold);
+    --card-shadow: rgba(40, 83, 99, 0.3);
+    --card-shadow-soft: rgba(40, 83, 99, 0.1);
+  }
+
+  .card--cream {
+    --card-background: var(--cream);
+    --card-border: var(--cream);
+    --card-text: var(--teal);
+    --card-title: var(--gold);
+    --card-link: var(--gold);
+    --card-shadow: rgba(33, 68, 81, 0.3);
+    --card-shadow-soft: rgba(33, 68, 81, 0.1);
   }
 
   .card--teal {
@@ -102,7 +122,7 @@ const {
     --card-border: var(--teal);
     --card-text: var(--white);
     --card-title: var(--gold);
-    --card-link: var(--white);
+    --card-link: var(--gold);
   }
 
   .card--teal-light {
@@ -113,28 +133,12 @@ const {
     --card-link: var(--white);
   }
 
-  .card--white {
-    --card-background: var(--white);
-    --card-border: var(--cream);
-    --card-text: var(--teal);
-    --card-title: var(--gold);
-    --card-link: var(--gold);
-  }
-
-  .card--sage {
-    --card-background: var(--sage);
-    --card-border: var(--sage);
+  .card--teal-dark {
+    --card-background: var(--teal-dark);
+    --card-border: var(--teal-dark);
     --card-text: var(--white);
     --card-title: var(--gold);
-    --card-link: var(--gold);
-  }
-
-  .card--cream {
-    --card-background: var(--cream);
-    --card-border: var(--cream);
-    --card-text: var(--teal);
-    --card-title: var(--gold);
-    --card-link: var(--gold);
+    --card-link: var(--white);
   }
 
   .card-icon {
@@ -142,7 +146,8 @@ const {
     justify-content: center;
     align-self: center;
     width: clamp(50px, 2.5rem, 75px);
-    opacity: 0.4;
+    opacity: var(--opacity);
+    color: var(--icon-color);
   }
 
   .card-text {
@@ -166,37 +171,5 @@ const {
     color: var(--card-link);
     font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
-  }
-
-  .card--shell-default {
-    --oyster-shell-color: var(--teal);
-  }
-
-  .card--shell-gold {
-    --oyster-shell-color: var(--gold);
-  }
-
-  .card--shell-white {
-    --oyster-shell-color: var(--white);
-  }
-
-  .card--shell-teal-light {
-    --oyster-shell-color: var(--teal-light);
-  }
-
-  .card--pearl-default {
-    --oyster-pearl-color: var(--gold-light);
-  }
-
-  .card--pearl-gold {
-    --oyster-pearl-color: var(--gold);
-  }
-
-  .card--pearl-teal {
-    --oyster-pearl-color: var(--teal);
-  }
-
-  .card--pearl-white {
-    --oyster-pearl-color: var(--white);
   }
 </style>

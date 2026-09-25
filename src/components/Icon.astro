@@ -1,0 +1,73 @@
+---
+import DiagnosisIcon from "./DiagnosisIcon.astro";
+import Diver2Icon from "./Diver2Icon.astro";
+import DiverIcon from "./DiverIcon.astro";
+import DivingGogglesIcon from "./DivingGogglesIcon.astro";
+import FamilyIcon from "./FamilyIcon.astro";
+import FeedbackIcon from "./FeedbackIcon.astro";
+import FlippersIcon from "./FlippersIcon.astro";
+import LightBulbIcon from "./LightBulbIcon.astro";
+import MeetIcon from "./MeetIcon.astro";
+import OxygenTanksIcon from "./OxygenTanksIcon.astro";
+import Oyster2Icon from "./Oyster2Icon.astro";
+import OysterIcon from "./OysterIcon.astro";
+import ParentIcon from "./ParentIcon.astro";
+import PlanIcon from "./PlanIcon.astro";
+import ProfessionalIcon from "./ProfessionalIcon.astro";
+import SchoolIcon from "./SchoolIcon.astro";
+import TherapyIcon from "./TherapyIcon.astro";
+
+const { name = "oyster", width = 100, height = 100 } = Astro.props;
+---
+
+{
+  name === "diagnosis" && <DiagnosisIcon width={width} height={height} />
+}
+{
+  name === "diver" && <DiverIcon width={width} height={height} />
+}
+{
+  name === "diver2" && <Diver2Icon width={width} height={height} />
+}
+{
+  name === "diving-goggles" && <DivingGogglesIcon width={width} height={height} />
+}
+{
+  name === "family" && <FamilyIcon width={width} height={height} />
+}
+{
+  name === "feedback" && <FeedbackIcon width={width} height={height} />
+}
+{
+  name === "flippers" && <FlippersIcon width={width} height={height} />
+}
+{
+  name === "lightbulb" && <LightBulbIcon width={width} height={height} />
+}
+{
+  name === "meet" && <MeetIcon width={width} height={height} />
+}
+{
+  name === "oxygen-tanks" && <OxygenTanksIcon width={width} height={height} />
+}
+{
+  name === "oyster" && <OysterIcon width={width} height={height} />
+}
+{
+  name === "oyster2" && <Oyster2Icon width={width} height={height} />
+}
+{
+  name === "parent" && <ParentIcon width={width} height={height} />
+}
+{
+  name === "plan" && <PlanIcon width={width} height={height} />
+}
+{
+  name === "professional" && <ProfessionalIcon width={width} height={height} />
+}
+{
+  name === "school" && <SchoolIcon width={width} height={height} />
+}
+{
+  name === "therapy" && <TherapyIcon width={width} height={height} />
+}

@@ -81,4 +81,24 @@ const {
   .button--light:hover::after {
     color: var(--teal);
   }
+
+  .button--down {
+    background: var(--white);
+    border: 1px solid var(--teal);
+    color: var(--teal);
+  }
+
+  .button--down:hover {
+    background: var(--teal-dark);
+  }
+
+  .button--down:hover::after {
+    transform: none;
+  }
+
+  .button--down::after {
+    content: "↓";
+    font-size: var(--space-sm);
+    transition: transform 0.1s linear;
+  }
 </style>

@@ -1,9 +1,14 @@
-<!--?xml version="1.0" encoding="utf-8"?-->
+---
+const { width, height } = Astro.props;
+---
+
 <svg
   class="oyster"
   viewBox="0 0 212 212"
   version="1.1"
   xmlns="http://www.w3.org/2000/svg"
+  width={width}
+  height={height}
 >
   <defs>
     <mask
@@ -31,11 +36,11 @@
 
 <style>
   .oyster {
-    color: var(--oyster-shell-color, var(--teal));
+    color: var(--icon-color, var(--oyster-shell-color, var(--teal)));
     overflow: visible;
   }
 
   .pearl {
-    color: var(--oyster-pearl-color, var(--gold-light));
+    color: var(--icon-color-2, var(--oyster-pearl-color, var(--gold-light)));
   }
 </style>

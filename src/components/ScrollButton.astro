@@ -17,11 +17,12 @@
 
 <style>
   .scrollButton {
-    background: var(--gold);
+    background: var(--teal);
     color: var(--white);
     transition:
       0.25s transform ease-in,
-      0.2s background-color ease-out;
+      0.25s background-color ease-out,
+      0.25s box-shadow ease-in;
     transform: scale(0);
     width: 0.2rem;
     height: 0.2rem;
@@ -40,7 +41,7 @@
 
   .scrollButton.active:hover {
     background: var(--white);
-    color: var(--gold);
+    box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.2);
   }
 
   .scrollButton svg {
@@ -62,6 +63,6 @@
   }
 
   .scrollButton.active:hover path {
-    fill: var(--gold);
+    fill: var(--teal);
   }
 </style>

@@ -18,7 +18,7 @@ const { businessName } = Astro.props;
       />
     </div>
 
-    <figure class="hero-oyster">
+    <figure class="hero-oyster" data-aos="fade-in" data-aos-delay="400" data-aos-duration="800">
       <OysterIcon />
     </figure>
   </div>
@@ -127,12 +127,11 @@ const { businessName } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: rotate(15deg);
   }
 
   .hero-oyster svg {
     width: min(90%, 320px);
-
-    filter: drop-shadow(0 20px 20px rgba(40, 83, 90, 0.12));
   }
 
   .waves {
