@@ -18,7 +18,6 @@
 
   --cream: #f6f2eb;
   --white: #fbfaf7;
-  --black: #243033;
 
   /* -----------------------------
     GRADIENTS 
@@ -28,19 +27,6 @@
     to right,
     var(--gold) 0%,
     var(--gold-light) 100%
-  );
-
-  --gradient-teal: linear-gradient(
-    to right,
-    var(--teal) 0%,
-    var(--teal-light) 100%
-  );
-
-  --gradient-teal-light: linear-gradient(
-    to bottom,
-    rgb(14, 72, 84) 0%,
-    rgba(10, 49, 57, 0.9) 90%,
-    var(--teal-light) 100%
   );
 
   /* -----------------------------
@@ -222,10 +208,6 @@
   GENERAL
 -------------------------------- */
 
-main {
-  --section-boundary: 843px;
-}
-
 /* --------------------------------
   TYPOGRAPHY
 -------------------------------- */
@@ -322,7 +304,6 @@ section {
 .section--teal {
   background: var(--teal);
   color: var(--white);
-  --oyster-color: var(--white);
 }
 
 .section--teal-dark {
@@ -333,8 +314,16 @@ section {
 .section--white {
   background: var(--white);
   color: var(--teal);
-  --oyster-color: var(--teal);
 }
+
+.section--cream {
+  background: var(--cream);
+  color: var(--teal);
+}
+
+/*--------------------
+  DECORATION
+--------------------*/
 
 /*--------------------
   PEARLS
@@ -572,25 +561,6 @@ section {
 .section--pearls-white {
   position: relative;
   overflow: hidden;
-}
-
-.section--teal-gradient {
-  background: var(--gradient-teal);
-  color: var(--white);
-}
-
-.section--teal-light-gradient {
-  background: var(--gradient-teal-light);
-  color: var(--white);
-}
-
-.section--white-gradient {
-  background: radial-gradient(
-    circle at center,
-    var(--teal-light) 0%,
-    var(--teal) 100%
-  );
-  color: var(--teal);
 }
 
 /*  -------------------------
