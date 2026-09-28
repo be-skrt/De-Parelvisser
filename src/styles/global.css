@@ -17,7 +17,20 @@
   --gold-light: #dfb084;
 
   --cream: #f6f2eb;
-  --white: #fbfaf7;
+  --white: rgb(251, 250, 247);
+
+  /* -----------------------------
+    COLORS WITH OPACITY
+  ----------------------------- */
+
+  --white-08: rgba(251, 250, 247, 0.08);
+  --white-12: rgba(251, 250, 247, 0.12);
+  --white-15: rgba(251, 250, 247, 0.15);
+  --white-20: rgba(251, 250, 247, 0.2);
+  --white-55: rgba(251, 250, 247, 0.55);
+  --white-70: rgba(251, 250, 247, 0.7);
+  --white-75: rgba(251, 250, 247, 0.75);
+  --white-85: rgba(251, 250, 247, 0.85);
 
   /* -----------------------------
     GRADIENTS 
@@ -59,6 +72,14 @@
   --radius-pill: 999px;
 
   /* --------------------------------
+    DECORATION
+  -------------------------------- */
+
+  --decor-sm: 32rem;
+  --decor-md: 48rem;
+  --decor-lg: 64rem;
+
+  /* --------------------------------
     TYPOGRAPHY
   -------------------------------- */
 
@@ -70,6 +91,17 @@
   --fsz-xl: clamp(1.5rem, 2vw, 2rem);
   --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
   --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
+
+  /* --------------------------------
+    OPACITY
+  -------------------------------- */
+
+  --opacity-subtle: 0.2;
+  --opacity-soft: 0.3;
+  --opacity-medium: 0.4;
+  --opacity-strong: 0.5;
+  --opacity-heavy: 0.65;
+  --opacity-solid: 0.8;
 
   /* --------------------------------
     EFFECTS
@@ -332,12 +364,12 @@ section {
 .section--pearl-white::before {
   content: "";
   position: absolute;
-  width: 32rem;
+  width: var(--decor-sm);
   aspect-ratio: 1;
   right: -4rem;
-  top: 2rem;
+  top: var(--space-lg);
   background-color: var(--white);
-  opacity: 0.3;
+  opacity: var(--opacity-soft);
   mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   transform: rotate(-18deg);
@@ -351,12 +383,12 @@ section {
 .section--pearl-white::after {
   content: "";
   position: absolute;
-  width: 64rem;
+  width: var(--decor-lg);
   aspect-ratio: 1;
   left: -25%;
   bottom: -15%;
   background-color: var(--white);
-  opacity: 0.5;
+  opacity: var(--opacity-strong);
   mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
@@ -367,12 +399,12 @@ section {
 .section--pearl-white-2::before {
   content: "";
   position: absolute;
-  width: 48rem;
+  width: var(--decor-md);
   aspect-ratio: 1;
   left: -15%;
   top: -10%;
   background-color: var(--white);
-  opacity: 0.5;
+  opacity: var(--opacity-strong);
   mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
@@ -383,12 +415,12 @@ section {
 .section--pearl-white-2::after {
   content: "";
   position: absolute;
-  width: 32rem;
+  width: var(--decor-sm);
   aspect-ratio: 1;
   bottom: -6rem;
   right: -2rem;
   background-color: var(--white);
-  opacity: 0.3;
+  opacity: var(--opacity-soft);
   mask: url("../assets/pearl.svg") no-repeat center;
   mask-size: contain;
   pointer-events: none;
@@ -401,12 +433,12 @@ section {
 .section--pearls-teal::before {
   content: "";
   position: absolute;
-  width: 32rem;
+  width: var(--decor-sm);
   aspect-ratio: 1;
-  left: 0rem;
-  top: 0rem;
+  left: 0;
+  top: 0;
   background-color: var(--teal);
-  opacity: 0.2;
+  opacity: var(--opacity-subtle);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(30deg);
@@ -419,12 +451,12 @@ section {
 .section--pearls-teal::after {
   content: "";
   position: absolute;
-  width: 48rem;
+  width: var(--decor-md);
   aspect-ratio: 1;
   right: -8rem;
-  bottom: 0rem;
+  bottom: 0;
   background-color: var(--teal);
-  opacity: 0.4;
+  opacity: var(--opacity-medium);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
@@ -437,37 +469,35 @@ section {
 .section--pearls-white::before {
   content: "";
   position: absolute;
-  width: 32rem;
-  height: 32rem;
-  left: 0rem;
-  top: 0rem;
+  width: var(--decor-sm);
+  aspect-ratio: 1;
+  left: 0;
+  top: 0;
   background-color: var(--white);
-  opacity: 0.2;
+  opacity: var(--opacity-subtle);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(30deg);
   pointer-events: none;
   z-index: 1;
-
   animation: float var(--float-before-duration, 8s) ease-in-out infinite;
 }
 
 .section--pearls-white::after {
   content: "";
   position: absolute;
-  width: 32rem;
-  height: 32rem;
+  width: var(--decor-sm);
+  aspect-ratio: 1;
   right: 0;
   bottom: 0;
   background-color: var(--white);
-  opacity: 0.2;
+  opacity: var(--opacity-subtle);
   box-shadow: 0 0 200px var(--white);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
   pointer-events: none;
   z-index: 1;
-
   animation: float var(--float-after-duration, 8s) ease-in-out infinite;
 }
 
@@ -478,12 +508,12 @@ section {
 .section--oyster-teal::after {
   content: "";
   position: absolute;
-  width: 32rem;
+  width: var(--decor-sm);
   aspect-ratio: 1;
   right: -8rem;
   bottom: -8rem;
   background-color: var(--teal);
-  opacity: 0.3;
+  opacity: var(--opacity-soft);
   mask: url("../assets/oyster.svg") no-repeat center;
   mask-size: contain;
   transform: rotate(-30deg);
@@ -494,12 +524,12 @@ section {
 .section--oyster-white::before {
   content: "";
   position: absolute;
-  width: max(32rem, 30%);
+  width: var(--decor-sm);
   aspect-ratio: 1;
   left: -8rem;
   top: -8rem;
   background-color: var(--white);
-  opacity: 0.3;
+  opacity: var(--opacity-soft);
   mask: url("../assets/oyster.svg") no-repeat center;
   mask-size: contain;
   transform: rotate(150deg);
@@ -530,7 +560,7 @@ section {
   -webkit-mask-image: url("../assets/falling-oysters.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: var(--oyster-width) auto;
-  opacity: 0.5;
+  opacity: var(--opacity-strong);
   pointer-events: none;
   z-index: 1;
 }
@@ -568,10 +598,10 @@ section {
 -------------------------  */
 
 .eyebrow {
-  margin: 0.5rem 0;
+  margin: var(--space-xs) 0;
   color: var(--gold);
   font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: var(--fsz-xs);
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;

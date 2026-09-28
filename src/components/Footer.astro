@@ -4,7 +4,7 @@ import Button from "./Button.astro";
 ---
 
 <footer class="footer">
-  <div class="content-width">
+  <section class="content-width">
     <div class="footer-grid">
       <div class="footer-brand">
         <Logo />
@@ -18,7 +18,6 @@ import Button from "./Button.astro";
 
       <div>
         <h2>Navigatie</h2>
-
         <nav>
           <a href=`${import.meta.env.BASE_URL}/`>Home</a>
           <a href=`${import.meta.env.BASE_URL}/werkwijze`>Werkwijze</a>
@@ -31,35 +30,34 @@ import Button from "./Button.astro";
 
       <div>
         <h2>Contact</h2>
-
-        <p>Griet Ackerman</p>
-
-        <address>
-          <a href="tel:+32469737223"> 0469 73 72 23 </a>
-
-          <a href="mailto:deparelvisser@telenet.be">
-            deparelvisser@telenet.be
-          </a>
-
-          <span>
-            Domien Geersstraat 11a<br />
-            9041 Oostakker
-          </span>
-        </address>
+        <div>
+          <p>Griet Ackerman</p>
+          <address>
+            <a href="tel:+32469737223"> 0469 73 72 23 </a>
+            <a href="mailto:deparelvisser@telenet.be">
+              deparelvisser@telenet.be
+            </a>
+            <span>
+              Domien Geersstraat 11a<br />
+              9041 Oostakker
+            </span>
+          </address>
+        </div>
       </div>
 
       <div>
         <h2>Bereikbaarheid</h2>
-
-        <p>
-          De praktijk is vlot bereikbaar met de auto en het openbaar vervoer.
-        </p>
-        <Button
-          href="https://www.google.com/maps/dir//Domien+Geersstraat+11a,+9041+Gent/@51.0971238,3.7609773,17z/data=!4m17!1m8!3m7!1s0x47c37738b72c8655:0x969149544e1b21e1!2sDomien+Geersstraat+11a,+9041+Gent!3b1!8m2!3d51.0971205!4d3.7635522!16s%2Fg%2F11smk4z227!4m7!1m0!1m5!1m1!1s0x47c37738b72c8655:0x969149544e1b21e1!2m2!1d3.7635522!2d51.0971205?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank"
-          variant="light"
-          content="Route bekijken"
-        />
+        <div>
+          <p>
+            De praktijk is vlot bereikbaar met de auto en het openbaar vervoer.
+          </p>
+          <Button
+            href="https://www.google.com/maps/dir//Domien+Geersstraat+11a,+9041+Gent/@51.0971238,3.7609773,17z/data=!4m17!1m8!3m7!1s0x47c37738b72c8655:0x969149544e1b21e1!2sDomien+Geersstraat+11a,+9041+Gent!3b1!8m2!3d51.0971205!4d3.7635522!16s%2Fg%2F11smk4z227!4m7!1m0!1m5!1m1!1s0x47c37738b72c8655:0x969149544e1b21e1!2m2!1d3.7635522!2d51.0971205?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            variant="light"
+            content="Route bekijken"
+          />
+        </div>
       </div>
     </div>
 
@@ -72,12 +70,13 @@ import Button from "./Button.astro";
         Website by <a
           href="https://be-skrt.github.io/portfolio/"
           target="_blank"
+          class="dev"
         >
           Behlül Savaskurt
         </a></span
       >
     </div>
-  </div>
+  </section>
 </footer>
 
 <style>
@@ -90,10 +89,9 @@ import Button from "./Button.astro";
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 4rem;
-
-    padding-bottom: 4rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 
   .footer-brand {
@@ -106,26 +104,25 @@ import Button from "./Button.astro";
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.3rem;
-
-    color: rgba(255, 255, 255, 0.55);
+    gap: var(--space-xs);
+    color: var(--white-55);
     font-size: var(--fsz-xs);
     line-height: 1.5;
     text-align: center;
   }
 
   .footer p {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.95rem;
+    color: var(--white-75);
+    font-size: var(--fsz-sm);
   }
 
   .footer h2 {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-md);
 
     color: var(--gold-light);
 
     font-family: "Montserrat", sans-serif;
-    font-size: 0.85rem;
+    font-size: var(--fsz-xs);
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -135,14 +132,14 @@ import Button from "./Button.astro";
   .footer address {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: var(--space-xs);
 
     font-style: normal;
   }
 
   .footer a {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
+    color: var(--white-85);
+    font-size: var(--fsz-sm);
   }
 
   .footer a:hover {
@@ -150,8 +147,8 @@ import Button from "./Button.astro";
   }
 
   .footer address span {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
+    color: var(--white-70);
+    font-size: var(--fsz-sm);
   }
 
   .footer .button {
@@ -168,14 +165,17 @@ import Button from "./Button.astro";
   .footer-bottom {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: var(--space-sm);
 
-    padding-block: 1.5rem;
+    padding-block: var(--space-md);
+    border-top: 1px solid var(--white-15);
+    color: var(--white-55);
+    font-size: var(--fsz-xs);
+  }
 
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.8rem;
+  .footer-bottom .dev {
+    font-size: var(--fsz-xs);
+    color: var(--teal-light);
   }
 
   @media (max-width: 800px) {

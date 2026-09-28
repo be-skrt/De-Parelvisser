@@ -19,7 +19,6 @@ const services = [
     ],
     icon: "parent",
   },
-
   {
     id: "diagnostiek",
     title: "Diagnostiek",
@@ -38,7 +37,6 @@ const services = [
     ],
     icon: "diagnosis",
   },
-
   {
     id: "therapie",
     title: "Individuele therapie",
@@ -50,7 +48,6 @@ const services = [
     ],
     icon: "therapy",
   },
-
   {
     id: "ouders-gezin",
     title: "Ouders & gezin",
@@ -61,7 +58,6 @@ const services = [
     ],
     icon: "family",
   },
-
   {
     id: "context",
     title: "Contextbegeleiding",
@@ -72,7 +68,6 @@ const services = [
     ],
     icon: "school",
   },
-
   {
     id: "professionals",
     title: "Professionals",
@@ -83,6 +78,15 @@ const services = [
     ],
     icon: "professional",
   },
+  {
+    id: "emdr",
+    title: "EMDR",
+    intro: "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
+    paragraphs: [
+      "<strong>EMDR</strong> (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten."
+    ],
+    icon: "eye",
+  }
 ];
 
 const emdr = {
@@ -134,7 +138,7 @@ const emdr = {
               iconColors={{
                 main: "var(--teal)",
               }}
-              opacity="0.8"
+              opacity="var(--opacity-solid)"
             />
           ))
         }
@@ -184,29 +188,6 @@ const emdr = {
     </div>
   </section>
 
-  <!-- EMDR SECTION -->
-
-  <section
-    data-aos="fade-in"
-    data-aos-delay="300"
-    data-aos-duration="600"
-    class="section--small section--emdr"
-  >
-    <div class="content-width section--center section--col">
-      <SectionTitle heading="h2" title={emdr.title} variant="no-margin" />
-    </div>
-
-    <section class="section--small section--center section--col emdr-container">
-      {
-        emdr.paragraphs.map((paragraph) => (
-          <p class="lead">
-            {paragraph}
-          </p>
-        ))
-      }
-    </section>
-  </section>
-
    <CTA title="Nog vragen?" sub="Stel ze gerust." variant="aanbod" />
 </MainLayout>
 
@@ -223,7 +204,7 @@ const emdr = {
 
   .service-detail {
     display: grid;
-    grid-template-columns: 0.7fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-xxl);
     padding: var(--space-xl);
   }
