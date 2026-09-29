@@ -83,7 +83,7 @@ const services = [
     title: "EMDR",
     intro: "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
     paragraphs: [
-      "<strong>EMDR</strong> (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten."
+      "EMDR (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten."
     ],
     icon: "eye",
   }
@@ -196,6 +196,8 @@ const emdr = {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-sm);
+    position: relative;
+    z-index: 0;
   }
 
   .services-detail {

@@ -7,7 +7,7 @@
     COLORS 
   ----------------------------- */
 
-  --teal: #28535a;
+  --teal: rgb(40, 83, 90);
   --teal-dark: #1d4248;
   --teal-light: #5f9399;
   --sage: #a9b39a;
@@ -239,6 +239,11 @@
 /* --------------------------------
   GENERAL
 -------------------------------- */
+
+html,
+body {
+  overflow-x: clip;
+}
 
 /* --------------------------------
   TYPOGRAPHY
@@ -560,7 +565,7 @@ section {
   -webkit-mask-image: url("../assets/falling-oysters.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: var(--oyster-width) auto;
-  opacity: var(--opacity-strong);
+  opacity: var(--opacity-soft);
   pointer-events: none;
   z-index: 1;
 }

@@ -29,13 +29,9 @@ const isPathActive = (linkHref: string) => {
 const isHomeActive = isPathActive(`${baseUrl}/`);
 ---
 
-<header
-  class:list={["header", { home: isHomeActive }]}
-  id="header"
->
+<header class:list={["header", { home: isHomeActive }]} id="header">
   <div class="content-width header-inner">
     <Logo />
-
     <nav id="navbar">
       <ul>
         {
@@ -57,17 +53,35 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
         }
       </ul>
     </nav>
+    <button
+      id="menu-button"
+      class="menu-toggle"
+      type="button"
+      aria-label="Navigatie openen"
+      aria-expanded="false"
+      aria-controls="navbar"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 <script>
-  const button = document.querySelector(".menu-button");
-  const nav = document.querySelector("#navbar");
+  const button = document.getElementById("menu-button");
+  const nav = document.getElementById("navbar");
 
   button?.addEventListener("click", () => {
-    const open = button.getAttribute("aria-expanded") === "true";
+    const open = button.classList.toggle("open");
 
-    button.setAttribute("aria-expanded", String(!open));
-    nav?.classList.toggle("open", !open);
+    nav?.classList.toggle("open", open);
+    button.setAttribute("aria-expanded", String(open));
+    button.setAttribute(
+      "aria-label",
+      open ? "Navigatie sluiten" : "Navigatie openen",
+    );
+
+    document.body.style.overflow = open ? "hidden" : "";
   });
 </script>
 
@@ -76,12 +90,9 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     position: absolute;
     top: 0;
     z-index: 10;
-
     width: 100%;
     height: var(--header-height);
-
     background: transparent;
-
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
@@ -112,27 +123,22 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 1rem;
-
+    gap: var(--space-sm);
     margin: 0;
     padding: 0;
-
     list-style: none;
   }
 
   nav a {
     display: block;
     position: relative;
-    padding: 0.5rem 0.7rem;
-
+    padding: var(--space-xs) 0.75rem;
     border: 1px solid transparent;
     border-radius: var(--radius-lg);
-
     color: var(--teal);
     font-family: "Montserrat", sans-serif;
     font-size: var(--fsz-sm);
     letter-spacing: 0.01rem;
-
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
@@ -170,5 +176,125 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
   header.scroll nav a.active:hover {
     color: var(--gold);
     background: transparent;
+  }
+
+  /* -----------------------------
+    HAMBURGER MENU
+  ----------------------------- */
+
+  .menu-toggle {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: var(--space-lg);
+      height: var(--space-md);
+      margin-right: var(--space-md);
+      padding: 0.2rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--teal);
+      border-radius: var(--radius-pill);
+      transition:
+        transform var(--transition),
+        opacity var(--transition);
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(0.5rem) rotate(45deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.menu-toggle.open span:nth-child(3) {
+      transform: translateY(-0.5rem) rotate(-45deg);
+    }
+
+    .menu-toggle:hover span {
+      background: var(--gold);
+    }
+
+    header.scroll .menu-toggle span {
+      background: var(--white);
+    }
+
+    header.scroll .menu-toggle:hover span {
+      background: var(--gold);
+    }
+
+    nav {
+      position: fixed;
+      z-index: 9;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: var(--teal);
+      color: var(--white);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity var(--transition),
+        visibility var(--transition);
+    }
+
+    nav::before {
+      content: "";
+      position: absolute;
+      background: var(--white);
+      mask: url("../assets/oyster.svg") no-repeat center;
+      mask-size: min(80vw, 45rem);
+      -webkit-mask: url("../assets/oyster.svg") no-repeat center;
+      -webkit-mask-size: min(80vw, 45rem);
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    nav.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    nav ul {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--white);
+      font-family: "Montserrat", sans-serif;
+      font-size: var(--fsz-xl);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
   }
 </style>
