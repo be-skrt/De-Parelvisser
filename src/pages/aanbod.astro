@@ -3,8 +3,9 @@ import MainLayout from "../layouts/MainLayout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
-import Icon from "../components/Icon.astro";
+import Icon from "../components/icons/Icon.astro";
 import CTA from "../components/CTA.astro";
+import CardGrid from "../components/CardGrid.astro";
 
 const services = [
   {
@@ -81,21 +82,26 @@ const services = [
   {
     id: "emdr",
     title: "EMDR",
-    intro: "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
+    intro:
+      "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
     paragraphs: [
-      "EMDR (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten."
+      "EMDR (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten.",
     ],
     icon: "eye",
-  }
+  },
 ];
 
-const emdr = {
-  title: "EMDR",
-  paragraphs: [
-    "In sommige situaties kan EMDR helpend zijn, bijvoorbeeld wanneer ingrijpende ervaringen blijven doorwerken in het dagelijks leven.",
-    "EMDR (Eye Movement Desensitization and Reprocessing) is een psychotherapeutische behandelmethode die onder meer wordt gebruikt bij traumatische ervaringen en angstklachten.",
-  ],
-};
+const serviceCards = services.map((service) => ({
+  href: `#${service.id}`,
+  title: service.title,
+  text: service.intro,
+  icon: service.icon,
+  variant: "white",
+  iconColors: {
+    main: "var(--teal)",
+  },
+  opacity: "var(--opacity-solid)",
+}));
 ---
 
 <MainLayout title="Aanbod">
@@ -103,11 +109,11 @@ const emdr = {
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Aanbod" heading="h1" />
       <div class="text-width">
-        <p class="lead">
+        <p>
           Mijn aanbod is breed en gericht op kinderen, jongeren,
           jongvolwassenen, hun omgeving en professionals.
         </p>
-        <p class="lead">
+        <p>
           Afhankelijk van de vraag en de context zoeken we samen naar een
           passende vorm van begeleiding. We bekijken samen wat helpend is en
           stemmen dit voortdurend af, zodat therapie een plek wordt waar groei,
@@ -120,29 +126,7 @@ const emdr = {
 
   <section id="aanbod" class="section section--center">
     <div class="content-width">
-      <div
-        class="service-cards"
-        data-aos="zoom-in"
-        data-aos-delay="200"
-        data-aos-duration="600"
-      >
-        {
-          services.map((card, index) => (
-            <Card
-              index={index}
-              href={`#${card.id}`}
-              title={card.title}
-              text={card.intro}
-              variant="white"
-              icon={card.icon}
-              iconColors={{
-                main: "var(--teal)",
-              }}
-              opacity="var(--opacity-solid)"
-            />
-          ))
-        }
-      </div>
+      <CardGrid columns="4" items={serviceCards} />
     </div>
   </section>
 
@@ -154,12 +138,17 @@ const emdr = {
             data-aos="fade-in"
             data-aos-delay="300"
             data-aos-duration="600"
-            class="section--xs"
             id={service.id}
-            class:list={["service-detail", { teal: index % 2 === 1 }]}
+            class:list={[
+              "section--xs",
+              "service-detail",
+              { white: index % 2 === 1 },
+            ]}
           >
             <div class="service-title">
-              <Icon name={service.icon} />
+              <figure class="service-detail-icon">
+                <Icon name={service.icon} />
+              </figure>
               <SectionTitle
                 heading="h2"
                 title={service.title}
@@ -188,7 +177,7 @@ const emdr = {
     </div>
   </section>
 
-   <CTA title="Nog vragen?" sub="Stel ze gerust." variant="aanbod" />
+  <CTA title="Nog vragen?" sub="Stel ze gerust." variant="aanbod" />
 </MainLayout>
 
 <style>
@@ -198,6 +187,10 @@ const emdr = {
     gap: var(--space-sm);
     position: relative;
     z-index: 0;
+
+    @media (max-width: 768px) {
+      gap: var(--space-xs);
+    }
   }
 
   .services-detail {
@@ -211,7 +204,7 @@ const emdr = {
     padding: var(--space-xl);
   }
 
-  .service-detail.teal {
+  .service-detail.white {
     background: var(--white);
     color: var(--teal);
     box-shadow: var(--shadow);
@@ -226,29 +219,15 @@ const emdr = {
     gap: var(--space-sm);
   }
 
+  .service-detail-icon {
+    width: clamp(4rem, 8vw, 7rem);
+    aspect-ratio: 1;
+  }
+
   .service-description {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: var(--space-sm);
-  }
-
-  .section--emdr {
-    background-image: url("../assets/eye.png");
-    background-color: var(--teal-dark);
-    background-size: 75%;
-    background-repeat: no-repeat;
-    background-position: center 48%;
-    overflow: hidden;
-    color: var(--white);
-  }
-
-  .emdr-container {
-    justify-self: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    width: fit-content;
-    color: var(--white);
-    padding: var(--space-xs);
   }
 
   @media (max-width: 800px) {

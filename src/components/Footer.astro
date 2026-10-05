@@ -98,6 +98,7 @@ import Button from "./Button.astro";
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: var(--space-sm);
   }
 
   .footer-credentials {
@@ -177,6 +178,13 @@ import Button from "./Button.astro";
     color: var(--teal-light);
   }
 
+  @media (max-width: 1400px) {
+    .footer-bottom {
+      justify-content: center;
+      gap: 25%;
+    }
+  }
+
   @media (max-width: 800px) {
     .footer-grid {
       grid-template-columns: 1fr 1fr;
@@ -184,13 +192,15 @@ import Button from "./Button.astro";
     }
   }
 
+  @media (max-width: 600px) {
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+
   @media (max-width: 500px) {
     .footer-grid {
       grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
     }
   }
 </style>

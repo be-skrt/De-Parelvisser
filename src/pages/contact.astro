@@ -5,11 +5,9 @@ import SectionTitle from "../components/SectionTitle.astro";
 ---
 
 <MainLayout title="Contact">
-  <section class="section--full section--center section--oyster-teal">
+  <section class="section section--full section--center section--oyster-teal">
     <div class="content-width contact-inner">
       <div class="contact-intro">
-        <p class="eyebrow">Contact</p>
-
         <SectionTitle
           title="Neem gerust contact op."
           heading="h1"
@@ -63,33 +61,22 @@ import SectionTitle from "../components/SectionTitle.astro";
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 5rem;
-  }
-
-  .contact-intro h1 {
-    max-width: 650px;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 300;
-  }
-
-  .lead {
-    max-width: 600px;
-    font-size: 1.3rem;
+    gap: var(--space-xxl);
   }
 
   .contact-card {
     position: relative;
     z-index: 2;
-    padding: 3rem;
+    padding: var(--space-xl);
     background: var(--white);
     border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 5px 10px rgba(40, 83, 90, 0.12);
   }
 
   .contact-items {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-md);
   }
 
   .contact-item {
@@ -115,18 +102,14 @@ import SectionTitle from "../components/SectionTitle.astro";
     font-style: normal;
   }
 
-  .contact-card .button {
-    margin-top: 2rem;
-  }
-
   @media (max-width: 750px) {
     .contact-inner {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: var(--space-xs);
     }
 
     .contact-card {
-      padding: 2rem;
+      padding: var(--space-sm);
     }
   }
 </style>

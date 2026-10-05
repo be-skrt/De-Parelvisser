@@ -28,8 +28,8 @@
     height: 0.1rem;
     position: fixed;
     z-index: 9;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 5%;
+    right: 5%;
     padding: 1.2rem;
     border: 2px solid transparent;
     border-radius: var(--radius-pill);
@@ -37,6 +37,10 @@
 
   .scrollButton.active {
     transform: scale(1);
+
+    @media (max-width:500px) {
+      transform: scale(0.7);
+    }
   }
 
   .scrollButton.active:hover {

@@ -1,6 +1,5 @@
 ---
 // imports
-import "aos/dist/aos.css";
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -22,8 +21,12 @@ const metaDescription =
     <Footer />
   </body>
   <script>
+    import "aos/dist/aos.css";
     import AOS from "aos";
-    AOS.init();
+
+    AOS.init({
+      disable: 'phone'
+    });
   </script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/scrollButton.js"></script>

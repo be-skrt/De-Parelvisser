@@ -10,6 +10,7 @@ import CTA from "../components/CTA.astro";
 import grietPic from "/src/assets/griet-ackerman.jpg";
 import { Image } from "astro:assets";
 import { undefined } from "astro:schema";
+import CardGrid from "../components/CardGrid.astro";
 
 const clientName = "Griet Ackerman";
 const businessName = "De Parelvisser";
@@ -20,26 +21,61 @@ const services = [
     title: "Ouder-kind gesprekken",
     text: "Begeleiding rond verbinding, hechting en de relatie tussen ouder en kind.",
     href: "aanbod#ouder-kind",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Diagnostiek",
     text: "Samen onderzoeken en begrijpen wat er speelt en welke ondersteuning nodig is.",
     href: "aanbod#diagnostiek",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Individuele therapie",
     text: "Therapie voor kinderen, jongeren en jongvolwassenen, afgestemd op hun noden.",
     href: "aanbod#therapie",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Ouderbegeleiding & gezinstherapie",
     text: "Ondersteuning rond opvoeding, relaties en gezinsdynamieken.",
     href: "aanbod#ouders-gezin",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Professionals",
     text: "Supervisie, intervisie en vorming voor professionals.",
     href: "aanbod#professionals",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
 ];
 ---
@@ -108,25 +144,7 @@ const services = [
         </p>
       </div>
 
-      <div class="service-grid">
-        {
-          services.map((service, index) => (
-            <Card
-              index={index}
-              href={service.href}
-              title={service.title}
-              text={service.text}
-              variant="cream"
-              icon="oyster"
-              iconColors={{
-                main: "var(--teal)",
-                secondary: "var(--gold)"
-              }}
-              opacity="var(--opacity-strong)"
-            />
-          ))
-        }
-      </div>
+      <CardGrid columns="5" items={services} />
 
       <Button
         href=`${import.meta.env.BASE_URL}/aanbod`
@@ -137,10 +155,11 @@ const services = [
 
   <!-- CTA -->
 
-  <CTA 
-    title="Heb je een vraag?" 
-    sub="Neem gerust contact op. We bekijken samen wat mogelijk is." 
-    variant="home" />
+  <CTA
+    title="Heb je een vraag?"
+    sub="Neem gerust contact op. We bekijken samen wat mogelijk is."
+    variant="home"
+  />
 </MainLayout>
 
 <style>
@@ -176,9 +195,7 @@ const services = [
   .about-content span {
     display: inline;
     align-self: flex-end;
-
     color: var(--gold);
-
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
     font-size: var(--fsz-xl);
@@ -197,8 +214,6 @@ const services = [
     margin-top: 2.5rem;
     text-align: center;
   }
-
-  
 
   @media (max-width: 1000px) {
     .service-grid {
@@ -222,12 +237,6 @@ const services = [
 
     .service-grid {
       grid-template-columns: 1fr;
-    }
-
-    .cta-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 2rem;
     }
   }
 </style>

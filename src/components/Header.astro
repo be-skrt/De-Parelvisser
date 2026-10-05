@@ -87,15 +87,21 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
 
 <style>
   header {
-    position: absolute;
+    position: relative;
     top: 0;
-    z-index: 10;
+    z-index: 11;
     width: 100%;
     height: var(--header-height);
     background: transparent;
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
+  }
+
+  @media (max-width: 500px) {
+    header {
+      height: calc(var(--header-height) * 0.8);
+    }
   }
 
   header.home,
@@ -134,7 +140,7 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     position: relative;
     padding: var(--space-xs) 0.75rem;
     border: 1px solid transparent;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-pill);
     color: var(--teal);
     font-family: "Montserrat", sans-serif;
     font-size: var(--fsz-sm);
@@ -184,15 +190,13 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
 
   .menu-toggle {
     display: none;
-  }
 
-  @media (max-width: 900px) {
-    .menu-toggle {
+    @media (max-width: 900px) {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: var(--space-lg);
-      height: var(--space-md);
+      width: 2rem;
+      height: 1.5rem;
       margin-right: var(--space-md);
       padding: 0.2rem;
       border: none;
@@ -201,7 +205,9 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
       position: relative;
       z-index: 10;
     }
+  }
 
+  @media (max-width: 900px) {
     .menu-toggle span {
       display: block;
       width: 100%;
@@ -213,6 +219,10 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
         opacity var(--transition);
     }
 
+    header.scroll .menu-toggle span {
+      background: var(--white);
+    }
+
     .menu-toggle.open span:nth-child(1) {
       transform: translateY(0.5rem) rotate(45deg);
     }
@@ -221,20 +231,12 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
       opacity: 0;
     }
 
-    .menu-toggle.menu-toggle.open span:nth-child(3) {
+    .menu-toggle.open span:nth-child(3) {
       transform: translateY(-0.5rem) rotate(-45deg);
     }
 
-    .menu-toggle:hover span {
-      background: var(--gold);
-    }
-
-    header.scroll .menu-toggle span {
+    .menu-toggle.open span {
       background: var(--white);
-    }
-
-    header.scroll .menu-toggle:hover span {
-      background: var(--gold);
     }
 
     nav {
@@ -251,6 +253,7 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
+      overflow-y: hidden;
       transition:
         opacity var(--transition),
         visibility var(--transition);
@@ -272,6 +275,8 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+      overscroll-behavior: contain;
+      overflow: hidden;
     }
 
     nav ul {
@@ -294,7 +299,13 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     }
 
     nav a:hover {
+      color: var(--white);
+    }
+
+    nav a.active,
+    nav a.active:hover {
       color: var(--gold);
+      background: transparent;
     }
   }
 </style>

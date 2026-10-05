@@ -1,0 +1,45 @@
+---
+import Card from "./Card.astro";
+
+interface Card {
+  href: string,
+  title: string,
+  text: string,
+  price: string,
+  variant: string,
+  icon: string,
+  iconColors: {},
+  opacity: string
+}
+
+const { columns = 3, items = [] } = Astro.props;
+---
+
+<div class="card-grid" style={`--columns: ${columns}`}>
+  {
+    items.map((item: Card, index: number) => (
+      <Card
+        index={index}
+        {...item}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(min(2, var(--columns)), minmax(0, 1fr));
+      gap: var(--space-xs);
+    }
+
+    @media (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

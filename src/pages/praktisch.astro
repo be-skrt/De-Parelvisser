@@ -2,27 +2,53 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import CTA from "../components/CTA.astro";
+import Card from "../components/Card.astro";
+import CardGrid from "../components/CardGrid.astro";
 
 const prices = [
   {
-    service: "Individueel gesprek",
-    duration: "± 50 minuten",
+    title: "Individueel gesprek",
+    text: "± 50 minuten",
     price: "€75",
+    variant: "white",
+    icon: "therapy",
+    iconColors: {
+      main: "var(--teal)"
+    },
+    opacity: "var(--opacity-solid)",
   },
   {
-    service: "Gezinsgesprek",
-    duration: "± 1u 15min",
+    title: "Gezinsgesprek",
+    text: "± 1u 15min",
     price: "€90",
+    variant: "white",
+    icon: "family",
+    iconColors: {
+      main: "var(--teal)"
+    },
+    opacity: "var(--opacity-solid)",
   },
   {
-    service: "Diagnostiek",
-    duration: "Inclusief testafname en verslag",
+    title: "Diagnostiek",
+    text: "Inclusief testafname en verslag",
     price: "vanaf €250",
+    variant: "white",
+    icon: "diagnosis",
+    iconColors: {
+      main: "var(--teal)"
+    },
+    opacity: "var(--opacity-solid)",
   },
   {
-    service: "Bespreking resultaten",
-    duration: "Per sessie",
+    title: "Bespreking resultaten",
+    text: "Per sessie",
     price: "€75",
+    variant: "white",
+    icon: "therapy",
+    iconColors: {
+      main: "var(--teal)"
+    },
+    opacity: "var(--opacity-solid)",
   },
 ];
 ---
@@ -87,19 +113,22 @@ const prices = [
           deze afspraken gelden onderstaande tarieven.
         </p>
       </div>
-      <div class="content-width section--center price-grid">
+
+      <CardGrid columns="4" items={prices} />
+
+      <!-- <div class="content-width section--center price-grid">
         {
-          prices.map((item) => (
-            <article class="price-card">
-              <h3 class="card-title">{item.service}</h3>
-
-              <p class="lead">{item.duration}</p>
-
-              <strong class="card-price">{item.price}</strong>
-            </article>
+          prices.map((item, index) => (
+            <Card
+              index={index}
+              title={item.service}
+              text={item.duration}
+              price={item.price}
+              variant="white"
+            />
           ))
         }
-      </div>
+      </div> -->
       <div class="additional-info">
         <h3>Bijkomende diagnostiek</h3>
         <p>
@@ -176,36 +205,8 @@ const prices = [
 
   .price-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .price-card {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-sm);
-    padding: var(--space-lg);
-
-    background: var(--white);
-    color: var(--teal);
-
-    border-radius: var(--radius-md);
-    box-shadow: var(--card-shadow);
-
-    --card-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
-  }
-
-  .card-title {
-    font-size: var(--fsz-lg);
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-
-  .price-card strong {
-    color: var(--gold);
-    font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
-    font-weight: 400;
   }
 
   .additional-info {
@@ -218,6 +219,7 @@ const prices = [
     background: var(--white);
     box-shadow: var(--card-shadow);
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(40, 83, 90, 0.4);
   }
 
   .additional-info h3 {
@@ -248,20 +250,18 @@ const prices = [
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: var(--space-sm);
   }
 
   .practical-card {
     padding: var(--space-lg);
-
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-md);
-
     background: rgba(255, 255, 255, 0.08);
   }
 
   .practical-card h3 {
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-sm);
     color: var(--gold);
   }
 
@@ -287,12 +287,10 @@ const prices = [
 
     background: var(--white);
     color: var(--teal);
-    box-shadow: var(--card-shadow);
-    --card-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
+    box-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
   }
 
   .professional-card h3 {
-    margin: 0;
     color: var(--gold);
   }
 
@@ -306,25 +304,6 @@ const prices = [
 
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-  }
-
-  .practical-note {
-    background: var(--sage);
-  }
-
-  .practical-note > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .practical-note h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .practical-note p {
-    margin: 0;
   }
 
   @media (max-width: 750px) {
@@ -342,11 +321,6 @@ const prices = [
 
     .price-grid {
       grid-template-columns: 1fr;
-    }
-
-    .practical-note > div {
-      flex-direction: column;
-      align-items: flex-start;
     }
   }
 </style>

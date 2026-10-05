@@ -1,8 +1,9 @@
 ---
-import MeetIcon from "../components/MeetIcon.astro";
-import LightBulbIcon from "../components/LightBulbIcon.astro";
-import PlanIcon from "../components/PlanIcon.astro";
-import FeedbackIcon from "../components/FeedbackIcon.astro";
+import MeetIcon from "../components/icons/MeetIcon.astro";
+import LightBulbIcon from "../components/icons/LightBulbIcon.astro";
+import PlanIcon from "../components/icons/PlanIcon.astro";
+import FeedbackIcon from "../components/icons/FeedbackIcon.astro";
+import Icon from "../components/icons/Icon.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Card from "../components/Card.astro";
@@ -11,6 +12,7 @@ import { Image } from "astro:assets";
 import imgKinderen from "../assets/aquarium.jpg";
 import imgJongeren from "../assets/youth.jpg";
 import imgJongvolwassenen from "../assets/adolescents.jpg";
+import CardGrid from "../components/CardGrid.astro";
 
 const audience = [
   {
@@ -77,21 +79,49 @@ const audienceCards = [
     href: "#kinderen",
     title: "Kinderen",
     text: "Een veilige plek waar kinderen en hun ouders terechtkunnen voor ondersteuning en begeleiding.",
+    variant: "teal",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal-light)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     href: "#jongeren",
     title: "Jongeren",
     text: "Ruimte om stil te staan bij wat leeft en samen te zoeken naar wat kan helpen groeien.",
+    variant: "teal",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal-light)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     href: "#jongvolwassenen",
     title: "Jongvolwassenen",
     text: "Ondersteuning rond identiteit, relaties, evenwicht en persoonlijke groei.",
+    variant: "teal",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal-light)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     href: "#professionelen",
     title: "Professionelen",
     text: "Supervisie, intervisie en vorming voor wie zich professioneel wil verdiepen.",
+    variant: "teal",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal-light)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
 ];
 
@@ -99,14 +129,62 @@ const professionalCards = [
   {
     title: "Supervisie",
     text: "Ruimte om stil te staan bij je werk en je professionele handelen te onderzoeken.",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Intervisie",
     text: "Samen reflecteren, ervaringen uitwisselen en leren van elkaars perspectieven.",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
   },
   {
     title: "Vorming",
     text: "Vorming en trainingen op maat van jouw werkcontext en specifieke vragen.",
+    variant: "cream",
+    icon: "oyster",
+    iconColors: {
+      main: "var(--teal)",
+      secondary: "var(--gold)",
+    },
+    opacity: "var(--opacity-strong)",
+  },
+];
+
+const process = [
+  {
+    step: "1",
+    title: "Kennismaken",
+    text: "Tijdens een intake en enkele verkennende gesprekken maken we ruimte om elkaar te leren kennen en te ontdekken wat er speelt.",
+    icon: "meet",
+  },
+  {
+    step: "2",
+    title: "Verhelderen",
+    text: "We brengen samen in kaart wat moeilijk loopt, wat belangrijk is en wat eventueel verder onderzocht moet worden.",
+    icon: "lightbulb",
+  },
+  {
+    step: "3",
+    title: "Plan maken",
+    text: "Vanuit wat we ontdekken, bepalen we samen welke veranderingen je wenst en wat daarbij kan helpen.",
+    icon: "plan",
+  },
+  {
+    step: "4",
+    title: "Bijsturen",
+    text: "Doorheen het traject blijven we samen kijken wat helpend is. Waar nodig sturen we bij.",
+    icon: "feedback",
   },
 ];
 ---
@@ -115,13 +193,13 @@ const professionalCards = [
   <section class="section--full section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Werkwijze" heading="h1" />
-      <p class="lead">
+      <p>
         Ieder mens beschikt over innerlijke kwaliteiten en veerkracht. Soms zijn
         die niet meteen zichtbaar, omdat ze verscholen liggen onder wat moeilijk
         loopt of zwaar aanvoelt.
       </p>
 
-      <p class="lead">
+      <p>
         In therapie nemen we de tijd om te vertragen, te verhelderen en te
         ontdekken wat voor jou — of voor je kind — waardevol is.
       </p>
@@ -134,10 +212,10 @@ const professionalCards = [
 
   <!-- DIVER SECTION -->
 
-  <section class="section section--center section--diver">
-    <div class="content-width story-grid diver">
+  <section class="section--diver">
+    <div class="content-width diver">
       <div
-        class="story-content"
+        class="diver-content"
         data-aos="zoom"
         data-aos-duration="800"
         data-aos-delay="400"
@@ -173,7 +251,8 @@ const professionalCards = [
           en context bekijken we samen welke vorm van begeleiding aansluit.
         </p>
       </div>
-      <div
+
+      <!-- <div
         class="audience-grid"
         data-aos="zoom-in"
         data-aos-delay="200"
@@ -196,7 +275,15 @@ const professionalCards = [
             />
           ))
         }
-      </div>
+      </div> -->
+
+      <CardGrid
+        columns="4"
+        items={audienceCards}
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        data-aos-duration="600"
+      />
     </div>
   </section>
 
@@ -229,7 +316,7 @@ const professionalCards = [
                 : ["section--white", "section--pearls-teal"],
             ]}
           >
-            <div class="heading section--center section--col text--center">
+            <div class="heading content-width section--center section--col text--center">
               <p class="eyebrow">{item.target}</p>
               <SectionTitle title={item.title} heading="h2" />
             </div>
@@ -257,7 +344,7 @@ const professionalCards = [
                 </div>
 
                 <div
-                  class="grid-items"
+                  class="grid-items grid-content"
                   data-aos={contentAnimation}
                   data-aos-duration="1000"
                   data-aos-delay="200"
@@ -271,7 +358,7 @@ const professionalCards = [
                   <div class="options-container">
                     <h3 class="text--gold">Wat kan aan bod komen?</h3>
 
-                    <ul>
+                    <ul class="options-list">
                       {item.options.map((option) => (
                         <li>{option}</li>
                       ))}
@@ -314,14 +401,15 @@ const professionalCards = [
         </p>
       </div>
 
-      <div class="professional-grid section--center section--col">
+      <CardGrid columns="3" items={professionalCards} />
+
+      <!-- <div class="professional-grid section--center section--col">
         {
           professionalCards.map((card, index) => (
             <Card
               index={index}
               title={card.title}
               text={card.text}
-              type="article"
               variant="cream"
               iconColors={{
                 main: "var(--teal)",
@@ -331,7 +419,7 @@ const professionalCards = [
             />
           ))
         }
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -359,50 +447,21 @@ const professionalCards = [
         data-aos-delay="200"
       >
         <div class="process-line" aria-hidden="true"></div>
-
-        <article class="process-step">
-          <div class="process-icon">
-            <MeetIcon />
-          </div>
-          <h3>Kennismaken</h3>
-          <p>
-            Tijdens een intake en enkele verkennende gesprekken maken we ruimte
-            om elkaar te leren kennen en te ontdekken wat er speelt.
-          </p>
-        </article>
-
-        <article class="process-step">
-          <div class="process-icon">
-            <LightBulbIcon />
-          </div>
-          <h3>Verhelderen</h3>
-          <p>
-            We brengen samen in kaart wat moeilijk loopt, wat belangrijk is en
-            wat eventueel verder onderzocht moet worden.
-          </p>
-        </article>
-
-        <article class="process-step">
-          <div class="process-icon">
-            <PlanIcon />
-          </div>
-          <h3>Plan maken</h3>
-          <p>
-            Vanuit wat we ontdekken, bepalen we samen welke veranderingen je
-            wenst en wat daarbij kan helpen.
-          </p>
-        </article>
-
-        <article class="process-step">
-          <div class="process-icon">
-            <FeedbackIcon />
-          </div>
-          <h3>Bijsturen</h3>
-          <p>
-            Doorheen het traject blijven we samen kijken wat helpend is. Waar
-            nodig sturen we bij.
-          </p>
-        </article>
+        {
+          process.map((step) => {
+            return (
+              <article class="process-step">
+                <div class="process-icon">
+                  <Icon name={step.icon} />
+                </div>
+                <h3 class="process-title">
+                  {step.step}. {step.title}
+                </h3>
+                <p>{step.text}</p>
+              </article>
+            );
+          })
+        }
       </div>
     </div>
   </section>
@@ -427,21 +486,62 @@ const professionalCards = [
 <style>
   .section--full .eyebrow {
     margin-top: 2.5rem;
+
+    @media (max-width: 500px) {
+      margin: 0;
+    }
   }
 
   .section--diver {
     position: relative;
     height: calc(50vh + var(--header-height));
-    background-image: url("/images/diver.jpg");
+    background-image: url("../assets/diver.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-position: center 35%;
     color: var(--white);
-    overflow: hidden;
+
+    @media (max-width: 800px) {
+      height: fit-content;
+      background-position-x: 20%;
+    }
   }
 
   .section--diver h2 {
     margin-bottom: var(--space-sm);
+  }
+
+  .diver {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .diver-content {
+    width: 45%;
+    text-align: right;
+  }
+
+  @media (max-width: 800px) {
+    .diver-content {
+      background: rgba(40, 83, 90, 0.2);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .diver-content p {
+      max-width: auto;
+    }
+
+    .diver-content,
+    .diver-content p {
+      text-align: center;
+    }
   }
 
   .audience-grid {
@@ -450,11 +550,33 @@ const professionalCards = [
     gap: var(--space-sm);
   }
 
+  @media (max-width: 1100px) {
+    .audience-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 550px) {
+    .audience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .story-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-xxl);
+    gap: var(--space-xl);
     margin-bottom: var(--space-xl);
+  }
+
+  @media (max-width: 700px) {
+    .story-grid,
+    .story-grid.reverse {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .story-grid--reverse .grid-items:first-child {
@@ -467,27 +589,27 @@ const professionalCards = [
     grid-row: 1;
   }
 
-  .story-grid.diver {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .story-grid.diver .story-content {
-    margin-top: var(--space-xl);
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: flex-end;
-    text-align: right;
+  .story-image {
+    width: 100%;
+    align-self: center;
   }
 
   .story-img {
     width: 100%;
+    min-width: 100%;
     max-height: 550px;
     object-fit: cover;
     border-radius: var(--radius-md);
     box-shadow: 0 5px 15px rgba(15, 35, 39, 0.5);
+
+    @media (max-width: 700px) {
+      max-height: 50vw;
+    }
+
+    @media (max-width: 400px) {
+      width: var(--content-max-width);
+      max-height: 40vw;
+    }
   }
 
   .grid-items {
@@ -495,7 +617,8 @@ const professionalCards = [
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--space-md);
+    gap: var(--space-xs);
+    width: 100%;
   }
 
   .options-container {
@@ -509,6 +632,10 @@ const professionalCards = [
     border-radius: var(--radius-md);
     box-shadow: 0 5px 15px rgba(15, 35, 39, 0.5);
     overflow: hidden;
+  }
+
+  .options-list {
+    z-index: 5;
   }
 
   .section--teal .options-container {
@@ -529,10 +656,22 @@ const professionalCards = [
     width: 200px;
     height: 200px;
     opacity: var(--opacity-medium);
-    mask: url("/images/oyster.svg") no-repeat;
+    mask: url("../assets/oyster.svg") no-repeat;
     mask-size: contain;
     transform: rotate(8deg);
     background-color: var(--white);
+    z-index: 1;
+  }
+
+  @media (max-width: 700px) {
+    .section--white .options-container::after {
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      scale: 2.5;
+      rotate: -8deg;
+      opacity: 0.2;
+    }
   }
 
   .section--teal .options-container::after {
@@ -543,10 +682,22 @@ const professionalCards = [
     width: 200px;
     height: 200px;
     opacity: var(--opacity-solid);
-    mask: url("/images/oyster.svg") no-repeat;
+    mask: url("../assets/oyster.svg") no-repeat;
     mask-size: contain;
     transform: rotate(8deg);
     background-color: var(--gold);
+    z-index: 1;
+  }
+
+  @media (max-width: 700px) {
+    .section--teal .options-container::after {
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      scale: 2.5;
+      rotate: -8deg;
+      opacity: 0.2;
+    }
   }
 
   .section--teal .options-container li::marker {
@@ -556,16 +707,28 @@ const professionalCards = [
   .professional-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: var(--space-sm);
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .process {
     position: relative;
-
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
     gap: 2rem;
+
+    @media (max-width: 786px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .process-line {
@@ -577,17 +740,18 @@ const professionalCards = [
     background: var(--gold);
     opacity: var(--opacity-heavy);
     z-index: 0;
+
+    @media (max-width: 786px) {
+      display: none;
+    }
   }
 
   .process-step {
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     text-align: center;
-
     z-index: 1;
   }
 
@@ -602,6 +766,11 @@ const professionalCards = [
     background: var(--white);
     border: 2px solid var(--gold);
     border-radius: var(--radius-pill);
+
+    @media (max-width: 500px) {
+      width: 5rem;
+      height: 5rem;
+    }
   }
 
   .process-step h3 {
@@ -619,25 +788,5 @@ const professionalCards = [
     color: var(--teal-dark);
 
     font-size: var(--fsz-md);
-  }
-
-  
-
-  @media (max-width: 900px) {
-    .story-grid,
-    .story-grid.reverse {
-      grid-template-columns: 2fr;
-      gap: 3rem;
-    }
-
-    .audience-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 550px) {
-    .audience-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

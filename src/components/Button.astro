@@ -29,20 +29,17 @@ const {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-
     padding: var(--space-sm) var(--space-md);
     width: fit-content;
-
     border: 1px solid transparent;
     border-radius: var(--radius-lg);
-
     font-family: "Montserrat", sans-serif;
     font-size: var(--fsz-sm);
-
     transition:
       background-color var(--transition),
       color var(--transition),
       transform var(--transition);
+    z-index: 10;
   }
 
   .button::after {

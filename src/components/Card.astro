@@ -1,10 +1,11 @@
 ---
-import Icon from "./Icon.astro";
+import Icon from "./icons/Icon.astro";
 
 const {
   href,
   title,
   text,
+  price,
   index,
   variant = "white",
   icon = "oyster",
@@ -17,38 +18,36 @@ const {
   href ? (
     <a
       id={`card-${index + 1}`}
-      class:list={[
-        "card",
-        "text--center",
-        `card--${variant}`,
-      ]}
+      class:list={["card", "text--center", `card--${variant}`]}
       href={href}
     >
-      <div
-        class="card-icon"
-        style={`
+      {icon && (
+        <div
+          class="card-icon"
+          style={`
           --icon-color: ${iconColors.main ?? "var(--teal)"};
           --icon-color-2: ${iconColors.secondary ?? iconColors.main ?? "var(--teal)"};
           --icon-color-3: ${iconColors.accent ?? iconColors.main ?? "var(--teal)"};
-          --opacity: ${opacity ?? opacity};
+          --opacity: ${opacity};
         `}
-      >
-        <Icon name={icon} />
-      </div>
+        >
+          <Icon name={icon} />
+        </div>
+      )}
       <div class="card-text">
         <h3 class="card-title">{title}</h3>
         <p class="card-description">{text}</p>
       </div>
-      <span class="card-link">Meer info →</span>
+      {price ? (
+        <strong class="card-price">{price}</strong>
+      ) : (
+        <span class="card-link">Meer info →</span>
+      )}
     </a>
   ) : (
     <article
       id={`card-${index + 1}`}
-      class:list={[
-        "card",
-        "text--center",
-        `card--${variant}`,
-      ]}
+      class:list={["card", "text--center", `card--${variant}`]}
     >
       <div
         class="card-icon"
@@ -56,7 +55,7 @@ const {
           --icon-color: ${iconColors.main ?? "var(--teal)"};
           --icon-color-2: ${iconColors.secondary ?? iconColors.main ?? "var(--teal)"};
           --icon-color-3: ${iconColors.accent ?? iconColors.main ?? "var(--teal)"};
-          --opacity: ${opacity ?? opacity};
+          --opacity: ${opacity};
         `}
       >
         <Icon name={icon} />
@@ -65,6 +64,7 @@ const {
       <div class="card-text">
         <h3 class="card-title">{title}</h3>
         <p class="card-description">{text}</p>
+        {price && <strong class="card-price">{price}</strong>}
       </div>
     </article>
   )
@@ -75,8 +75,8 @@ const {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 300px;
-    padding: var(--space-lg);
+    justify-content: space-between;
+    padding: var(--space-md);
     gap: var(--space-lg);
     border: 1px solid var(--card-border);
     border-radius: var(--radius-md);
@@ -86,6 +86,16 @@ const {
     transition:
       transform var(--transition),
       box-shadow var(--transition);
+
+    @media (max-width: 768px) {
+      gap: var(--space-md);
+      padding: var(--space-md);
+    }
+
+    @media (max-width: 550px) {
+      gap: var(--space-xs);
+      padding: var(--space-sm);
+    }
   }
 
   a.card {
@@ -123,6 +133,8 @@ const {
     --card-text: var(--white);
     --card-title: var(--gold);
     --card-link: var(--gold);
+    --card-shadow: rgba(13, 29, 35, 0.3);
+    --card-shadow-soft: rgba(13, 29, 35, 0.1);
   }
 
   .card-icon {
@@ -132,11 +144,16 @@ const {
     width: clamp(50px, 2.5rem, 75px);
     opacity: var(--opacity);
     color: var(--icon-color);
+
+    @media (max-width: 320px) {
+      display: none;
+    }
   }
 
   .card-text {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--space-xs);
   }
 
@@ -147,13 +164,21 @@ const {
   }
 
   .card-description {
+    margin: 0;
     font-size: var(--fsz-sm);
+  }
+
+  .card-price {
+    color: var(--card-title);
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--fsz-lg);
+    font-weight: 400;
   }
 
   .card-link {
     margin-top: auto;
     color: var(--card-link);
     font-family: "Montserrat", sans-serif;
-    font-size: var(--fsz-xs);
+    font-size: var(--fsz-sm);
   }
 </style>

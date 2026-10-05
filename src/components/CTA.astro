@@ -68,9 +68,16 @@ const { title, sub, variant, buttonVariant = "default" } = Astro.props;
     align-items: center;
     justify-content: space-between;
   }
-
+  
+  .cta-inner {
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
   .cta-inner h2 {
-    margin: 1rem 0;
+    margin: var(--space-sm) 0;
     color: var(--gold);
   }
 </style>

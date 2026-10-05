@@ -62,6 +62,26 @@
   --space-xxl: 6rem;
   --space-xxxl: 8rem;
 
+  @media (max-width: 768px) {
+    --space-xxxl: 4rem;
+    --space-xxl: 3rem;
+    --space-xl: 2.5rem;
+    --space-lg: 1.8rem;
+  }
+
+  @media (max-width: 500px) {
+    --space-xxxl: 3.7rem;
+    --space-xxl: 2.7rem;
+    --space-xl: 2.2rem;
+    --space-lg: 1.6rem;
+    --space-md: 1.2rem;
+    --space-sm: 0.8rem;
+  }
+
+  @media (max-width: 320px) {
+    --space-xl: 2rem;
+  }
+
   /* --------------------------------
     RADIUS
   -------------------------------- */
@@ -83,11 +103,11 @@
     TYPOGRAPHY
   -------------------------------- */
 
-  --fsz-xxs: 0.7rem;
-  --fsz-xs: 0.8rem;
-  --fsz-sm: 0.95rem;
-  --fsz-md: 1.05rem;
-  --fsz-lg: 1.2rem;
+  --fsz-xxs: clamp(0.6rem, 0.8vw, 0.7rem);
+  --fsz-xs: clamp(0.7rem, 0.9vw, 0.8rem);
+  --fsz-sm: clamp(0.8rem, 1vw, 0.95rem);
+  --fsz-md: clamp(0.9rem, 1.2vw, 1.05rem);
+  --fsz-lg: clamp(1rem, 1.5vw, 1.3rem);
   --fsz-xl: clamp(1.5rem, 2vw, 2rem);
   --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
   --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
@@ -121,7 +141,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-Regular"),
     url("../fonts/Fira_Sans/FiraSans-Regular.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-Regular.woff2") format("woff2");
   font-weight: 400;
@@ -132,7 +151,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-Italic"),
     url("../fonts/Fira_Sans/FiraSans-Italic.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-Italic.woff2") format("woff2");
   font-weight: 400;
@@ -143,7 +161,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-Bold"),
     url("../fonts/Fira_Sans/FiraSans-Bold.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-Bold.woff2") format("woff2");
   font-weight: 700;
@@ -154,7 +171,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-BoldItalic"),
     url("../fonts/Fira_Sans/FiraSans-BoldItalic.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-BoldItalic.woff2") format("woff2");
   font-weight: 700;
@@ -165,7 +181,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-Light"),
     url("../fonts/Fira_Sans/FiraSans-Light.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-Light.woff2") format("woff2");
   font-weight: 300;
@@ -176,7 +191,6 @@
 @font-face {
   font-family: "Fira Sans";
   src:
-    local("FiraSans-LightItalic"),
     url("../fonts/Fira_Sans/FiraSans-LightItalic.woff") format("woff"),
     url("../fonts/Fira_Sans/FiraSans-LightItalic.woff2") format("woff2");
   font-weight: 300;
@@ -245,6 +259,15 @@ body {
   overflow-x: clip;
 }
 
+body {
+  overscroll-behavior: contain;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
 /* --------------------------------
   TYPOGRAPHY
 -------------------------------- */
@@ -279,8 +302,12 @@ li {
 }
 
 p {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-sm);
   max-width: 70ch;
+
+  @media (max-width: 768px) {
+    max-width: fit-content;
+  }
 }
 
 strong {
@@ -300,6 +327,10 @@ section {
   margin-inline: auto;
   padding-block: var(--space-lg);
   z-index: 9;
+
+  @media (max-width: 768px) {
+    width: min(calc(100% - 2rem), var(--content-max-width));
+  }
 }
 
 .text-width {
@@ -309,6 +340,12 @@ section {
 
 .heading {
   padding-bottom: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .heading {
+    padding-bottom: var(--space-xs);
+  }
 }
 
 .section {
@@ -603,13 +640,16 @@ section {
 -------------------------  */
 
 .eyebrow {
-  margin: var(--space-xs) 0;
   color: var(--gold);
   font-family: "Montserrat", sans-serif;
-  font-size: var(--fsz-xs);
+  font-size: var(--fsz-sm);
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+
+  @media (max-width: 400px) {
+    font-size: var(--fsz-xs);
+  }
 }
 
 .text--gold {
@@ -654,26 +694,5 @@ section {
   }
   100% {
     transform: scale(1);
-  }
-}
-
-/*  -------------------------
-  MOBILE
--------------------------  */
-
-@media (max-width: 768px) {
-  :root {
-    --space-xxxl: 5rem;
-    --space-xxl: 4rem;
-    --space-xl: 2.5rem;
-  }
-
-  p,
-  li {
-    font-size: 1rem;
-  }
-
-  .content-width {
-    width: min(calc(100% - 2rem), var(--content-max-width));
   }
 }
