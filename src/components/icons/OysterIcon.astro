@@ -1,5 +1,10 @@
 ---
-const { width, height } = Astro.props;
+const {
+  width,
+  height,
+  shellColor = "var(--teal)",
+  pearlColor = "var(--gold-light)",
+} = Astro.props;
 ---
 
 <svg
@@ -9,6 +14,10 @@ const { width, height } = Astro.props;
   xmlns="http://www.w3.org/2000/svg"
   width={width}
   height={height}
+  style={`
+    --oyster-shell-color: ${shellColor};
+    --oyster-pearl-color: ${pearlColor};
+  `}
 >
   <defs>
     <mask

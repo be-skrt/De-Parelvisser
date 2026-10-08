@@ -84,9 +84,9 @@ const services = [
   <!-- INTRODUCTION -->
 
   <section
-    class="section--full section--center section--teal section--pearls-white"
+    class="section section--full section--center section--teal section--pearls-white"
   >
-    <div class="content-width about-grid">
+    <div class="content-width about-container">
       <figure
         class="about-image"
         data-aos="fade-in"
@@ -161,17 +161,34 @@ const services = [
 </MainLayout>
 
 <style>
-  .about-grid {
-    display: grid;
-    grid-template-columns: minmax(300px, 0.8fr) 1fr;
+  .about-container {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: var(--space-xxxl);
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      padding-top: var(--space-xxxl);
+    }
   }
 
   .about-image {
-    width: clamp(120px, 100%, 360px);
-    box-shadow: 0 0 300px rgba(95, 147, 153, 0.8);
+    width: 100%;
+    min-width: 180px;
+    max-width: 300px;
+    aspect-ratio: 1;
+    box-shadow: 0 0 200px rgba(95, 147, 153, 0.8);
     border-radius: var(--radius-pill);
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+      width: 50%;
+    }
+
+    @media (max-width: 700px) {
+      box-shadow: 0 0 20px rgba(95, 147, 153, 0.5);
+    }
 
     @media (max-height: 861px) {
       box-shadow: 0 0 20px rgba(95, 147, 153, 0.5);
@@ -179,8 +196,10 @@ const services = [
   }
 
   .about-img {
-    aspect-ratio: 1;
-    border-radius: var(--radius-pill);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .about-content {
@@ -225,16 +244,9 @@ const services = [
     .service-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .about-grid {
-      gap: 3rem;
-    }
   }
 
   @media (max-width: 700px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-    }
 
     .about-image {
       max-width: 400px;

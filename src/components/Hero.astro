@@ -6,7 +6,7 @@ import SectionTitle from "./SectionTitle.astro";
 const { businessName } = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero section--small">
   <div class="content-width hero-inner">
     <div class="hero-content">
       <p class="eyebrow text--gold">Psychologenpraktijk</p>
@@ -24,7 +24,7 @@ const { businessName } = Astro.props;
       data-aos-delay="400"
       data-aos-duration="800"
     >
-      <OysterIcon />
+      <OysterIcon shellColor="var(--teal)" pearlColor="var(--gold-light)" />
     </figure>
   </div>
 
@@ -32,8 +32,8 @@ const { businessName } = Astro.props;
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 24 150 28"
-      preserveAspectRatio="none"
       shape-rendering="auto"
+      preserveAspectRatio="xMidYMax slice"
     >
       <defs>
         <path
@@ -77,28 +77,31 @@ const { businessName } = Astro.props;
     min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
-    overflow: hidden;
-
-    @media (max-width: 768px) {
-      min-height: 850px;
-    }
   }
 
   .hero-inner {
-    min-height: 100vh;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: var(--space-xl);
 
-    padding-top: var(--header-height);
-    padding-bottom: 12rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     position: relative;
+    width: fit-content;
     z-index: 2;
+
+    @media (max-width: 768px) {
+      align-items: center;
+    }
   }
 
   .title--hero .pearl-line {
@@ -108,13 +111,17 @@ const { businessName } = Astro.props;
 
   .hero-tagline {
     display: flex;
-    justify-self: end;
+    align-self: flex-end;
     margin-bottom: var(--space-lg);
     color: var(--teal-light);
     font-family: "Montserrat";
     font-style: italic;
-    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    font-size: var(--fsz-lg);
     line-height: 1.2;
+
+    @media (max-width: 768px) {
+      align-self: center;
+    }
   }
 
   .hero-oyster {
@@ -122,42 +129,34 @@ const { businessName } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(15deg);
+    width: 33%;
+    aspect-ratio: 1;
 
     @media (max-width: 768px) {
       position: absolute;
-      right: -0;
-      bottom: 5rem;
-
+      top: 25%;
       width: 65%;
-
       opacity: 0.25;
     }
-  }
-
-  .hero-oyster svg {
-    width: min(90%, 320px);
   }
 
   .waves {
     position: absolute;
     left: 0;
-    bottom: 0;
-
+    bottom: -1px;
     width: 100%;
-    height: 32vh;
-
-    min-height: 180px;
-    max-height: 420px;
+    height: var(--wave-height, 20vh);
+    z-index: 1;
   }
 
   .waves svg {
     width: 100%;
-    height: 32vh;
+    height: var(--wave-height);
+    overflow: visible;
   }
 
   .parallax > use {
-    animation: move-forever 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation: flow 30s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
   }
   .parallax > use:nth-child(1) {
     animation-delay: -2s;
@@ -174,41 +173,5 @@ const { businessName } = Astro.props;
   .parallax > use:nth-child(4) {
     animation-delay: -5s;
     animation-duration: 20s;
-  }
-
-  @keyframes move-forever {
-    0% {
-      transform: translate3d(-90px, 0, 0);
-    }
-    100% {
-      transform: translate3d(85px, 0, 0);
-    }
-  }
-
-  @media (max-width: 768px) {
-
-    .hero-inner {
-      grid-template-columns: 1fr;
-
-      min-height: 850px;
-
-      padding-top: 8rem;
-      padding-bottom: 10rem;
-
-      text-align: center;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 12vw, 4rem);
-    }
-
-    .hero-oyster {
-    }
   }
 </style>

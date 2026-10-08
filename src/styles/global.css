@@ -42,24 +42,16 @@
     var(--gold-light) 100%
   );
 
-  /* -----------------------------
-    LAYOUT 
-  ----------------------------- */
+  /* --------------------------------
+    OPACITY
+  -------------------------------- */
 
-  --content-max-width: 1200px;
-  --text-max-width: 720px;
-
-  /* -----------------------------
-    LAYOUT 
-  ----------------------------- */
-
-  --header-height: 88px;
-  --header-background: var(--cream);
-  --header-text: var(--teal);
-
-  @media (max-width: 500px) {
-    --header-height: 88px * 0.8;
-  }
+  --opacity-subtle: 0.2;
+  --opacity-soft: 0.3;
+  --opacity-medium: 0.4;
+  --opacity-strong: 0.5;
+  --opacity-heavy: 0.65;
+  --opacity-solid: 0.8;
 
   /* --------------------------------
     SPACING
@@ -103,15 +95,6 @@
   --radius-pill: 999px;
 
   /* --------------------------------
-    DECORATION
-  -------------------------------- */
-
-  --decor-xs: 20rem;
-  --decor-sm: 32rem;
-  --decor-md: 48rem;
-  --decor-lg: 64rem;
-
-  /* --------------------------------
     TYPOGRAPHY
   -------------------------------- */
 
@@ -125,15 +108,38 @@
   --fsz-xxxl: clamp(2rem, 7vw, 6rem);
 
   /* --------------------------------
-    OPACITY
+    DECORATION
   -------------------------------- */
 
-  --opacity-subtle: 0.2;
-  --opacity-soft: 0.3;
-  --opacity-medium: 0.4;
-  --opacity-strong: 0.5;
-  --opacity-heavy: 0.65;
-  --opacity-solid: 0.8;
+  --decor-xs: 20rem;
+  --decor-sm: 32rem;
+  --decor-md: 48rem;
+  --decor-lg: 64rem;
+
+  /* --------------------------------
+    WAVES
+  -------------------------------- */
+
+  --wave-height: 32vh;
+
+  /* -----------------------------
+    LAYOUT 
+  ----------------------------- */
+
+  --content-max-width: 1200px;
+  --text-max-width: 720px;
+
+  /* -----------------------------
+    HEADER 
+  ----------------------------- */
+
+  --header-height: 88px;
+  --header-background: var(--cream);
+  --header-text: var(--teal);
+
+  @media (max-width: 500px) {
+    --header-height: 88px * 0.8;
+  }
 
   /* --------------------------------
     EFFECTS
@@ -416,6 +422,10 @@ section {
   PEARLS
 --------------------*/
 
+/*--------------------
+  PEARL 1
+--------------------*/
+
 .section--pearl-white::before {
   content: "";
   position: absolute;
@@ -459,6 +469,10 @@ section {
   }
 }
 
+/*--------------------
+  PEARL 2
+--------------------*/
+
 .section--pearl-white-2::before {
   content: "";
   position: absolute;
@@ -501,128 +515,83 @@ section {
   }
 }
 
-.section--pearls-teal::before {
-  content: "";
-  position: absolute;
-  width: var(--decor-sm);
-  aspect-ratio: 1;
-  left: 0;
-  top: 0;
-  background-color: var(--teal);
-  opacity: var(--opacity-subtle);
-  mask: url("../assets/pearls.png") no-repeat center;
-  mask-size: contain;
-  transform: rotate(30deg);
-  pointer-events: none;
-  z-index: 1;
+/*--------------------
+  4 SMALL PEARLS
+--------------------*/
 
-  animation: float 8s ease-in-out infinite;
-
-  @media (max-width: 700px) {
-    width: var(--decor-xs);
-    top: 5%;
-  }
-}
-
-.section--pearls-teal::after {
-  content: "";
-  position: absolute;
-  width: var(--decor-md);
-  aspect-ratio: 1;
-  right: -8rem;
-  bottom: 0;
-  background-color: var(--teal);
-  opacity: var(--opacity-medium);
-  mask: url("../assets/pearls.png") no-repeat center;
-  mask-size: contain;
-  transform: rotate(-30deg);
-  pointer-events: none;
-  z-index: 1;
-
-  animation: float 8s ease-in-out infinite;
-
-  @media (max-width: 700px) {
-    width: var(--decor-sm);
-  }
-}
-
-.section--pearls-white::before {
-  content: "";
-  position: absolute;
-  width: var(--decor-sm);
-  aspect-ratio: 1;
-  left: 0;
-  top: 0;
-  background-color: var(--white);
-  opacity: var(--opacity-subtle);
-  mask: url("../assets/pearls.png") no-repeat center;
-  mask-size: contain;
-  transform: rotate(30deg);
-  pointer-events: none;
-  z-index: 1;
-  animation: float var(--float-before-duration, 8s) ease-in-out infinite;
-
-  @media (max-width: 700px) {
-    width: var(--decor-xs);
-  }
-}
-
+.section--pearls-teal::before,
+.section--pearls-white::before,
+.section--pearls-teal::after,
 .section--pearls-white::after {
   content: "";
   position: absolute;
   width: var(--decor-sm);
   aspect-ratio: 1;
-  right: 0;
-  bottom: 0;
-  background-color: var(--white);
   opacity: var(--opacity-subtle);
-  box-shadow: 0 0 200px var(--white);
   mask: url("../assets/pearls.png") no-repeat center;
   mask-size: contain;
-  transform: rotate(-30deg);
   pointer-events: none;
   z-index: 1;
-  animation: float var(--float-after-duration, 8s) ease-in-out infinite;
+  animation: float var(--float-before-duration, 8s) ease-in-out infinite;
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     width: var(--decor-xs);
   }
+}
+
+.section--pearls-teal::before,
+.section--pearls-teal::after {
+  background-color: var(--teal);
+}
+
+.section--pearls-white::before,
+.section--pearls-white::after {
+  background-color: var(--white);
+}
+
+.section--pearls-teal::before,
+.section--pearls-white::before {
+  left: 0;
+  top: 5%;
+  transform: rotate(30deg);
+}
+
+.section--pearls-teal::after,
+.section--pearls-white::after {
+  right: 0;
+  bottom: 5%;
+  transform: rotate(-30deg);
 }
 
 /*--------------------
   OYSTERS
 --------------------*/
 
-.section--oyster-teal::after {
-  content: "";
-  position: absolute;
-  width: var(--decor-sm);
-  aspect-ratio: 1;
-  right: -8rem;
-  bottom: -8rem;
-  background-color: var(--teal);
-  opacity: var(--opacity-soft);
-  mask: url("../assets/oyster.svg") no-repeat center;
-  mask-size: contain;
-  transform: rotate(-30deg);
-  pointer-events: none;
-  z-index: 0;
-}
-
+.section--oyster-teal::after,
 .section--oyster-white::before {
   content: "";
   position: absolute;
   width: var(--decor-sm);
   aspect-ratio: 1;
-  left: -8rem;
-  top: -8rem;
-  background-color: var(--white);
   opacity: var(--opacity-soft);
   mask: url("../assets/oyster.svg") no-repeat center;
   mask-size: contain;
-  transform: rotate(150deg);
   pointer-events: none;
   z-index: 0;
+}
+
+.section--oyster-teal::after {
+  right: -8rem;
+  bottom: -8rem;
+  background-color: var(--teal);
+  transform: rotate(-30deg);
+}
+
+.section--oyster-white::before {
+  left: -8rem;
+  top: -8rem;
+  background-color: var(--white);
+  transform: rotate(150deg);
 }
 
 .section--oysters {
@@ -728,6 +697,15 @@ section {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes flow {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
   }
 }
 

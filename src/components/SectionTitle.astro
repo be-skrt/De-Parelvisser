@@ -39,15 +39,20 @@ const Heading = heading;
       text-align: center;
     }
   }
+  .title--hero {
+    margin: 0;
+  }
 
   .title--hero h1 {
-    color: var(--teal);
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(2.5rem, 5vw, 6rem);
+    font-size: clamp(2rem, 5vw, 6rem);
     font-weight: 300;
     letter-spacing: 0.08em;
     line-height: 0.95;
     text-transform: uppercase;
+
+    @media (max-width: 450px) {
+      
+    }
   }
 
   .title--hero .pearl-line {
@@ -60,22 +65,11 @@ const Heading = heading;
     font-weight: 300;
   }
 
-  .title--no-margin {
-    margin: 0;
-  }
-
   .pearl-line {
     display: flex;
     align-items: center;
     gap: 5%;
     margin: var(--space-sm) auto;
-  }
-
-  @media (max-width: 500px) {
-    .title--hero .pearl-line,
-    .pearl-line {
-      /* margin: var(--); */
-    }
   }
 
   .pearl-line::before,

@@ -4,7 +4,6 @@ import FamilyIcon from "./FamilyIcon.astro";
 import FeedbackIcon from "./FeedbackIcon.astro";
 import LightBulbIcon from "./LightBulbIcon.astro";
 import MeetIcon from "./MeetIcon.astro";
-import Oyster2Icon from "./Oyster2Icon.astro";
 import OysterIcon from "./OysterIcon.astro";
 import ParentIcon from "./ParentIcon.astro";
 import PlanIcon from "./PlanIcon.astro";
@@ -33,9 +32,6 @@ const { name = "oyster", width = 100, height = 100 } = Astro.props;
 }
 {
   name === "oyster" && <OysterIcon width={width} height={height} />
-}
-{
-  name === "oyster2" && <Oyster2Icon width={width} height={height} />
 }
 {
   name === "parent" && <ParentIcon width={width} height={height} />
