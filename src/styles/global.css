@@ -48,7 +48,18 @@
 
   --content-max-width: 1200px;
   --text-max-width: 720px;
+
+  /* -----------------------------
+    LAYOUT 
+  ----------------------------- */
+
   --header-height: 88px;
+  --header-background: var(--cream);
+  --header-text: var(--teal);
+
+  @media (max-width: 500px) {
+    --header-height: 88px * 0.8;
+  }
 
   /* --------------------------------
     SPACING
@@ -75,10 +86,10 @@
     --space-xl: 2.2rem;
     --space-lg: 1.6rem;
     --space-md: 1.2rem;
-    --space-sm: 0.8rem;
+    --space-sm: 0.5rem;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 400px) {
     --space-xl: 2rem;
   }
 
@@ -95,6 +106,7 @@
     DECORATION
   -------------------------------- */
 
+  --decor-xs: 20rem;
   --decor-sm: 32rem;
   --decor-md: 48rem;
   --decor-lg: 64rem;
@@ -108,9 +120,9 @@
   --fsz-sm: clamp(0.8rem, 1vw, 0.95rem);
   --fsz-md: clamp(0.9rem, 1.2vw, 1.05rem);
   --fsz-lg: clamp(1rem, 1.5vw, 1.3rem);
-  --fsz-xl: clamp(1.5rem, 2vw, 2rem);
+  --fsz-xl: clamp(1.2rem, 2vw, 2rem);
   --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
-  --fsz-xxxl: clamp(2.75rem, 7vw, 6rem);
+  --fsz-xxxl: clamp(2rem, 7vw, 6rem);
 
   /* --------------------------------
     OPACITY
@@ -263,11 +275,6 @@ body {
   overscroll-behavior: contain;
 }
 
-svg {
-  width: 100%;
-  height: 100%;
-}
-
 /* --------------------------------
   TYPOGRAPHY
 -------------------------------- */
@@ -327,10 +334,6 @@ section {
   margin-inline: auto;
   padding-block: var(--space-lg);
   z-index: 9;
-
-  @media (max-width: 768px) {
-    width: min(calc(100% - 2rem), var(--content-max-width));
-  }
 }
 
 .text-width {
@@ -340,28 +343,38 @@ section {
 
 .heading {
   padding-bottom: var(--space-xl);
-}
 
-@media (max-width: 768px) {
-  .heading {
+  @media (max-width: 768px) {
     padding-bottom: var(--space-xs);
   }
 }
 
 .section {
   padding-block: var(--space-xxxl);
+
+  @media (max-width: 800px) {
+    padding-block: var(--space-xl);
+  }
 }
 
 .section--xs {
   padding-block: var(--space-md);
+
+  @media (max-width: 800px) {
+    padding-block: var(--space-xs);
+  }
 }
 
 .section--small {
   padding-block: var(--space-xl);
+
+  @media (max-width: 800px) {
+    padding-block: var(--space-md);
+  }
 }
 
 .section--full {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
 }
 
 .section--center {
@@ -420,6 +433,10 @@ section {
   animation:
     pulse var(--float-after-duration, 16s) ease-in-out infinite,
     float var(--float-before-duration, 7s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-xs);
+  }
 }
 
 .section--pearl-white::after {
@@ -436,6 +453,10 @@ section {
   pointer-events: none;
   z-index: 0;
   animation: float var(--float-after-duration, 9s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-md);
+  }
 }
 
 .section--pearl-white-2::before {
@@ -452,6 +473,10 @@ section {
   pointer-events: none;
   z-index: 0;
   animation: pulse var(--float-after-duration, 8s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-sm);
+  }
 }
 
 .section--pearl-white-2::after {
@@ -470,6 +495,10 @@ section {
   animation:
     pulse var(--float-after-duration, 8s) ease-in-out infinite,
     float var(--float-before-duration, 8s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-xs);
+  }
 }
 
 .section--pearls-teal::before {
@@ -488,6 +517,11 @@ section {
   z-index: 1;
 
   animation: float 8s ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-xs);
+    top: 5%;
+  }
 }
 
 .section--pearls-teal::after {
@@ -506,6 +540,10 @@ section {
   z-index: 1;
 
   animation: float 8s ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-sm);
+  }
 }
 
 .section--pearls-white::before {
@@ -523,6 +561,10 @@ section {
   pointer-events: none;
   z-index: 1;
   animation: float var(--float-before-duration, 8s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-xs);
+  }
 }
 
 .section--pearls-white::after {
@@ -541,6 +583,10 @@ section {
   pointer-events: none;
   z-index: 1;
   animation: float var(--float-after-duration, 8s) ease-in-out infinite;
+
+  @media (max-width: 700px) {
+    width: var(--decor-xs);
+  }
 }
 
 /*--------------------

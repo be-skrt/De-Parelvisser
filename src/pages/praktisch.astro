@@ -2,7 +2,6 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import CTA from "../components/CTA.astro";
-import Card from "../components/Card.astro";
 import CardGrid from "../components/CardGrid.astro";
 
 const prices = [
@@ -13,7 +12,7 @@ const prices = [
     variant: "white",
     icon: "therapy",
     iconColors: {
-      main: "var(--teal)"
+      main: "var(--teal)",
     },
     opacity: "var(--opacity-solid)",
   },
@@ -24,7 +23,7 @@ const prices = [
     variant: "white",
     icon: "family",
     iconColors: {
-      main: "var(--teal)"
+      main: "var(--teal)",
     },
     opacity: "var(--opacity-solid)",
   },
@@ -35,7 +34,7 @@ const prices = [
     variant: "white",
     icon: "diagnosis",
     iconColors: {
-      main: "var(--teal)"
+      main: "var(--teal)",
     },
     opacity: "var(--opacity-solid)",
   },
@@ -46,14 +45,14 @@ const prices = [
     variant: "white",
     icon: "therapy",
     iconColors: {
-      main: "var(--teal)"
+      main: "var(--teal)",
     },
     opacity: "var(--opacity-solid)",
   },
 ];
 ---
 
-<MainLayout title="Praktisch">
+<MainLayout title="Praktisch" headerBackground="white" >
   <section class="section section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Praktisch" heading="h1" />
@@ -113,22 +112,8 @@ const prices = [
           deze afspraken gelden onderstaande tarieven.
         </p>
       </div>
-
       <CardGrid columns="4" items={prices} />
 
-      <!-- <div class="content-width section--center price-grid">
-        {
-          prices.map((item, index) => (
-            <Card
-              index={index}
-              title={item.service}
-              text={item.duration}
-              price={item.price}
-              variant="white"
-            />
-          ))
-        }
-      </div> -->
       <div class="additional-info">
         <h3>Bijkomende diagnostiek</h3>
         <p>
@@ -203,12 +188,6 @@ const prices = [
     color: var(--white);
   }
 
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-sm);
-  }
-
   .additional-info {
     position: relative;
     width: 100%;
@@ -258,6 +237,10 @@ const prices = [
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-md);
     background: rgba(255, 255, 255, 0.08);
+
+    @media (max-width: 500px) {
+      padding: var(--space-sm);
+    }
   }
 
   .practical-card h3 {
@@ -281,10 +264,8 @@ const prices = [
     flex-direction: column;
     gap: var(--space-sm);
     padding: var(--space-lg);
-
     border: 1px solid var(--cream);
     border-radius: var(--radius-md);
-
     background: var(--white);
     color: var(--teal);
     box-shadow: 0 2px 15px rgba(40, 83, 90, 0.4);
@@ -301,26 +282,15 @@ const prices = [
   .professional-card strong {
     margin-top: auto;
     color: var(--gold);
-
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
   }
 
-  @media (max-width: 750px) {
-    .price-grid,
+  @media (max-width: 500px) {
     .practical-grid,
     .professional-grid {
       grid-template-columns: 1fr;
-    }
-
-    .practical-grid,
-    .convention-inner {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .price-grid {
-      grid-template-columns: 1fr;
+      gap: var(--space-xs);
     }
   }
 </style>

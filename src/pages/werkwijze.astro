@@ -1,12 +1,7 @@
 ---
-import MeetIcon from "../components/icons/MeetIcon.astro";
-import LightBulbIcon from "../components/icons/LightBulbIcon.astro";
-import PlanIcon from "../components/icons/PlanIcon.astro";
-import FeedbackIcon from "../components/icons/FeedbackIcon.astro";
 import Icon from "../components/icons/Icon.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import Card from "../components/Card.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
 import imgKinderen from "../assets/aquarium.jpg";
@@ -189,7 +184,7 @@ const process = [
 ];
 ---
 
-<MainLayout title="Werkwijze">
+<MainLayout title="Werkwijze" headerBackground="white">
   <section class="section--full section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Werkwijze" heading="h1" />
@@ -251,32 +246,6 @@ const process = [
           en context bekijken we samen welke vorm van begeleiding aansluit.
         </p>
       </div>
-
-      <!-- <div
-        class="audience-grid"
-        data-aos="zoom-in"
-        data-aos-delay="200"
-        data-aos-duration="600"
-      >
-        {
-          audienceCards.map((card, index) => (
-            <Card
-              index={index}
-              href={card.href}
-              title={card.title}
-              text={card.text}
-              variant="teal"
-              icon="oyster"
-              iconColors={{
-                main: "var(--teal-light)",
-                secondary: "var(--gold)",
-              }}
-              opacity="var(--opacity-strong)"
-            />
-          ))
-        }
-      </div> -->
-
       <CardGrid
         columns="4"
         items={audienceCards}
@@ -392,34 +361,13 @@ const process = [
     <div class="content-width">
       <div class="heading section--center section--col text--center">
         <p class="eyebrow">Professionelen</p>
-
         <SectionTitle title="Ruimte voor verdieping" heading="h2" />
-
         <p class="lead">
           Ook collega's en andere professionals zijn welkom voor uitwisseling,
           verdieping en professionele groei.
         </p>
       </div>
-
       <CardGrid columns="3" items={professionalCards} />
-
-      <!-- <div class="professional-grid section--center section--col">
-        {
-          professionalCards.map((card, index) => (
-            <Card
-              index={index}
-              title={card.title}
-              text={card.text}
-              variant="cream"
-              iconColors={{
-                main: "var(--teal)",
-                secondary: "var(--gold)",
-              }}
-              opacity="var(--opacity-strong)"
-            />
-          ))
-        }
-      </div> -->
     </div>
   </section>
 
@@ -597,6 +545,7 @@ const process = [
   .story-img {
     width: 100%;
     min-width: 100%;
+    min-height: 20vh;
     max-height: 550px;
     object-fit: cover;
     border-radius: var(--radius-md);
@@ -605,10 +554,11 @@ const process = [
     @media (max-width: 700px) {
       max-height: 50vw;
     }
+  }
 
-    @media (max-width: 400px) {
-      width: var(--content-max-width);
-      max-height: 40vw;
+  .story-content p {
+    @media (max-width: 700px) {
+      max-width: fit-content;
     }
   }
 

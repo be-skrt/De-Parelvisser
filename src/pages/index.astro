@@ -4,12 +4,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
-import Card from "../components/Card.astro";
 import CTA from "../components/CTA.astro";
 // Images
 import grietPic from "/src/assets/griet-ackerman.jpg";
 import { Image } from "astro:assets";
-import { undefined } from "astro:schema";
 import CardGrid from "../components/CardGrid.astro";
 
 const clientName = "Griet Ackerman";
@@ -80,7 +78,7 @@ const services = [
 ];
 ---
 
-<MainLayout title="Home">
+<MainLayout title="Home" headerBackground="cream">
   <Hero businessName={businessName} />
 
   <!-- INTRODUCTION -->
@@ -89,7 +87,7 @@ const services = [
     class="section--full section--center section--teal section--pearls-white"
   >
     <div class="content-width about-grid">
-      <div
+      <figure
         class="about-image"
         data-aos="fade-in"
         data-aos-duration="1000"
@@ -102,7 +100,7 @@ const services = [
           height={360}
           class="about-img"
         />
-      </div>
+      </figure>
 
       <div
         class="about-content"
@@ -171,12 +169,17 @@ const services = [
   }
 
   .about-image {
-    width: clamp(220px, 100%, 360px);
+    width: clamp(120px, 100%, 360px);
     box-shadow: 0 0 300px rgba(95, 147, 153, 0.8);
     border-radius: var(--radius-pill);
+
+    @media (max-height: 861px) {
+      box-shadow: 0 0 20px rgba(95, 147, 153, 0.5);
+    }
   }
 
   .about-img {
+    aspect-ratio: 1;
     border-radius: var(--radius-pill);
   }
 
@@ -185,11 +188,14 @@ const services = [
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 1rem;
   }
 
   .about-content .eyebrow {
     color: var(--gold-light);
+  }
+
+  .about-content h2 {
+    margin-bottom: var(--space-sm);
   }
 
   .about-content span {

@@ -4,7 +4,7 @@ import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 ---
 
-<MainLayout title="Contact">
+<MainLayout title="Contact" headerBackground="cream">
   <section class="section section--full section--center section--oyster-teal">
     <div class="content-width contact-inner">
       <div class="contact-intro">
@@ -13,7 +13,6 @@ import SectionTitle from "../components/SectionTitle.astro";
           heading="h1"
           variant="large"
         />
-
         <p class="lead">
           Soms begint een traject met één vraag. Heb je vragen over de werking,
           het aanbod of wil je weten of De Parelvisser iets voor jou kan
@@ -60,8 +59,14 @@ import SectionTitle from "../components/SectionTitle.astro";
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-xxl);
+  }
+
+  .contact-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .contact-card {

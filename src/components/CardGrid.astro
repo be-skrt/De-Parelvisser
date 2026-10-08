@@ -1,15 +1,19 @@
 ---
 import Card from "./Card.astro";
 
-interface Card {
-  href: string,
-  title: string,
-  text: string,
-  price: string,
-  variant: string,
-  icon: string,
-  iconColors: {},
-  opacity: string
+interface CardItem {
+  href?: string;
+  title: string;
+  text: string;
+  price?: string;
+  variant?: string;
+  icon?: string;
+  iconColors?: {
+    main?: string;
+    secondary?: string;
+    accent?: string;
+  };
+  opacity?: string;
 }
 
 const { columns = 3, items = [] } = Astro.props;
@@ -17,11 +21,8 @@ const { columns = 3, items = [] } = Astro.props;
 
 <div class="card-grid" style={`--columns: ${columns}`}>
   {
-    items.map((item: Card, index: number) => (
-      <Card
-        index={index}
-        {...item}
-      />
+    items.map((item: CardItem, index: number) => (
+      <Card index={index} {...item} />
     ))
   }
 </div>
@@ -32,9 +33,10 @@ const { columns = 3, items = [] } = Astro.props;
     grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
+    width: 100%;
 
     @media (max-width: 900px) {
-      grid-template-columns: repeat(min(2, var(--columns)), minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-xs);
     }
 
