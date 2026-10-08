@@ -281,6 +281,18 @@ body {
   overscroll-behavior: contain;
 }
 
+[id] {
+  scroll-margin-top: 104px;
+
+  @media (max-width: 500px) {
+    scroll-margin-top: 102.38px;
+  }
+
+  @media (max-width: 400px) {
+    scroll-margin-top: 99.19px;
+  }
+}
+
 /* --------------------------------
   TYPOGRAPHY
 -------------------------------- */
