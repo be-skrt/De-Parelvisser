@@ -8,15 +8,15 @@
   ----------------------------- */
 
   --teal: rgb(40, 83, 90);
-  --teal-dark: #1d4248;
+  --teal-dark: rgb(29, 66, 72);
   --teal-light: #5f9399;
   --sage: #a9b39a;
   --blue-soft: #aac9c3;
 
-  --gold: #c88656;
-  --gold-light: #dfb084;
+  --gold: rgb(200, 134, 86);
+  --gold-light: rgb(223, 176, 132);
 
-  --cream: #f6f2eb;
+  --cream: rgb(246, 242, 235);
   --white: rgb(251, 250, 247);
 
   /* -----------------------------
@@ -104,7 +104,7 @@
   --fsz-md: clamp(0.9rem, 1.2vw, 1.05rem);
   --fsz-lg: clamp(1rem, 1.5vw, 1.3rem);
   --fsz-xl: clamp(1.2rem, 2vw, 2rem);
-  --fsz-xxl: clamp(2rem, 4vw, 3.25rem);
+  --fsz-xxl: clamp(1.8rem, 4vw, 3.25rem);
   --fsz-xxxl: clamp(2rem, 7vw, 6rem);
 
   /* --------------------------------
@@ -363,7 +363,7 @@ section {
   padding-bottom: var(--space-xl);
 
   @media (max-width: 768px) {
-    padding-bottom: var(--space-xs);
+    padding-bottom: var(--space-sm);
   }
 }
 
@@ -590,6 +590,10 @@ section {
   mask-size: contain;
   pointer-events: none;
   z-index: 0;
+
+  @media (max-width: 768px) {
+    width: var(--decor-xs);
+  }
 }
 
 .section--oyster-teal::after {
@@ -629,7 +633,7 @@ section {
   -webkit-mask-image: url("../assets/falling-oysters.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: var(--oyster-width) auto;
-  opacity: var(--opacity-soft);
+  opacity: var(--opacity-subtle);
   pointer-events: none;
   z-index: 1;
 }

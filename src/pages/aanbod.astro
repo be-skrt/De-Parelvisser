@@ -125,7 +125,11 @@ const serviceCards = services.map((service) => ({
 
   <section id="aanbod" class="section section--center">
     <div class="content-width">
-      <CardGrid columns="4" items={serviceCards} />
+      <CardGrid
+        columns="4"
+        items={serviceCards}
+        ariaLabel="Begeleidingsaanbod"
+      />
     </div>
   </section>
 

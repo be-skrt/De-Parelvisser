@@ -4,30 +4,52 @@ import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ScrollButton from "../components/ScrollButton.astro";
+import logo from "../assets/logo.png";
+import { businessName, address } from "../constants";
+import { siteUrl } from "../../astro.config.mjs";
 
 const { title, description, headerBackground } = Astro.props;
 const metaDescription =
-  description ?? `Psychologenpraktijk De Parelvisser - ${title}`;
+  description ?? `Psychologenpraktijk ${businessName} - ${title}`;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": businessName,
+  "image": new URL(logo.src, Astro.site).href,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": address.streetAddress,
+    "addressLocality": address.addressLocality,
+    "postalCode": address.postalCode,
+    "addressCountry": address.addressCountry
+  },
+  "url": siteUrl
+};
 ---
 
 <html lang="nl">
   <Head title={title} description={metaDescription} />
   <body>
-    <Header currentPath={Astro.url.pathname} headerBackground={headerBackground} />
+    <Header
+      currentPath={Astro.url.pathname}
+      headerBackground={headerBackground}
+    />
     <main>
       <slot />
       <ScrollButton />
     </main>
     <Footer />
-  </body>
-  <script>
+  </body><script>
     import "aos/dist/aos.css";
     import AOS from "aos";
 
     AOS.init({
-      disable: 'phone'
+      disable: "phone",
     });
   </script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/scrollButton.js"></script>
+<script src="../scripts/menu.js" />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 </html>

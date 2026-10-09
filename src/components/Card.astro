@@ -1,6 +1,22 @@
 ---
 import Icon from "./icons/Icon.astro";
 
+interface Props {
+  href?: string;
+  title: string;
+  text: string;
+  price?: string;
+  index: number;
+  variant?: string;
+  icon?: string;
+  iconColors?: {
+    main?: string;
+    secondary?: string;
+    accent?: string;
+  };
+  opacity?: number | string;
+}
+
 const {
   href,
   title,
@@ -9,9 +25,13 @@ const {
   index,
   variant = "white",
   icon = "oyster",
-  iconColors = {},
+  iconColors = {
+    main: "var(--teal)",
+    secondary: "var(--gold)",
+    accent: ""
+  },
   opacity = 1,
-} = Astro.props;
+}: Props = Astro.props;
 ---
 
 {
@@ -94,6 +114,7 @@ const {
     }
 
     @media (max-width: 550px) {
+      min-height: 100%;
       gap: var(--space-xs);
     }
   }

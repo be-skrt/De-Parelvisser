@@ -13,13 +13,31 @@ interface CardItem {
     secondary?: string;
     accent?: string;
   };
-  opacity?: string;
+  opacity?: string | number;
 }
 
-const { columns = 3, items = [] } = Astro.props;
+interface Props {
+  columns?: string;
+  items?: CardItem[];
+  carousel?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  columns = "3",
+  items = [],
+  carousel = parseInt(columns) > 3 ? true : false,
+  ariaLabel = "Kaarten",
+}: Props = Astro.props;
 ---
 
-<div class="card-grid" style={`--columns: ${columns}`}>
+<div
+  class:list={["card-grid", { "card-grid--carousel": carousel }]}
+  role={carousel ? "region" : null}
+  aria-label={carousel ? ariaLabel : null}
+  tabindex={carousel ? 0 : null}
+  style={`--columns: ${columns}`}
+>
   {
     items.map((item: CardItem, index: number) => (
       <Card index={index} {...item} />
@@ -39,9 +57,28 @@ const { columns = 3, items = [] } = Astro.props;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-xs);
     }
+  }
 
-    @media (max-width: 550px) {
+  @media (max-width: 550px) {
+    .card-grid:not(.card-grid--carousel) {
       grid-template-columns: 1fr;
+    }
+
+    .card-grid--carousel {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: var(--space-sm);
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: var(--space-lg);
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+    }
+
+    .card-grid--carousel > :global(.card) {
+      flex: 0 0 85%;
+      min-width: 200px;
+      scroll-snap-align: start;
     }
   }
 </style>

@@ -1,4 +1,7 @@
 ---
+// Constants
+import { businessName, clientName } from "../constants.js";
+// Layout
 import MainLayout from "../layouts/MainLayout.astro";
 // Components
 import Hero from "../components/Hero.astro";
@@ -9,9 +12,6 @@ import CTA from "../components/CTA.astro";
 import grietPic from "/src/assets/griet-ackerman.jpg";
 import { Image } from "astro:assets";
 import CardGrid from "../components/CardGrid.astro";
-
-const clientName = "Griet Ackerman";
-const businessName = "De Parelvisser";
 
 // Data
 const services = [
@@ -142,7 +142,7 @@ const services = [
         </p>
       </div>
 
-      <CardGrid columns="5" items={services} />
+      <CardGrid columns="5" items={services} ariaLabel="Overzicht aanbod" />
 
       <Button
         href=`${import.meta.env.BASE_URL}/aanbod`

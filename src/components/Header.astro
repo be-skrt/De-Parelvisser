@@ -29,7 +29,10 @@ const isPathActive = (linkHref: string) => {
 const isHomeActive = isPathActive(`${baseUrl}/`);
 ---
 
-<header class:list={["header", `header--${headerBackground}`, { home: isHomeActive }]} id="header">
+<header
+  class:list={["header", `header--${headerBackground}`, { home: isHomeActive }]}
+  id="header"
+>
   <div class="content-width header-inner">
     <Logo />
     <nav id="navbar">
@@ -67,23 +70,6 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     </button>
   </div>
 </header>
-<script>
-  const button = document.getElementById("menu-button");
-  const nav = document.getElementById("navbar");
-
-  button?.addEventListener("click", () => {
-    const open = button.classList.toggle("open");
-
-    nav?.classList.toggle("open", open);
-    button.setAttribute("aria-expanded", String(open));
-    button.setAttribute(
-      "aria-label",
-      open ? "Navigatie sluiten" : "Navigatie openen",
-    );
-
-    document.body.style.overflow = open ? "hidden" : "";
-  });
-</script>
 
 <style>
   header {
