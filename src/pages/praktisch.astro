@@ -52,7 +52,7 @@ const prices = [
 ];
 ---
 
-<MainLayout title="Praktisch" headerBackground="white" >
+<MainLayout title="Praktisch" headerBackground="white">
   <section class="section section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Praktisch" heading="h1" />
@@ -80,13 +80,20 @@ const prices = [
         </p>
         <p>We plannen vervolgens samen een eerste afspraak in.</p>
       </div>
+      <div class="info info--parking">
+        <h3>Parking</h3>
+        <p>
+          Er is parkeergelegenheid aan de praktijk van <span class="text--gold">Avantgand</span>.
+          Gelieve de pijlen te volgen.
+        </p>
+      </div>
     </div>
   </section>
 
   <section class="section--small section--white section--oyster-teal">
     <div class="content-width section--center section--col text--center">
       <SectionTitle heading="h2" title="Geconventioneerde zorg" />
-      <p>
+      <p class="lead">
         Ik ben <strong>geconventioneerd psycholoog</strong>. Binnen het
         conventiesysteem gelden de tarieven en voorwaarden die door de overheid
         en de conventie bepaald worden.
@@ -114,7 +121,7 @@ const prices = [
       </div>
       <CardGrid columns="4" items={prices} carousel={false} />
 
-      <div class="additional-info">
+      <div class="info info--test">
         <h3>Bijkomende diagnostiek</h3>
         <p>
           Naast de intelligentietest kunnen bijkomende tests worden afgenomen.
@@ -188,29 +195,31 @@ const prices = [
     color: var(--white);
   }
 
-  .additional-info {
+  .info {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: var(--text-max-width);
     padding: var(--space-lg);
-    border: 1px solid var(--white);
     border-radius: var(--radius-md);
-    background: var(--white);
-    box-shadow: var(--card-shadow);
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(40, 83, 90, 0.4);
   }
 
-  .additional-info h3 {
+  .info h3 {
     margin-bottom: var(--space-sm);
     color: var(--gold);
   }
 
-  .additional-info p {
+  .info p {
     margin: 0;
   }
 
-  .additional-info::after {
+  .info--test {
+    border: 1px solid var(--white);
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(40, 83, 90, 0.4);
+  }
+
+  .info--test::after {
     content: "";
     position: absolute;
     width: 50%;
@@ -223,6 +232,31 @@ const prices = [
     mask-size: contain;
     transform: translate(20%, 25%) rotate(30deg);
     pointer-events: none;
+  }
+
+  .info--parking {
+    border: 1px solid var(--white-55);
+    background: var(--teal-dark);
+  }
+
+  .info--parking::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1;
+    left: 0;
+    top: 0;
+    background-color: var(--white-55);
+    opacity: var(--opacity-subtle);
+    mask: url("../assets/falling-oysters.svg") no-repeat center;
+    mask-size: contain;
+    transform: translate(-20%, -25%) rotate(-30deg);
+    pointer-events: none;
+  }
+
+  .info--parking::before,
+  .info--test::after {
+    min-width: 250px;
   }
 
   .practical-grid {

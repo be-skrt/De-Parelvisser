@@ -332,6 +332,7 @@ p {
 
   @media (max-width: 768px) {
     max-width: fit-content;
+    text-align: start;
   }
 }
 
