@@ -7,11 +7,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
+import CardGrid from "../components/CardGrid.astro";
 import CTA from "../components/CTA.astro";
 // Images
-import grietPic from "/src/assets/griet-ackerman.jpg";
-import { Image } from "astro:assets";
-import CardGrid from "../components/CardGrid.astro";
+import grietPic from "/src/assets/griet-ackerman-headshot.png";
+import { Picture } from "astro:assets";
 
 // Data
 const services = [
@@ -93,11 +93,12 @@ const services = [
         data-aos-duration="1000"
         data-aos-delay="400"
       >
-        <Image
+        <Picture
           src={grietPic}
           alt={clientName}
-          width={360}
-          height={360}
+          width={432}
+          height={578}
+          formats={["avif", "webp", "jpeg"]}
           class="about-img"
         />
       </figure>
@@ -178,7 +179,20 @@ const services = [
     min-width: 180px;
     max-width: 300px;
     aspect-ratio: 1;
-    box-shadow: 0 0 200px rgba(95, 147, 153, 0.8);
+    background-color: transparent;
+    background-color: rgba(40, 83, 90, 1);
+    background-color: rgba(44, 101, 108, 0.71);
+    background: linear-gradient(
+      rgba(40, 83, 90, 1) 0%,
+      rgba(16, 48, 52, 0.758) 100%
+    );
+    background: linear-gradient(
+      rgb(54, 101, 108) 0%,
+      rgba(40, 83, 90, 1) 100%
+    );
+    /* box-shadow: 0 0 200px rgba(95, 147, 153, 0.8); */
+    /* box-shadow: 0 0 200px rgba(107, 134, 138, 0.4); */
+    box-shadow: 0 0 200px rgba(95, 147, 153, 0.5);
     border-radius: var(--radius-pill);
     overflow: hidden;
 
@@ -188,13 +202,14 @@ const services = [
 
     @media (max-width: 768px), (max-height: 861px) {
       box-shadow: 0 0 20px rgba(95, 147, 153, 0.5);
+      box-shadow: 0 0 20px rgba(95, 147, 153, 0.8);
     }
   }
 
   .about-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
