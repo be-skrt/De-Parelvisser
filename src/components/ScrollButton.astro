@@ -2,7 +2,7 @@
 
 ---
 
-<a href="#" id="scrollButton" class="scrollButton">
+<button id="scrollButton" class="scrollButton">
   <svg
     width="1200pt"
     height="1200pt"
@@ -13,7 +13,17 @@
       fill="currentColor"
       d="m935 490-335-335-335 335 70 70 215-215v705h100v-705l215 215z"></path>
   </svg>
-</a>
+</button>
+<script>
+  import { $scrollButton } from "../scripts/elements";
+
+  $scrollButton?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 
 <style>
   .scrollButton {
@@ -46,6 +56,7 @@
   .scrollButton.active:hover {
     background: var(--white);
     box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
   }
 
   .scrollButton svg {

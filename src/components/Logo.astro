@@ -2,13 +2,22 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 import withBase from "../utils/withBase";
+
+interface Props {
+  loading?: "eager" | "lazy";
+}
+
+const { loading = "lazy" } = Astro.props;
 ---
 
+{
+
+}
 <a class="logo" href={withBase("")} aria-label="De Parelvisser - Home">
   <Image
     src={logo}
     alt="De Parelvisser logo"
-    loading="eager"
+    loading={loading}
     class="logo-image" />
 </a>
 
