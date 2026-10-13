@@ -329,11 +329,6 @@ li {
 p {
   margin: 0 0 var(--space-sm);
   max-width: 70ch;
-
-  @media (max-width: 768px) {
-    max-width: fit-content;
-    text-align: start;
-  }
 }
 
 strong {
