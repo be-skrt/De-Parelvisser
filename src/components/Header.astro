@@ -1,32 +1,26 @@
 ---
+import { navigationLinks } from "../constants";
 import Logo from "./Logo.astro";
 
 const { currentPath, headerBackground = "transparent" } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
 
-const links = [
-  { href: `${baseUrl}/`, label: "Home" },
-  { href: `${baseUrl}/werkwijze`, label: "Werkwijze" },
-  { href: `${baseUrl}/aanbod`, label: "Aanbod" },
-  { href: `${baseUrl}/praktisch`, label: "Praktisch" },
-  { href: `${baseUrl}/over-mij`, label: "Over mij" },
-  { href: `${baseUrl}/contact`, label: "Contact" },
-];
+const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
 
-const isPathActive = (linkHref: string) => {
-  const currentUrl = new URL(currentPath, "https://be-skrt.github.io");
-  const linkUrl = new URL(linkHref, "https://be-skrt.github.io");
-  const cleanCurrent = currentUrl.pathname.replace(/\/$/, "");
-  const cleanLink = linkUrl.pathname.replace(/\/$/, "");
-  const cleanBase = baseUrl.replace(/\/$/, "");
+const normalizePath = (path: string) => {
+  const routePath =
+    basePath && (path == basePath || path.startsWith(`${basePath}/`))
+      ? path.slice(basePath.length) || "/"
+      : path;
 
-  if (cleanLink === cleanBase || cleanLink === "") {
-    return cleanCurrent === cleanBase || cleanCurrent === "";
-  }
-  return cleanCurrent === cleanLink;
+  return routePath.replace(/\/+$/, "") || "/";
 };
 
-const isHomeActive = isPathActive(`${baseUrl}/`);
+const normalizedCurrentPath = normalizePath(currentPath);
+
+const isPathActive = (linkHref: string) =>
+  normalizePath(linkHref) === normalizedCurrentPath;
+
+const isHomeActive = normalizedCurrentPath === "/";
 ---
 
 <header
@@ -38,7 +32,7 @@ const isHomeActive = isPathActive(`${baseUrl}/`);
     <nav id="navbar">
       <ul>
         {
-          links.map((link) => {
+          navigationLinks.map((link) => {
             const isActive = isPathActive(link.href);
 
             return (

@@ -4,10 +4,12 @@ import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
-import imgKinderen from "../assets/aquarium.jpg";
-import imgJongeren from "../assets/youth.jpg";
-import imgJongvolwassenen from "../assets/adolescents.jpg";
+import imgKinderen from "../assets/aquarium.webp";
+import imgJongeren from "../assets/youth.webp";
+import imgJongvolwassenen from "../assets/adolescents.webp";
 import CardGrid from "../components/CardGrid.astro";
+import withBase from "../utils/withBase";
+import Picture from "astro/components/Picture.astro";
 
 const audience = [
   {
@@ -184,7 +186,7 @@ const process = [
 ];
 ---
 
-<MainLayout title="Werkwijze" headerBackground="white">
+<MainLayout title="Werkwijze | De Parelvisser" description="Lees hoe Griet Ackerman kinderen, jongeren en jongvolwassenen begeleidt, met aandacht voor hun tempo, context en hulpvraag." headerBackground="white">
   <section class="section--full section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Werkwijze" heading="h1" />
@@ -302,10 +304,10 @@ const process = [
                   data-aos-delay="200"
                 >
                   <figure class="story-image">
-                    <Image
+                    <Picture
                       src={item.image}
                       alt={item.imageAlt}
-                      format="webp"
+                      formats={["avif", "webp", "jpeg"]}
                       class="story-img"
                       loading="eager"
                       fetchpriority="high"
@@ -336,12 +338,12 @@ const process = [
 
                     {isEven ? (
                       <Button
-                        href={`${import.meta.env.BASE_URL}/aanbod#aanbod`}
+                        href={withBase("aanbod#aanbod")}
                         content="Bekijk aanbod"
                       />
                     ) : (
                       <Button
-                        href={`${import.meta.env.BASE_URL}/aanbod#aanbod`}
+                        href={withBase("aanbod#aanbod")}
                         variant="light"
                         content="Bekijk aanbod"
                       />
@@ -418,22 +420,6 @@ const process = [
     </div>
   </section>
 </MainLayout>
-<script>
-  document
-    .querySelectorAll<HTMLElement>(
-      ".section--pearls-white, .section--pearls-teal",
-    )
-    .forEach((section) => {
-      const beforeDuration = 6 + Math.random() * 6;
-      const afterDuration = 6 + Math.random() * 6;
-
-      section.style.setProperty(
-        "--float-before-duration",
-        `${beforeDuration}s`,
-      );
-      section.style.setProperty("--float-after-duration", `${afterDuration}s`);
-    });
-</script>
 
 <style>
   .section--full .eyebrow {
@@ -447,7 +433,7 @@ const process = [
   .section--diver {
     position: relative;
     height: calc(50vh + var(--header-height));
-    background-image: url("../assets/diver.jpg");
+    background-image: url("../assets/diver.webp");
     background-size: cover;
     background-attachment: fixed;
     background-position: center 35%;

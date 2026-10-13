@@ -1,6 +1,8 @@
 ---
 import Logo from "./Logo.astro";
 import Button from "./Button.astro";
+import withBase from "../utils/withBase";
+import { address, clientName, contact, navigationLinks } from "../constants";
 ---
 
 <footer class="footer">
@@ -19,27 +21,25 @@ import Button from "./Button.astro";
       <div>
         <h2>Navigatie</h2>
         <nav>
-          <a href=`${import.meta.env.BASE_URL}/`>Home</a>
-          <a href=`${import.meta.env.BASE_URL}/werkwijze`>Werkwijze</a>
-          <a href=`${import.meta.env.BASE_URL}/aanbod`>Aanbod</a>
-          <a href=`${import.meta.env.BASE_URL}/praktisch`>Praktisch</a>
-          <a href=`${import.meta.env.BASE_URL}/over-mij`>Over mij</a>
-          <a href=`${import.meta.env.BASE_URL}/contact`>Contact</a>
+          {
+            navigationLinks.map(link => (
+              <a href={link.href}>{link.label}</a>
+            ))
+          }
         </nav>
       </div>
-
       <div>
         <h2>Contact</h2>
         <div>
-          <p>Griet Ackerman</p>
+          <p>{clientName}</p>
           <address>
-            <a href="tel:+32469737223"> 0469 73 72 23 </a>
-            <a href="mailto:deparelvisser@telenet.be">
-              deparelvisser@telenet.be
+            <a href={contact.phoneHref}> {contact.phoneText} </a>
+            <a href={"mailto:" + contact.email}>
+              {contact.email}
             </a>
             <span>
-              Domien Geersstraat 11a<br />
-              9041 Oostakker
+              {address.streetAddress}<br />
+              {address.postalCode} {address.addressLocality}
             </span>
           </address>
         </div>

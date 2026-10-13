@@ -10,8 +10,9 @@ import SectionTitle from "../components/SectionTitle.astro";
 import CardGrid from "../components/CardGrid.astro";
 import CTA from "../components/CTA.astro";
 // Images
-import grietPic from "/src/assets/griet-ackerman-headshot.png";
+import grietPic from "/src/assets/griet-ackerman.webp";
 import { Picture } from "astro:assets";
+import withBase from "../utils/withBase";
 
 // Data
 const services = [
@@ -78,7 +79,7 @@ const services = [
 ];
 ---
 
-<MainLayout title="Home" headerBackground="cream">
+<MainLayout title="Psycholoog Griet Ackerman | De Parelvisser" description="Psychologische begeleiding voor kinderen, jongeren en jongvolwassenen in Oostakker. Ontdek de aanpak en het aanbod van psycholoog Griet Ackerman." headerBackground="cream">
   <Hero businessName={businessName} />
 
   <!-- INTRODUCTION -->
@@ -123,7 +124,7 @@ const services = [
           helpen om opnieuw verbinding te vinden met jezelf en met anderen.
         </p>
         <Button
-          href=`${import.meta.env.BASE_URL}/over-mij`
+          href={withBase("over-mij")}
           variant="light"
           content="Meer over mij"
         />
@@ -146,7 +147,7 @@ const services = [
       <CardGrid columns="5" items={services} ariaLabel="Overzicht aanbod" />
 
       <Button
-        href=`${import.meta.env.BASE_URL}/aanbod`
+        href={withBase("aanbod")}
         content="Bekijk het volledige aanbod"
       />
     </div>

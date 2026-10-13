@@ -2,6 +2,7 @@
 import OysterIcon from "./icons/OysterIcon.astro";
 import Button from "./Button.astro";
 import SectionTitle from "./SectionTitle.astro";
+import withBase from "../utils/withBase";
 
 const { businessName } = Astro.props;
 ---
@@ -13,7 +14,7 @@ const { businessName } = Astro.props;
       <SectionTitle title={businessName} heading="h1" variant="hero" />
       <p class="hero-tagline">Ruimte om te groeien</p>
       <Button
-        href=`${import.meta.env.BASE_URL}/werkwijze`
+        href={withBase("werkwijze")}
         content="Ontdek mijn werkwijze"
       />
     </div>

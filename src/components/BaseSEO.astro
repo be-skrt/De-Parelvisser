@@ -1,0 +1,52 @@
+---
+import { siteUrl } from '../../astro.config.mjs';
+import { businessName, address, contact, geo } from '../constants';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": businessName,
+  "@id": Astro.site?.href,
+  "url": siteUrl,
+  "telephone": contact.phoneHref.replace(/^tel:/, ""),
+  "address": {
+    "@type": "PostalAddress",
+    ...address
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    ...geo
+  },
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<!-- <meta property="og:image" content={new URL(ogImage, Astro.site)} /> -->
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<!-- <meta property="twitter:image" content={new URL(ogImage, Astro.site)} /> -->
+
+<!-- Google Structured Data (Schema.org) -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schemaData)}></script>

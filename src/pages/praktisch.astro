@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import CTA from "../components/CTA.astro";
 import CardGrid from "../components/CardGrid.astro";
+import withBase from "../utils/withBase";
 
 const prices = [
   {
@@ -52,7 +53,7 @@ const prices = [
 ];
 ---
 
-<MainLayout title="Praktisch" headerBackground="white">
+<MainLayout title="Locatie, tarieven en terugbetaling | De Parelvisser" description="Bekijk de tarieven, informatie over geconventioneerde zorg en praktische afspraken bij psychologenpraktijk De Parelvisser." headerBackground="white">
   <section class="section section--white section--center">
     <div class="content-width section--center section--col text--center">
       <SectionTitle title="Praktisch" heading="h1" />
@@ -70,7 +71,7 @@ const prices = [
         <p class="lead">
           Contactgegevens vind je terug onder <a
             class="contact-link"
-            href=`${import.meta.env.BASE_URL}/contact`>Contact</a
+            href={withBase("contact")}>Contact</a
           >.
         </p>
         <p>

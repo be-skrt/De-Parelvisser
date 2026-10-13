@@ -1,35 +1,25 @@
 ---
 // imports
+import "aos/dist/aos.css";
+import "../styles/reset.css";
+import "../styles/global.css";
+// components
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ScrollButton from "../components/ScrollButton.astro";
-import logo from "../assets/logo.png";
-import { businessName, address } from "../constants";
-import { siteUrl } from "../../astro.config.mjs";
 
-const { title, description, headerBackground } = Astro.props;
-const metaDescription =
-  description ?? `Psychologenpraktijk ${businessName} - ${title}`;
+interface Props {
+  title: string;
+  description: string;
+  headerBackground?: "cream" | "white" | "transparent";
+}
 
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": businessName,
-  "image": new URL(logo.src, Astro.site).href,
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": address.streetAddress,
-    "addressLocality": address.addressLocality,
-    "postalCode": address.postalCode,
-    "addressCountry": address.addressCountry
-  },
-  "url": siteUrl
-};
+const { title, description, headerBackground = "transparent" } = Astro.props;
 ---
 
 <html lang="nl">
-  <Head title={title} description={metaDescription} />
+  <Head title={title} description={description} />
   <body>
     <Header
       currentPath={Astro.url.pathname}
@@ -40,16 +30,16 @@ const schemaData = {
       <ScrollButton />
     </main>
     <Footer />
-  </body><script>
-    import "aos/dist/aos.css";
-    import AOS from "aos";
+    <script>
+      import AOS from "aos";
 
-    AOS.init({
-      disable: "phone",
-    });
-  </script>
-  <script src="../scripts/scroll.js"></script>
-  <script src="../scripts/scrollButton.js"></script>
-<script src="../scripts/menu.js" />
-  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+      AOS.init({
+        disable: "phone",
+      });
+    </script>
+    <script src="../scripts/scroll.js"></script>
+    <script src="../scripts/scrollButton.js"></script>
+    <script src="../scripts/menu.js"></script>
+    <script src="../scripts/floatingBubbles.js"></script>
+  </body>
 </html>

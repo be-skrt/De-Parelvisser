@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import withBase from '../utils/withBase';
 
 const robotsTxt = (sitemapURL: string) => `
 User-agent: *
@@ -8,7 +9,7 @@ Sitemap: ${sitemapURL}
 `.trim();
 
 export const GET: APIRoute = ({ site }) => {
-  const sitemapURL = new URL('sitemap-index.xml', site).href;
+  const sitemapURL = new URL(withBase('sitemap-index.xml'), site).href;
   
   return new Response(robotsTxt(sitemapURL), {
     headers: {

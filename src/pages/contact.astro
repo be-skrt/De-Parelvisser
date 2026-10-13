@@ -2,9 +2,10 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from "../components/Button.astro";
 import SectionTitle from "../components/SectionTitle.astro";
+import { address, clientName, contact } from "../constants";
 ---
 
-<MainLayout title="Contact" headerBackground="cream">
+<MainLayout title="Contact en afspraak | De Parelvisser" description="Neem contact op met psycholoog Griet Ackerman voor vragen over begeleiding, het aanbod of het plannen van een eerste afspraak." headerBackground="cream">
   <section class="section section--full section--center section--oyster-teal">
     <div class="content-width contact-inner">
       <div class="contact-intro">
@@ -23,23 +24,23 @@ import SectionTitle from "../components/SectionTitle.astro";
       <div class="contact-card">
         <div class="contact-items">
           <div class="contact-item">
-            <h2 class="text--gold">Griet Ackerman</h2>
+            <h2 class="text--gold">{clientName}</h2>
           </div>
           <div class="contact-item">
             <span>Telefoon</span>
-            <a href="tel:+32469737223"> 0469 73 72 23 </a>
+            <a href={contact.phoneHref}>{contact.phoneText}</a>
           </div>
           <div class="contact-item">
             <span>E-mail</span>
-            <a href="mailto:deparelvisser@telenet.be">
-              deparelvisser@telenet.be
+            <a href={"mailto:" + contact.email}>
+              {contact.email}
             </a>
           </div>
           <div class="contact-item">
             <span>Adres</span>
             <address>
-              Domien Geersstraat 11a<br />
-              9041 Oostakker
+              {address.streetAddress}<br />
+              {address.postalCode} {address.addressLocality}
             </address>
           </div>
         </div>
